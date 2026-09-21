@@ -503,15 +503,16 @@
   <section class="gs-screen gs-active" id="gs-intro" aria-labelledby="gs-intro-h">
     <div class="gs-mark" id="gs-intro-h">The Gravitas Scorecard</div>
 
-    <p class="gs-lede">In five minutes, find out which part of how you show up is
-      winning rooms for you, and which part is quietly costing you them.</p>
+    <p class="gs-lede">Uncover the parts of your presence that command a room, and the
+      ones quietly working against you. Five minutes. Four sections.</p>
 
     <button class="gs-btn" id="gs-start" type="button">Begin the scorecard</button>
 
     <div class="gs-proof">
       <p class="gs-proof-name">Janet Bartucci</p>
-      <p class="gs-proof-line">Executive coach. Two decades advising C-suite leaders at
-        <strong>The Est&eacute;e Lauder Companies</strong> and <strong>Hill &amp; Knowlton</strong>.
+      <p class="gs-proof-line">Executive coach. C-suite counsel at
+        <strong>The Est&eacute;e Lauder Companies</strong>, <strong>Hill &amp; Knowlton</strong>,
+        <strong>Burson-Marsteller</strong> and <strong>M Booth</strong>.
         Three ventures of her own. CPC, ELI-MP.</p>
       <div class="gs-proof-meta">
         <span>Entreprenista</span><span>Success Leaves Clues</span><span>Artrepreneur</span><span>IEEE</span>
@@ -598,18 +599,18 @@
         <li class="gs-step-now">
           <span class="gs-step-mark" aria-hidden="true"></span>
           <div>
-            <strong>Janet reads it herself</strong>
-            <p>Not a score in a dashboard. She goes through these personally and
-              hand-selects the people she takes on, which is why there are never many
-              at a time.</p>
+            <strong>What it cannot tell you</strong>
+            <p>Sixteen statements can show you the pattern. What they cannot do is say
+              which part to work on first, in your situation, with the room you named
+              waiting for you.</p>
           </div>
         </li>
         <li>
           <span class="gs-step-mark" aria-hidden="true">3</span>
           <div>
-            <strong>The conversation, if it is a fit</strong>
-            <p>You do not have to wait to be picked. Her calendar is open below for a
-              limited time.</p>
+            <strong>A conversation, if you want one</strong>
+            <p>Janet keeps a small number of one-to-one clients and takes these calls
+              herself. Fifteen minutes, no pitch.</p>
           </div>
         </li>
       </ol>
@@ -620,14 +621,16 @@
       <h3>A scorecard cannot ask you the second question.</h3>
       <p>Everything above came from sixteen statements. What it cannot do is ask you the
         follow-up, the one that turns a reading into a decision. That part needs a person.</p>
-      <p>Fifteen minutes, one to one, with the room you named already on the table.</p>
+      <p>Janet takes a limited number of one-to-one clients, so she keeps these calls
+        short and does them herself. Fifteen minutes, with the room you named already
+        on the table.</p>
       <a class="gs-btn" id="gs-cta-link" href="#" target="_blank" rel="noopener">Book your 15 minutes with Janet</a>
 
       <div class="gs-phone-row">
         <form class="gs-phone-form" id="gs-phone-form">
           <div>
             <label class="gs-label" for="gs-phone">Phone
-              <span class="gs-optional">— only if you would rather she called</span></label>
+              <span class="gs-optional">only if you would rather she called</span></label>
             <input class="gs-input" type="tel" id="gs-phone" name="phone"
                    autocomplete="tel" placeholder="Optional">
           </div>
@@ -757,15 +760,25 @@
     }
   ];
 
+  // Janet's wording. Her "label, then explanation" pairs map onto the title and
+  // sub line the choice component already has, which reads better than one long
+  // label and keeps the punctuation out of it.
   var ROOMS = [
-    { key: "promotion", label: "A promotion or compensation conversation",
-      text: "You said the next room is a promotion or compensation conversation. Bring it. Those are won or lost in the first ninety seconds, and it is not the numbers that decide it." },
-    { key: "pitch", label: "A pitch, a board, a client room",
-      text: "You said the next room is a pitch, a board or a client. Rooms like that give you about ten minutes to be believed. Bring it." },
-    { key: "hard", label: "A hard conversation I keep postponing",
-      text: "You said there is a hard conversation you keep moving to next week. That is the most useful thing on this page. Bring it." },
-    { key: "stay", label: "A decision about whether to stay",
-      text: "You said you are weighing whether to stay. That is the conversation Janet is best at, and one she has had from both sides. Bring it." },
+    { key: "promotion",
+      label: "A conversation about what I'm worth",
+      sub: "A promotion or a compensation ask",
+      text: "You said the next room is a conversation about what you are worth. Bring it. Those are won or lost in the first ninety seconds, and it is not the numbers that decide it." },
+    { key: "pitch",
+      label: "A high-stakes room",
+      sub: "A client meeting or the board",
+      text: "You said the next room is a high-stakes one, a client or the board. Rooms like that give you about ten minutes to be believed. Bring it." },
+    { key: "hard",
+      label: "A conversation I've been avoiding",
+      text: "You said there is a conversation you have been avoiding. That is the most useful thing on this page. Bring it." },
+    { key: "stay",
+      label: "A crossroads",
+      sub: "Deciding whether to stay or go",
+      text: "You said you are at a crossroads, weighing whether to stay or go. That is a conversation worth having out loud. Bring it." },
     { key: "other", label: "Something else", other: true, text: null }
   ];
 
@@ -804,30 +817,29 @@
     promiseTitle: "What you get at the end",
     promiseHint: "Five minutes from now.",
     title: "Where should it go?",
-    hint: "Janet reads every scorecard that comes in. This is how she knows whose is whose.",
+    hint: "Just a couple of things, so the result has your name on it.",
     promise: [
-      ["Your full result, on screen", "your score, the area carrying you, the area costing you, and what that combination means for where you are headed."],
+      ["Your full result, on screen", "your score, the area carrying you, the area quietly costing you, and what that combination means for where you're headed. All of it. Nothing held back."],
       ["A one-page profile by email", "the written version, so you can keep it, re-read it, or bring it to a conversation."],
-      ["A personal read", "Janet goes through these herself and hand-selects the people she works with."]
+      ["A personal read", "the results are unique to you."]
     ],
     button: "Start the sixteen statements",
     buttonSub: "Four areas, about five minutes. Your results open as soon as you finish.",
-    consent: "One email with your profile. Janet reads these herself and may follow up " +
-             "about your results. No list, no sequence, no forwarding to anyone else."
+    consent: "One email with your profile. All results are kept private. " +
+             "Never shared, never sold."
   } : {
     promiseTitle: "What you get at the end",
     promiseHint: "Five minutes from now.",
-    title: "Who is taking this?",
-    hint: "Janet reads every scorecard that comes in. This is how she knows whose is whose.",
+    title: "Who's taking this?",
+    hint: "Just a couple of things, so the result has your name on it.",
     promise: [
-      ["Your full result, on screen", "your score, the area carrying you, the area costing you, and what that combination means for where you are headed. All of it, nothing held back."],
-      ["A personal read", "Janet goes through every one of these herself and hand-selects the people she works with."],
-      ["Nothing automated", "no newsletter, no sequence, no forwarding to anyone else."]
+      ["Your full result, on screen", "your score, the area carrying you, the area quietly costing you, and what that combination means for where you're headed. All of it. Nothing held back."],
+      ["A personal read", "the results are unique to you."],
+      ["Nothing automated", "no newsletter, no drip sequence, no passing you along to anyone else."]
     ],
     button: "Start the sixteen statements",
     buttonSub: "Four areas, about five minutes. Your results open as soon as you finish.",
-    consent: "Janet reads these herself and may follow up about your results. " +
-             "No list, no sequence, no forwarding to anyone else."
+    consent: "All results are kept private. Never shared, never sold."
   };
 
   /* =====================================================================
@@ -1042,15 +1054,15 @@
     if (s.type === "situation") {
       el.stepLabel.textContent = "Step 1 of 3 · About you";
       el.stepTitle.textContent = "Where are you right now?";
-      el.stepHint.textContent = "Pick the one that is closest. It changes how your results get read.";
+      el.stepHint.textContent = "Please tell us a couple of things about you to help us evaluate your results.";
       el.stepBody.appendChild(makeChoiceGroup(SITUATIONS, state.situation, function (opt) {
         state.situation = opt.key;
       }));
 
     } else if (s.type === "room") {
       el.stepLabel.textContent = "Step 1 of 3 · About you";
-      el.stepTitle.textContent = "What is the room you are walking into next?";
-      el.stepHint.textContent = "The specific one. This is the single most useful thing you can tell her.";
+      el.stepTitle.textContent = "What room are you walking into next?";
+      el.stepHint.textContent = "Every room asks something different of you.";
       el.stepBody.appendChild(makeChoiceGroup(ROOMS, state.room, function (opt) {
         state.room = opt.key;
         renderRoomOther();
@@ -1111,7 +1123,7 @@
       var strong = document.createElement("strong");
       strong.textContent = pair[0];
       li.appendChild(strong);
-      li.appendChild(document.createTextNode(" — " + pair[1]));
+      li.appendChild(document.createTextNode(": " + pair[1]));
       list.appendChild(li);
     });
     el.stepBody.appendChild(list);
