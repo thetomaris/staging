@@ -817,13 +817,13 @@
     promiseTitle: "What you get at the end",
     promiseHint: "Five minutes from now.",
     title: "Where should it go?",
-    hint: "Just a couple of things, so the result has your name on it.",
+    hint: "",
     promise: [
       ["Your full result, on screen", "your score, the area carrying you, the area quietly costing you, and what that combination means for where you're headed. All of it. Nothing held back."],
       ["A one-page profile by email", "the written version, so you can keep it, re-read it, or bring it to a conversation."],
       ["A personal read", "the results are unique to you."]
     ],
-    button: "Start the sixteen statements",
+    button: "Begin the sixteen statements",
     buttonSub: "Four areas, about five minutes. Your results open as soon as you finish.",
     consent: "One email with your profile. All results are kept private. " +
              "Never shared, never sold."
@@ -831,13 +831,13 @@
     promiseTitle: "What you get at the end",
     promiseHint: "Five minutes from now.",
     title: "Who's taking this?",
-    hint: "Just a couple of things, so the result has your name on it.",
+    hint: "",
     promise: [
       ["Your full result, on screen", "your score, the area carrying you, the area quietly costing you, and what that combination means for where you're headed. All of it. Nothing held back."],
       ["A personal read", "the results are unique to you."],
       ["Nothing automated", "no newsletter, no drip sequence, no passing you along to anyone else."]
     ],
-    button: "Start the sixteen statements",
+    button: "Begin the sixteen statements",
     buttonSub: "Four areas, about five minutes. Your results open as soon as you finish.",
     consent: "All results are kept private. Never shared, never sold."
   };
@@ -1050,6 +1050,7 @@
   function renderStep() {
     var s = STEPS[state.step];
     el.stepBody.innerHTML = "";
+    el.stepHint.hidden = false;
 
     if (s.type === "situation") {
       el.stepLabel.textContent = "Step 1 of 3 · About you";
@@ -1108,6 +1109,7 @@
       el.stepLabel.textContent = "Step 1 of 3 · About you";
       el.stepTitle.textContent = COPY.title;
       el.stepHint.textContent = COPY.hint;
+      el.stepHint.hidden = !COPY.hint;
       renderContact();
     }
 
