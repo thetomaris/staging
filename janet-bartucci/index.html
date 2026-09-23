@@ -1558,9 +1558,13 @@
      ===================================================================== */
   var PENDING_KEY = "gs_pending_v2";
 
+  function endpointConfigured() {
+    return !!CONFIG.endpoint && CONFIG.endpoint.indexOf("PASTE_") !== 0;
+  }
+
   // text/plain keeps this a CORS-simple request, so Apps Script needs no preflight.
   function post(payload) {
-    if (!CONFIG.endpoint || CONFIG.endpoint.indexOf("PASTE_") === 0) {
+    if (!endpointConfigured()) {
       return Promise.reject(new Error("endpoint not configured"));
     }
     return fetch(CONFIG.endpoint, {
@@ -1689,7 +1693,7 @@
   // Sent as soon as the contact step is left. Someone who stops at statement
   // nine is then still a name Janet can follow up, instead of a lost session.
   function submitContact() {
-    if (state.contactSent) return;
+    if (state.contactSent || !endpointConfigured()) return;
     state.contactSent = true;
     var sit = situationByKey(state.situation);
     var room = roomByKey(state.room);
@@ -1714,6 +1718,12 @@
 
   function submitLead() {
     var payload = leadPayload();
+
+    // Endpoint not configured yet: that is our setup gap, not something the
+    // visitor should read about. Show nothing rather than telling them their
+    // details failed to arrive. Data collection simply starts working the
+    // moment the URL is filled in above.
+    if (!endpointConfigured()) return;
 
     // Results are already on screen. A backend problem is ours, not theirs,
     // so the only thing that changes is what the note at the top promises.
