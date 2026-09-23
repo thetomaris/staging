@@ -9,7 +9,7 @@
 </head>
 <body>
 <!--
-  THE GRAVITAS SCORECARD v2  ·  Janet Bartucci  ·  My Coach Path
+  THE GRAVITAS SCORECARD v2  &middot;  Janet Bartucci  &middot;  My Coach Path
   Paste this whole file into ONE Squarespace Code Block.
   Do NOT wrap it in a full HTML document (doctype / html / head / body tags).
   That was the v1 bug that restyled the entire site. Every selector below is
@@ -133,7 +133,7 @@
 }
 #gravitas-scorecard .gs-proof-meta span { white-space: nowrap; }
 #gravitas-scorecard .gs-proof-meta span:not(:last-child)::after {
-  content: "·"; margin: 0 8px; color: var(--gs-line);
+  content: "\00B7"; margin: 0 8px; color: var(--gs-line);
 }
 
 /* ---------- buttons (ink, 2px radius, as in the original) ---------- */
@@ -658,7 +658,7 @@
   "use strict";
 
   /* =====================================================================
-     CONFIGURATION — the only two lines that need changing on deploy
+     CONFIGURATION &mdash; the only two lines that need changing on deploy
      ===================================================================== */
   var CONFIG = {
     // Google Apps Script Web App URL. See DEPLOY.md, step 4.
@@ -1053,7 +1053,7 @@
     el.stepHint.hidden = false;
 
     if (s.type === "situation") {
-      el.stepLabel.textContent = "Step 1 of 3 · About you";
+      el.stepLabel.textContent = "Step 1 of 3 \u00B7 About you";
       el.stepTitle.textContent = "Where are you right now?";
       el.stepHint.textContent = "Please tell us a couple of things about you to help us evaluate your results.";
       el.stepBody.appendChild(makeChoiceGroup(SITUATIONS, state.situation, function (opt) {
@@ -1061,7 +1061,7 @@
       }));
 
     } else if (s.type === "room") {
-      el.stepLabel.textContent = "Step 1 of 3 · About you";
+      el.stepLabel.textContent = "Step 1 of 3 \u00B7 About you";
       el.stepTitle.textContent = "What room are you walking into next?";
       el.stepHint.textContent = "Every room asks something different of you.";
       el.stepBody.appendChild(makeChoiceGroup(ROOMS, state.room, function (opt) {
@@ -1076,14 +1076,14 @@
 
     } else if (s.type === "statements") {
       var cat = CATEGORIES[s.cat];
-      el.stepLabel.textContent = "Step 2 of 3 · Area " + (s.cat + 1) + " of 4";
+      el.stepLabel.textContent = "Step 2 of 3 \u00B7 Area " + (s.cat + 1) + " of 4";
       el.stepTitle.textContent = cat.name;
       el.stepHint.textContent =
         "Rarely true on the left, consistently true on the right.";
       renderStatements(cat, s.cat);
 
     } else if (s.type === "open") {
-      el.stepLabel.textContent = "Step 2 of 3 · One last thing";
+      el.stepLabel.textContent = "Step 2 of 3 \u00B7 One last thing";
       el.stepTitle.textContent = OPEN_QUESTION;
       el.stepHint.textContent = "Optional, and the most useful box on this page. A sentence is plenty.";
 
@@ -1100,13 +1100,13 @@
       el.stepBody.appendChild(field);
 
     } else if (s.type === "promise") {
-      el.stepLabel.textContent = "Step 1 of 3 · About you";
+      el.stepLabel.textContent = "Step 1 of 3 \u00B7 About you";
       el.stepTitle.textContent = COPY.promiseTitle;
       el.stepHint.textContent = COPY.promiseHint;
       renderPromise();
 
     } else if (s.type === "contact") {
-      el.stepLabel.textContent = "Step 1 of 3 · About you";
+      el.stepLabel.textContent = "Step 1 of 3 \u00B7 About you";
       el.stepTitle.textContent = COPY.title;
       el.stepHint.textContent = COPY.hint;
       el.stepHint.hidden = !COPY.hint;
@@ -1785,5 +1785,6 @@
   setProgress(0);
 })();
 </script>
+
 </body>
 </html>
