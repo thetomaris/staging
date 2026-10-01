@@ -565,88 +565,274 @@ section { padding: var(--section) 0; }
   html { scroll-behavior: auto; }
 }
 
-/* ---------- Home hero: text left, framed portrait right ---------- */
+/* ---------- Hero with cutout portrait (home) ---------- */
 
-.hero-home { padding: clamp(40px, 5vw, 72px) 0 clamp(56px, 6vw, 88px); }
-.hero-home .hero-grid {
-  display: grid;
-  gap: 32px;
-  grid-template-areas: "head" "photo" "body";
-}
-.hero-home .hero-head { grid-area: head; }
-.hero-home .hero-body { grid-area: body; }
-.hero-home .hero-portrait { grid-area: photo; margin: 0; }
-.hero-home h1 { font-size: clamp(2.9rem, 6vw, 6.4rem); max-width: none; }
-.hero-home .lede { max-width: 46ch; }
-.hero-home .btn-row { margin-top: 36px; }
-
-.hero-portrait {
+.hero-photo {
   position: relative;
-  aspect-ratio: 4 / 5;
   overflow: hidden;
-  background: #cfccc7;
+  padding: clamp(32px, 5vw, 72px) 0 0;
 }
-.hero-portrait img {
+.hero-grid { display: grid; grid-template-areas: "head" "img" "body"; position: relative; }
+.hero-head { grid-area: head; position: relative; z-index: 2; }
+.hero-body { grid-area: body; position: relative; z-index: 2; padding: 8px 0 clamp(64px, 8vw, 110px); }
+.hero-photo h1 { font-size: clamp(2.9rem, 6.6vw, 7rem); max-width: 12ch; }
+.hero-photo .lede { max-width: 40ch; }
+.hero-photo .btn-row { margin-top: 36px; }
+
+.hero-cut {
+  grid-area: img;
+  position: relative;
+  z-index: 1;
+  margin: 8px auto 0;
+  width: min(78%, 360px);
+}
+/* soft light behind the figure so he sits in the page, not on it */
+.hero-cut::before {
+  content: "";
+  position: absolute;
+  inset: 4% -18% 10% -18%;
+  background:
+    radial-gradient(closest-side, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0) 100%),
+    radial-gradient(closest-side at 50% 60%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 100%);
+  z-index: -1;
+}
+.hero-cut img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 20%;
-  /* nudge the cool studio grey toward the warm paper tone */
-  filter: sepia(0.12) saturate(0.95);
+  height: auto;
+  -webkit-mask-image:
+    linear-gradient(to bottom, #000 62%, transparent 98%),
+    linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to bottom, #000 62%, transparent 98%),
+    linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%);
+  mask-composite: intersect;
+}
+
+@media (max-width: 899px) {
+  .hero-cut { margin-bottom: -14%; }
 }
 
 @media (min-width: 900px) {
-  .hero-home .hero-grid {
-    grid-template-columns: 7fr 5fr;
-    grid-template-rows: 1fr auto;
-    grid-template-areas: "head photo" "body photo";
-    column-gap: clamp(48px, 6vw, 96px);
-    row-gap: 40px;
+  .hero-grid {
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-areas: "head img" "body img";
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(24px, 3vw, 48px);
   }
-  .hero-home .hero-portrait { aspect-ratio: auto; min-height: 480px; align-self: stretch; }
-  .hero-home .hero-head { align-self: start; }
-  .hero-home .hero-body { align-self: end; }
-  .hero-home .eyebrow { margin-bottom: 24px; }
+  .hero-photo h1 { max-width: 14ch; }
+  .hero-body { align-self: end; padding: clamp(28px, 3vw, 44px) 0 clamp(56px, 6vw, 88px); }
+  .hero-cut {
+    align-self: end;
+    width: 112%;
+    max-width: none;
+    margin: 0 0 0 -6%;
+  }
 }
 
-/* ---------- Keynote title marquee (divider under the hero) ---------- */
+/* ---------- Hero background variants ---------- */
 
-.title-marquee {
+.hero-photo > .wrap { position: relative; z-index: 1; }
+
+/* Shared light rig: spotlight, haze, floor. Colors come from the site palette. */
+.hero-photo.stage::before, .hero-photo.stage::after,
+.hero-photo.studio::before, .hero-photo.studio::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.hero-photo .hero-cut::before { display: none; }
+
+/* Studio (default): airy paper room, warm white light on the figure, soft floor shadow */
+.hero-photo.studio { background: var(--paper); }
+.hero-photo.studio::before { display: none;
+  background:
+    radial-gradient(ellipse 30% 100% at 76% -12%, rgba(255, 253, 249, 0.55), rgba(255, 253, 249, 0.15) 50%, transparent 80%),
+    radial-gradient(circle at 76% 50%, rgba(255, 254, 251, 0.35), transparent 38%),
+    radial-gradient(ellipse 28% 6% at 76% 100%, rgba(13, 13, 13, 0.08), transparent 100%);
+}
+.hero-photo.studio::after {
+  background: repeating-linear-gradient(100deg, rgba(13, 13, 13, 0.012) 0 1px, transparent 1px 160px);
+}
+
+/* Stage (neutral): dark room, white light only, accent stays in the type */
+.hero-photo.stage { background: #0e0e0e; }
+.hero-photo.stage::before {
+  background:
+    radial-gradient(ellipse 26% 95% at 76% -8%, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.05) 55%, transparent 75%),
+    radial-gradient(circle at 76% 56%, rgba(255, 255, 255, 0.10), transparent 38%),
+    radial-gradient(ellipse 32% 8% at 76% 100%, rgba(255, 255, 255, 0.14), transparent 100%),
+    radial-gradient(ellipse 120% 90% at 50% 40%, transparent 55%, rgba(0, 0, 0, 0.5) 100%);
+}
+.hero-photo.stage::after {
+  background: repeating-linear-gradient(100deg, rgba(255, 255, 255, 0.018) 0 2px, transparent 2px 140px);
+  mix-blend-mode: screen;
+}
+.hero-photo.stage .lede, .hero-photo.stage .eyebrow { color: #c9c5bd; }
+
+@media (max-width: 899px) {
+  .hero-photo.studio::before {
+    background:
+      radial-gradient(ellipse 60% 70% at 50% 20%, rgba(255, 255, 255, 0.9), transparent 70%),
+      radial-gradient(circle at 50% 52%, rgba(255, 255, 255, 0.8), transparent 42%);
+  }
+  .hero-photo.stage::before {
+    background:
+      radial-gradient(ellipse 60% 70% at 50% 18%, rgba(255, 255, 255, 0.14), transparent 70%),
+      radial-gradient(ellipse 120% 90% at 50% 40%, transparent 55%, rgba(0, 0, 0, 0.5) 100%);
+  }
+}
+
+/* ---------- Light hero backdrop: warm base, drifting keynote title ---------- */
+
+
+.hero-photo.studio { isolation: isolate; }
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   overflow: hidden;
-  border-top: 1px solid var(--line);
-  padding: clamp(16px, 2vw, 28px) 0;
+  pointer-events: none;
 }
-.title-marquee .track {
+.hero-photo:not(.studio) .hero-bg { display: none; }
+
+/* calm warm base, no hotspot */
+.hero-photo.studio { background: var(--paper); }
+
+/* giant keynote title drifting behind the figure */
+.hero-bg .marquee-wrap {
+  position: absolute;
+  inset: 0;
+}
+@media (min-width: 900px) {
+  .hero-bg .marquee-wrap {
+    -webkit-mask-image: linear-gradient(to right, transparent 42%, #000 62%);
+    mask-image: linear-gradient(to right, transparent 42%, #000 62%);
+  }
+}
+.hero-bg .marquee {
+  position: absolute;
+  left: 0;
+  top: 40%;
   display: flex;
-  width: max-content;
-  animation: marquee 60s linear infinite;
-}
-.title-marquee span {
+  white-space: nowrap;
   font-family: var(--font-display);
   font-weight: 800;
   font-stretch: 95%;
-  font-size: clamp(4rem, 11vw, 11rem);
-  letter-spacing: -0.04em;
+  font-size: clamp(9rem, 19vw, 20rem);
+  letter-spacing: -0.045em;
   line-height: 1;
-  white-space: nowrap;
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(13, 13, 13, 0.22);
-  padding-right: 0.35em;
+  color: rgba(120, 96, 70, 0.09);
+  animation: marquee 70s linear infinite;
+  will-change: transform;
 }
-.title-marquee span::after {
-  content: "";
-  display: inline-block;
-  width: 0.14em;
-  height: 0.14em;
-  margin-left: 0.35em;
-  border-radius: 50%;
-  background: var(--accent);
-  vertical-align: middle;
-}
+.hero-bg .marquee span { padding-right: 0.3em; }
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
+
+/* grain */
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+/* settle into the paper color at the bottom */
+.hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 22%;
+  background: linear-gradient(to bottom, transparent, var(--paper));
+  z-index: 1;
+}
+
+@media (max-width: 899px) {
+  .hero-bg .marquee { top: 44%; font-size: 44vw; }
+}
 @media (prefers-reduced-motion: reduce) {
-  .title-marquee .track { animation: none; }
+  .hero-bg .marquee { animation: none; }
+}
+
+/* ---------- Figure (home hero): clean bust crop standing on the bottom line ---------- */
+/* No soft edges. The crop sits at 61.5% of the photo height (740 of 1200px), just above
+   the point where the shoulders reach the photo's side edges, so nothing looks cut off. */
+.hero-photo .hero-cut {
+  -webkit-mask-image: none;
+  mask-image: none;
+  overflow: hidden;
+  aspect-ratio: 896 / 740;
+}
+.hero-photo .hero-cut img {
+  -webkit-mask-image: none;
+  mask-image: none;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media (min-width: 900px) {
+  /* Hero fills the first screen. The bust scales with the hero height, not the column
+     width, so head and shoulders always sit fully above the fold. */
+  .hero-photo {
+    --hero-h: clamp(640px, calc(100svh - 73px), 960px);
+    min-height: var(--hero-h);
+  }
+  .hero-photo > .wrap, .hero-photo .hero-grid { position: static; }
+  .hero-photo { --text-w: 600px; }
+  .hero-photo .hero-grid {
+    max-width: var(--text-w);
+    min-height: calc(var(--hero-h) - clamp(32px, 5vw, 72px));
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "head" "body";
+  }
+  /* width = whatever is free right of the text column (bleeding to the screen edge),
+     capped by the hero height */
+  .hero-photo .hero-cut {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: min(
+      calc(var(--hero-h) * 0.92),
+      calc(100vw - max(0px, (100vw - var(--wrap)) / 2) - var(--gutter) - var(--text-w) - 32px)
+    );
+    height: auto;
+    max-width: none;
+    margin: 0;
+  }
+  .hero-photo .hero-cut img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .hero-photo .hero-body .lede { max-width: 40ch; }
+  .hero-photo h1 { font-size: clamp(3rem, 5.9vw, 5.2rem); }
+  .hero-photo .hero-body { padding-bottom: clamp(36px, 4vw, 56px); }
+}
+/* short desktop screens: keep the whole hero inside the first screen */
+@media (min-width: 900px) and (max-height: 880px) {
+  .hero-photo { padding-top: 28px; }
+  .hero-photo h1 { font-size: clamp(3rem, 5vw, 4.3rem); }
+  .hero-photo .hero-head .eyebrow { margin-bottom: 18px; }
+  .hero-photo .hero-body { padding-bottom: 28px; }
+  .hero-photo .hero-body .btn-row { margin-top: 24px; }
+}
+@media (max-width: 899px) {
+  .hero-photo .hero-cut {
+    width: min(100%, 520px);
+    margin: 24px auto 0;
+  }
+  .hero-photo .hero-body { border-top: 1px solid var(--line); padding-top: 36px; }
+}
+
+/* narrow desktops / landscape tablets: slimmer text column leaves room for the bust */
+@media (min-width: 900px) and (max-width: 1180px) {
+  .hero-photo { --text-w: 500px; }
+  .hero-photo h1 { font-size: clamp(2.8rem, 5.4vw, 4rem); }
+}
+
+/* flat paper behind the bust: no bottom fade, no grain, no haze */
+.hero-bg::before { display: none; }
+.hero-bg::after, .hero-photo.studio::after { display: none; }
+@media (max-width: 899px) {
+  .hero-bg .marquee-wrap { display: none; }
 }
