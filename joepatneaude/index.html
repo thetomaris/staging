@@ -30,7 +30,7 @@
 <main>
 
   <!-- HERO -->
-  <section class="hero hero-photo studio" id="hero">
+  <section class="hero hero-photo studio frame" id="hero">
     <div class="hero-bg" aria-hidden="true">
       <div class="orbs orbs-top"><span class="orb o1"></span></div>
       <div class="orbs orbs-band"><span class="orb o2"></span></div>
@@ -42,7 +42,7 @@
           <p class="eyebrow">Keynote Speaker &amp; Leadership Advisor</p>
           <h1>The process is working perfectly. <span class="accent">That's the problem.</span></h1>
         </div>
-        <div class="hero-cut"><img src="assets/img/joe-headshot-cutout.png" alt="Joe Patneaude, keynote speaker and leadership advisor" width="896" height="1200" fetchpriority="high"></div>
+        <div class="hero-cut"><img src="assets/img/joe-headshot.webp" alt="Joe Patneaude, keynote speaker and leadership advisor" width="896" height="1200" fetchpriority="high"></div>
         <div class="hero-body">
           <p class="lede">Most organizations don't have an execution problem. They have a diagnosis problem. Joe Patneaude spent 25+ years in financial services watching smart people solve the wrong thing with great discipline. Now he talks about it.</p>
           <div class="btn-row">
@@ -225,14 +225,16 @@
 </footer>
 
 <script>
-  // Draft only: compare hero backgrounds via ?hero=studio | stage | light
+  // Draft only: ?hero=band shows the cutout on a dark sweater-colored band
   (function () {
     const v = new URLSearchParams(location.search).get("hero");
     const h = document.getElementById("hero");
     if (!h || !v) return;
-    h.classList.remove("studio", "stage", "dark");
-    if (v === "stage") h.classList.add("stage", "dark");
-    if (v === "studio") h.classList.add("studio");
+    if (v === "band") {
+      h.classList.remove("frame");
+      h.classList.add("band");
+      h.querySelector(".hero-cut img").src = "assets/img/joe-headshot-cutout.png";
+    }
   })();
 </script>
 <script>
