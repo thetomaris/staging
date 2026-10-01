@@ -648,8 +648,8 @@ section { padding: var(--section) 0; }
 .hero-photo.studio { background: var(--paper); }
 .hero-photo.studio::before {
   background:
-    radial-gradient(ellipse 34% 110% at 76% -12%, rgba(255, 253, 249, 1), rgba(255, 253, 249, 0.5) 50%, transparent 80%),
-    radial-gradient(circle at 76% 50%, rgba(255, 254, 251, 0.9), transparent 40%),
+    radial-gradient(ellipse 30% 100% at 76% -12%, rgba(255, 253, 249, 0.55), rgba(255, 253, 249, 0.15) 50%, transparent 80%),
+    radial-gradient(circle at 76% 50%, rgba(255, 254, 251, 0.35), transparent 38%),
     radial-gradient(ellipse 28% 6% at 76% 100%, rgba(13, 13, 13, 0.08), transparent 100%);
 }
 .hero-photo.studio::after {
@@ -684,53 +684,67 @@ section { padding: var(--section) 0; }
   }
 }
 
-/* ---------- Studio backdrop (light hero) ---------- */
-/* Arch-shaped seamless backdrop behind the figure. Swap palettes via data-backdrop. */
+/* ---------- Moving gradient (light hero) ---------- */
+/* Large blurred color fields drifting slowly behind the whole hero. */
 
-.hero-photo.studio { --bd-1: #aec5de; --bd-2: #dbe5f0; --bd-3: #f1cfb8; }
-.hero-photo.studio[data-backdrop="sand"] { --bd-1: #dcbf9f; --bd-2: #efe2d2; --bd-3: #cfa684; }
-.hero-photo.studio[data-backdrop="sage"] { --bd-1: #b6c7af; --bd-2: #e0e7d9; --bd-3: #e6d3bd; }
+.hero-photo.studio { isolation: isolate; }
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.hero-photo:not(.studio) .hero-bg { display: none; }
 
-.hero-photo.studio .hero-cut::before {
-  display: block;
+.hero-bg .blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.9;
+  will-change: transform;
+}
+.hero-bg .b1 { width: 62vw; height: 62vw; right: -14vw; top: -22vw; background: #9dbae0; animation: drift-a 22s ease-in-out infinite alternate; }
+.hero-bg .b2 { width: 46vw; height: 46vw; right: 8vw;  bottom: -18vw; background: #f1b48f; animation: drift-b 26s ease-in-out infinite alternate; }
+.hero-bg .b3 { width: 40vw; height: 40vw; left: 22vw;  top: -10vw;  background: #c9d8ec; opacity: 0.7; animation: drift-c 30s ease-in-out infinite alternate; }
+.hero-bg .b4 { width: 30vw; height: 30vw; left: -10vw; bottom: -8vw; background: #f5d6bf; opacity: 0.6; animation: drift-b 34s ease-in-out infinite alternate-reverse; }
+
+/* grain */
+.hero-bg::after {
   content: "";
   position: absolute;
-  z-index: -1;
-  left: 9%;
-  right: 9%;
-  top: 4%;
-  bottom: 0;
-  border-radius: 999px 999px 0 0;
-  background:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
-    radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.5), transparent 45%),
-    radial-gradient(ellipse 80% 60% at 15% 85%, var(--bd-3), transparent 70%),
-    linear-gradient(160deg, var(--bd-1) 0%, var(--bd-2) 60%, var(--bd-1) 100%);
-  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
-  box-shadow: inset 0 0 80px rgba(255, 255, 255, 0.35);
+  inset: 0;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
-/* the figure no longer needs side fades in front of the backdrop */
-.hero-photo.studio .hero-cut img {
-  -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 99%);
-  mask-image: linear-gradient(to bottom, #000 72%, transparent 99%);
-}
-/* thin accent rule on the arch, the only orange in the picture */
-.hero-photo.studio .hero-cut::after {
+/* settle into the paper color at the bottom */
+.hero-bg::before {
   content: "";
   position: absolute;
-  z-index: -1;
-  left: calc(9% - 14px);
-  right: calc(9% - 14px);
-  top: calc(4% - 14px);
-  bottom: 18%;
-  border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
-  border-bottom: 0;
-  border-radius: 999px 999px 0 0;
-  -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 40%, transparent 100%);
+  inset: auto 0 0 0;
+  height: 22%;
+  background: linear-gradient(to bottom, transparent, var(--paper));
+  z-index: 1;
 }
+
+@keyframes drift-a {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-9vw, 7vw) scale(1.12); }
+}
+@keyframes drift-b {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(7vw, -6vw) scale(0.92); }
+}
+@keyframes drift-c {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(10vw, 5vw) scale(1.15); }
+}
+
 @media (max-width: 899px) {
-  .hero-photo.studio .hero-cut::before { left: 4%; right: 4%; }
-  .hero-photo.studio .hero-cut::after { left: calc(4% - 10px); right: calc(4% - 10px); top: calc(4% - 10px); }
+  .hero-bg .b1 { width: 120vw; height: 120vw; right: -40vw; top: 26%; }
+  .hero-bg .b2 { width: 90vw; height: 90vw; right: auto; left: -30vw; bottom: 8%; }
+  .hero-bg .b3 { width: 90vw; height: 90vw; left: -30vw; top: -10%; }
+  .hero-bg .b4 { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg .blob { animation: none; }
 }

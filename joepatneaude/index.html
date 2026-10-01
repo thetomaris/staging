@@ -31,6 +31,7 @@
 
   <!-- HERO -->
   <section class="hero hero-photo studio" id="hero">
+    <div class="hero-bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span></div>
     <div class="wrap">
       <div class="hero-grid">
         <div class="hero-head">
@@ -228,11 +229,6 @@
     h.classList.remove("studio", "stage", "dark");
     if (v === "stage") h.classList.add("stage", "dark");
     if (v === "studio") h.classList.add("studio");
-  })();
-  // ?backdrop=sand | sage (default: powder blue)
-  (function () {
-    const b = new URLSearchParams(location.search).get("backdrop");
-    if (b) document.getElementById("hero").dataset.backdrop = b;
   })();
 </script>
 <script src="assets/main.js"></script>
