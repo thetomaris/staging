@@ -741,7 +741,7 @@ section { padding: var(--section) 0; }
 .hero-bg::after {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: 0 0 var(--band, 0) 0;
   background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 /* settle into the paper color at the bottom */
@@ -779,7 +779,7 @@ section { padding: var(--section) 0; }
 .hero-photo.studio .hero-bg::before {
   inset: auto 0 0 0;
   height: var(--band);
-  background: linear-gradient(to bottom, rgba(22, 26, 37, 0) 0, var(--sweater-top) 36px, var(--sweater-bottom) 100%);
+  background: linear-gradient(to bottom, var(--sweater-top) 0%, var(--sweater-bottom) 100%);
   z-index: 0;
 }
 .hero-body .lede { color: #d6d1c8; }
@@ -826,14 +826,22 @@ section { padding: var(--section) 0; }
   .hero-photo .hero-cut {
     width: auto;
     margin: 16px calc(-1 * var(--gutter)) 0;
-    background: linear-gradient(to bottom, transparent 52%, var(--sweater-top) 70%, var(--sweater-bottom) 100%);
+    background: linear-gradient(to bottom, transparent 66%, var(--sweater-top) 66%, var(--sweater-bottom) 100%);
   }
   .hero-bg .marquee-wrap { display: none; }
+  .hero-photo .hero-cut { position: relative; }
+  .hero-photo .hero-cut::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 70px;
+    background: linear-gradient(to bottom, rgba(19, 23, 34, 0), #131722);
+  }
   .hero-photo .hero-cut img { display: block; }
   .hero-photo .hero-body {
-    margin: -1px calc(-1 * var(--gutter)) 0;
-    padding: 8px var(--gutter) 64px;
-    background: var(--sweater-bottom);
+    margin: -12px calc(-1 * var(--gutter)) 0;
+    padding: 20px var(--gutter) 64px;
+    background: linear-gradient(to bottom, #131722 0, var(--sweater-bottom) 220px);
   }
   .hero-photo.studio .hero-bg::before { display: none; }
 }
