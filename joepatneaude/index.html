@@ -32,6 +32,8 @@
   <!-- HERO -->
   <section class="hero hero-photo studio" id="hero">
     <div class="hero-bg" aria-hidden="true">
+      <div class="orbs orbs-top"><span class="orb o1"></span></div>
+      <div class="orbs orbs-band"><span class="orb o2"></span></div>
       <div class="marquee-wrap"><div class="marquee"><span>Don't trust the process.&nbsp;</span><span>Don't trust the process.&nbsp;</span></div></div>
     </div>
     <div class="wrap">
@@ -231,6 +233,42 @@
     h.classList.remove("studio", "stage", "dark");
     if (v === "stage") h.classList.add("stage", "dark");
     if (v === "studio") h.classList.add("studio");
+  })();
+</script>
+<script>
+  // Draft only: ?fx=orbs shows large soft circles that drift and follow the mouse slowly
+  (function () {
+    if (new URLSearchParams(location.search).get("fx") !== "orbs") return;
+    const hero = document.getElementById("hero");
+    hero.classList.add("fx-orbs");
+    const orbs = [...hero.querySelectorAll(".orb")].map((el, i) => ({
+      el, x: 0, y: 0, tx: 0, ty: 0, k: i ? 0.018 : 0.03, range: i ? 0.35 : 0.5,
+    }));
+    const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (still) return;
+    let mx = 0, my = 0, hasMouse = false;
+    hero.addEventListener("pointermove", (e) => {
+      if (e.pointerType !== "mouse") return;
+      const r = hero.getBoundingClientRect();
+      mx = (e.clientX - r.left) / r.width - 0.5;
+      my = (e.clientY - r.top) / r.height - 0.5;
+      hasMouse = true;
+    });
+    hero.addEventListener("pointerleave", () => (hasMouse = false));
+    const tick = (t) => {
+      const r = hero.getBoundingClientRect();
+      orbs.forEach((o, i) => {
+        const idleX = Math.sin(t / (9000 + i * 3000) + i) * 0.08;
+        const idleY = Math.cos(t / (11000 + i * 2000) + i) * 0.06;
+        o.tx = ((hasMouse ? mx * o.range : 0) + idleX) * r.width;
+        o.ty = ((hasMouse ? my * o.range : 0) + idleY) * r.height;
+        o.x += (o.tx - o.x) * o.k;
+        o.y += (o.ty - o.y) * o.k;
+        o.el.style.transform = `translate3d(${o.x.toFixed(1)}px, ${o.y.toFixed(1)}px, 0)`;
+      });
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
   })();
 </script>
 <script src="assets/main.js"></script>

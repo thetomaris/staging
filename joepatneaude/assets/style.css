@@ -761,32 +761,97 @@ section { padding: var(--section) 0; }
   .hero-bg .marquee { animation: none; }
 }
 
-/* ---------- Bigger figure (home hero) ---------- */
+/* ---------- Figure + dark base (home hero) ---------- */
+/* The lower part of the hero is a dark band in the color of Joe's sweater, so the
+   figure sinks into it with no visible cut. Lede and buttons sit light on dark. */
+
+.hero-photo {
+  --sweater-top: #161a25;
+  --sweater-bottom: #0c0f16;
+}
 .hero-photo .hero-cut {
-  -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 100%), linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(to bottom, #000 68%, transparent 100%), linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
-  mask-composite: intersect;
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 .hero-photo .hero-cut img { -webkit-mask-image: none; mask-image: none; }
+
+/* band */
+.hero-photo.studio .hero-bg::before {
+  inset: auto 0 0 0;
+  height: var(--band);
+  background: linear-gradient(to bottom, rgba(22, 26, 37, 0) 0, var(--sweater-top) 36px, var(--sweater-bottom) 100%);
+  z-index: 0;
+}
+.hero-body .lede { color: #d6d1c8; }
+.hero-body .btn { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.hero-body .btn:hover { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+.hero-body .btn.ghost { background: transparent; color: var(--paper); border-color: rgba(244, 242, 237, 0.6); }
+.hero-body .btn.ghost:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+
 @media (min-width: 900px) {
-  .hero-grid { grid-template-columns: 1.25fr 1fr; }
+  .hero-photo {
+    --hero-h: max(720px, calc(100svh - 73px));
+    --band: calc(var(--hero-h) * 0.43);
+    height: var(--hero-h);
+    padding: clamp(32px, 4vw, 56px) 0 0;
+  }
+  .hero-photo > .wrap, .hero-photo .hero-grid { position: static; }
+  .hero-photo .hero-head, .hero-photo .hero-body { z-index: 2; }
+  .hero-photo h1 { font-size: clamp(3rem, 5.8vw, 6.6rem); }
+  .hero-photo .hero-grid {
+    height: 100%;
+    grid-template-columns: 1.25fr 1fr;
+    grid-template-rows: 1fr var(--band);
+    grid-template-areas: "head ." "body .";
+  }
+  .hero-photo .hero-body { align-self: end; padding: 0 0 clamp(28px, 4vh, 48px); }
+  .hero-photo .hero-body .lede { max-width: 50ch; font-size: clamp(1.05rem, 1.35vw, 1.3rem); }
+  .hero-photo .hero-body .btn-row { margin-top: 28px; }
   .hero-photo .hero-cut {
-    width: 100%;
-    margin: 0;
-    height: clamp(560px, calc(100vh - 110px), 820px);
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-  }
-  .hero-photo .hero-cut img {
+    position: absolute;
+    right: max(0px, calc((100vw - 1400px) / 2));
+    bottom: calc(var(--hero-h) * -0.1);
+    height: var(--hero-h);
     width: auto;
-    height: 118%;
-    max-width: none;
-    flex: none;
+    aspect-ratio: 896 / 1200;
+    margin: 0;
+    z-index: 1;
   }
+  .hero-photo .hero-cut img { width: 100%; height: 100%; }
+  .hero-bg .marquee { top: 26%; }
+}
+
+@media (max-width: 899px) {
+  .hero-photo { padding-bottom: 0; }
+  .hero-photo .hero-cut {
+    width: auto;
+    margin: 16px calc(-1 * var(--gutter)) 0;
+    background: linear-gradient(to bottom, transparent 52%, var(--sweater-top) 70%, var(--sweater-bottom) 100%);
+  }
+  .hero-bg .marquee-wrap { display: none; }
+  .hero-photo .hero-cut img { display: block; }
+  .hero-photo .hero-body {
+    margin: -1px calc(-1 * var(--gutter)) 0;
+    padding: 8px var(--gutter) 64px;
+    background: var(--sweater-bottom);
+  }
+  .hero-photo.studio .hero-bg::before { display: none; }
+}
+
+/* ---------- Draft variant ?fx=orbs: soft circles following the mouse ---------- */
+.orbs { display: none; position: absolute; left: 0; right: 0; overflow: hidden; pointer-events: none; }
+.hero-photo.fx-orbs .orbs { display: block; }
+.orbs-top { top: 0; bottom: var(--band, 40%); }
+.orbs-band { bottom: 0; height: var(--band, 40%); z-index: 1; }
+.orb { position: absolute; border-radius: 50%; will-change: transform; }
+.o1 {
+  width: 46vw; height: 46vw; left: 38%; top: -10%;
+  background: radial-gradient(circle, rgba(222, 205, 182, 0.75) 0%, rgba(222, 205, 182, 0) 68%);
+}
+.o2 {
+  width: 52vw; height: 52vw; left: -8%; top: -30%;
+  background: radial-gradient(circle, rgba(70, 84, 118, 0.5) 0%, rgba(70, 84, 118, 0) 66%);
 }
 @media (max-width: 899px) {
-  .hero-photo .hero-cut { width: 100%; margin: 16px 0 -10%; }
+  .hero-photo.fx-orbs .orbs { display: none; }
 }
