@@ -683,3 +683,54 @@ section { padding: var(--section) 0; }
       radial-gradient(ellipse 120% 90% at 50% 40%, transparent 55%, rgba(0, 0, 0, 0.5) 100%);
   }
 }
+
+/* ---------- Studio backdrop (light hero) ---------- */
+/* Arch-shaped seamless backdrop behind the figure. Swap palettes via data-backdrop. */
+
+.hero-photo.studio { --bd-1: #aec5de; --bd-2: #dbe5f0; --bd-3: #f1cfb8; }
+.hero-photo.studio[data-backdrop="sand"] { --bd-1: #dcbf9f; --bd-2: #efe2d2; --bd-3: #cfa684; }
+.hero-photo.studio[data-backdrop="sage"] { --bd-1: #b6c7af; --bd-2: #e0e7d9; --bd-3: #e6d3bd; }
+
+.hero-photo.studio .hero-cut::before {
+  display: block;
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 9%;
+  right: 9%;
+  top: 4%;
+  bottom: 0;
+  border-radius: 999px 999px 0 0;
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+    radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.5), transparent 45%),
+    radial-gradient(ellipse 80% 60% at 15% 85%, var(--bd-3), transparent 70%),
+    linear-gradient(160deg, var(--bd-1) 0%, var(--bd-2) 60%, var(--bd-1) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+  box-shadow: inset 0 0 80px rgba(255, 255, 255, 0.35);
+}
+/* the figure no longer needs side fades in front of the backdrop */
+.hero-photo.studio .hero-cut img {
+  -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 99%);
+  mask-image: linear-gradient(to bottom, #000 72%, transparent 99%);
+}
+/* thin accent rule on the arch, the only orange in the picture */
+.hero-photo.studio .hero-cut::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: calc(9% - 14px);
+  right: calc(9% - 14px);
+  top: calc(4% - 14px);
+  bottom: 18%;
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+  -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 40%, transparent 100%);
+}
+@media (max-width: 899px) {
+  .hero-photo.studio .hero-cut::before { left: 4%; right: 4%; }
+  .hero-photo.studio .hero-cut::after { left: calc(4% - 10px); right: calc(4% - 10px); top: calc(4% - 10px); }
+}

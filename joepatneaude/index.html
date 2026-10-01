@@ -142,9 +142,9 @@
       <p class="eyebrow"><span class="num">04</span> Proof</p>
       <div class="cols">
         <figure class="quote reveal">
-          <span class="placeholder-note">Draft: Jay testimonial, short version pending Tom/Sven</span>
-          <blockquote>Short version of Jay's testimonial goes here. One or two strong sentences, about this long.</blockquote>
-          <figcaption><strong>Jay <span class="todo">[last name]</span></strong><span class="muted"><span class="todo">[role, organization]</span></span></figcaption>
+          <span class="placeholder-note">Draft: short version, pending approval by Jay</span>
+          <blockquote>The way you humanized both the patient and the doctor was helpful and hopeful. This is about healing someone, not winning an argument. We need more of that attitude.</blockquote>
+          <figcaption><strong>Jay Nelson</strong><span class="muted"><span class="todo">Pilot audience, September 2026</span></span></figcaption>
         </figure>
         <div class="reveal" style="align-self:end">
           <p class="eyebrow muted">Tested live</p>
@@ -228,6 +228,11 @@
     h.classList.remove("studio", "stage", "dark");
     if (v === "stage") h.classList.add("stage", "dark");
     if (v === "studio") h.classList.add("studio");
+  })();
+  // ?backdrop=sand | sage (default: powder blue)
+  (function () {
+    const b = new URLSearchParams(location.search).get("backdrop");
+    if (b) document.getElementById("hero").dataset.backdrop = b;
   })();
 </script>
 <script src="assets/main.js"></script>
