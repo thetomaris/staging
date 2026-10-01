@@ -826,8 +826,11 @@ section { padding: var(--section) 0; }
   .hero-photo .hero-cut {
     width: auto;
     margin: 16px calc(-1 * var(--gutter)) 0;
-    background: linear-gradient(to bottom, transparent 66%, var(--sweater-top) 66%, var(--sweater-bottom) 100%);
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(to bottom, transparent 62%, var(--sweater-top) 62%, #131722 100%);
   }
+  .hero-photo .hero-cut img { width: 100%; max-width: 560px; }
   .hero-bg .marquee-wrap { display: none; }
   .hero-photo .hero-cut { position: relative; }
   .hero-photo .hero-cut::after {
