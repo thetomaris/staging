@@ -30,7 +30,7 @@
 <main>
 
   <!-- HERO -->
-  <section class="hero hero-photo stage dark" id="hero">
+  <section class="hero hero-photo studio" id="hero">
     <div class="wrap">
       <div class="hero-grid">
         <div class="hero-head">
@@ -220,14 +220,14 @@
 </footer>
 
 <script>
-  // Draft only: compare hero backgrounds via ?hero=stage | glow | light
+  // Draft only: compare hero backgrounds via ?hero=studio | stage | light
   (function () {
     const v = new URLSearchParams(location.search).get("hero");
     const h = document.getElementById("hero");
     if (!h || !v) return;
-    h.classList.remove("stage", "glow", "dark");
+    h.classList.remove("studio", "stage", "dark");
     if (v === "stage") h.classList.add("stage", "dark");
-    if (v === "glow") h.classList.add("glow");
+    if (v === "studio") h.classList.add("studio");
   })();
 </script>
 <script src="assets/main.js"></script>

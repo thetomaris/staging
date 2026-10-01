@@ -634,56 +634,54 @@ section { padding: var(--section) 0; }
 
 .hero-photo > .wrap { position: relative; z-index: 1; }
 
-/* Stage: dark room, spotlight from above, warm glow, hint of a floor */
-.hero-photo.stage { background: #0b0a09; }
-.hero-photo.stage::before,
-.hero-photo.stage::after {
+/* Shared light rig: spotlight, haze, floor. Colors come from the site palette. */
+.hero-photo.stage::before, .hero-photo.stage::after,
+.hero-photo.studio::before, .hero-photo.studio::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
+.hero-photo .hero-cut::before { display: none; }
+
+/* Studio (default): light room in paper tones, soft white spotlight, floor shadow */
+.hero-photo.studio {
+  background: linear-gradient(180deg, #e7e3db 0%, var(--paper) 70%);
+}
+.hero-photo.studio::before {
+  background:
+    radial-gradient(ellipse 28% 100% at 76% -10%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.35) 55%, transparent 78%),
+    radial-gradient(circle at 76% 52%, rgba(255, 255, 255, 0.85), transparent 36%),
+    radial-gradient(ellipse 30% 7% at 76% 100%, rgba(13, 13, 13, 0.16), transparent 100%);
+}
+.hero-photo.studio::after {
+  background: repeating-linear-gradient(100deg, rgba(13, 13, 13, 0.022) 0 1px, transparent 1px 140px);
+}
+
+/* Stage (neutral): dark room, white light only, accent stays in the type */
+.hero-photo.stage { background: #0e0e0e; }
 .hero-photo.stage::before {
   background:
-    /* spotlight cone */
-    radial-gradient(ellipse 26% 95% at 76% -8%, rgba(255, 244, 228, 0.22), rgba(255, 244, 228, 0.06) 55%, transparent 75%),
-    /* warm stage glow behind the figure */
-    radial-gradient(circle at 76% 58%, color-mix(in srgb, var(--accent) 42%, transparent), transparent 38%),
-    /* floor light */
-    radial-gradient(ellipse 34% 9% at 76% 100%, color-mix(in srgb, var(--accent) 55%, transparent), transparent 100%),
-    /* vignette */
-    radial-gradient(ellipse 120% 90% at 50% 40%, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+    radial-gradient(ellipse 26% 95% at 76% -8%, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.05) 55%, transparent 75%),
+    radial-gradient(circle at 76% 56%, rgba(255, 255, 255, 0.10), transparent 38%),
+    radial-gradient(ellipse 32% 8% at 76% 100%, rgba(255, 255, 255, 0.14), transparent 100%),
+    radial-gradient(ellipse 120% 90% at 50% 40%, transparent 55%, rgba(0, 0, 0, 0.5) 100%);
 }
 .hero-photo.stage::after {
-  /* faint haze lines, like light through a dark room */
   background: repeating-linear-gradient(100deg, rgba(255, 255, 255, 0.018) 0 2px, transparent 2px 140px);
   mix-blend-mode: screen;
 }
-.hero-photo.stage .hero-cut::before { display: none; }
-.hero-photo.stage .lede { color: #c9c5bd; }
-.hero-photo.stage .eyebrow { color: #c9c5bd; }
+.hero-photo.stage .lede, .hero-photo.stage .eyebrow { color: #c9c5bd; }
 
 @media (max-width: 899px) {
+  .hero-photo.studio::before {
+    background:
+      radial-gradient(ellipse 60% 70% at 50% 20%, rgba(255, 255, 255, 0.9), transparent 70%),
+      radial-gradient(circle at 50% 52%, rgba(255, 255, 255, 0.8), transparent 42%);
+  }
   .hero-photo.stage::before {
     background:
-      radial-gradient(ellipse 60% 70% at 50% 18%, rgba(255, 244, 228, 0.16), transparent 70%),
-      radial-gradient(circle at 50% 52%, color-mix(in srgb, var(--accent) 40%, transparent), transparent 42%),
-      radial-gradient(ellipse 120% 90% at 50% 40%, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
-  }
-}
-
-/* Glow: warm gradient on paper, lighter alternative */
-.hero-photo.glow {
-  background:
-    radial-gradient(circle at 78% 46%, color-mix(in srgb, var(--accent) 70%, #ffd2b8) 0%, color-mix(in srgb, var(--accent) 28%, transparent) 26%, transparent 52%),
-    radial-gradient(ellipse 60% 70% at 100% 100%, #f1d9c6 0%, transparent 70%),
-    linear-gradient(180deg, var(--paper) 0%, #f3e9df 100%);
-}
-.hero-photo.glow .hero-cut::before { display: none; }
-@media (max-width: 899px) {
-  .hero-photo.glow {
-    background:
-      radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--accent) 65%, #ffd2b8) 0%, color-mix(in srgb, var(--accent) 22%, transparent) 30%, transparent 55%),
-      linear-gradient(180deg, var(--paper) 0%, #f3e9df 100%);
+      radial-gradient(ellipse 60% 70% at 50% 18%, rgba(255, 255, 255, 0.14), transparent 70%),
+      radial-gradient(ellipse 120% 90% at 50% 40%, transparent 55%, rgba(0, 0, 0, 0.5) 100%);
   }
 }
