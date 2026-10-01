@@ -644,18 +644,16 @@ section { padding: var(--section) 0; }
 }
 .hero-photo .hero-cut::before { display: none; }
 
-/* Studio (default): light room in paper tones, soft white spotlight, floor shadow */
-.hero-photo.studio {
-  background: linear-gradient(180deg, #e7e3db 0%, var(--paper) 70%);
-}
+/* Studio (default): airy paper room, warm white light on the figure, soft floor shadow */
+.hero-photo.studio { background: var(--paper); }
 .hero-photo.studio::before {
   background:
-    radial-gradient(ellipse 28% 100% at 76% -10%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.35) 55%, transparent 78%),
-    radial-gradient(circle at 76% 52%, rgba(255, 255, 255, 0.85), transparent 36%),
-    radial-gradient(ellipse 30% 7% at 76% 100%, rgba(13, 13, 13, 0.16), transparent 100%);
+    radial-gradient(ellipse 34% 110% at 76% -12%, rgba(255, 253, 249, 1), rgba(255, 253, 249, 0.5) 50%, transparent 80%),
+    radial-gradient(circle at 76% 50%, rgba(255, 254, 251, 0.9), transparent 40%),
+    radial-gradient(ellipse 28% 6% at 76% 100%, rgba(13, 13, 13, 0.08), transparent 100%);
 }
 .hero-photo.studio::after {
-  background: repeating-linear-gradient(100deg, rgba(13, 13, 13, 0.022) 0 1px, transparent 1px 140px);
+  background: repeating-linear-gradient(100deg, rgba(13, 13, 13, 0.012) 0 1px, transparent 1px 160px);
 }
 
 /* Stage (neutral): dark room, white light only, accent stays in the type */
