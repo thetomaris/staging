@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Media</title>
+<style>html, body { background: #EDE8DF; margin: 0; }</style>
+</head>
+<body>
+<!--
+  MEDIA / Janet Bartucci / My Coach Path
+  Paste this whole file into ONE Squarespace Code Block.
+  Do NOT wrap it in a full HTML document (doctype / html / head / body tags).
+  Every selector is scoped to #jb-media so it cannot touch the rest of the site.
+  Pure ASCII on purpose: Squarespace does not always serve the block as UTF-8.
+-->
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap">
+
+<style>
+#jb-media {
+  --jb-bg: #EDE8DF;
+  --jb-bg-alt: #E1D9C9;
+  --jb-ink: #211F1C;
+  --jb-ink-soft: #5C564D;
+  --jb-oxblood: #7A3B2E;
+  --jb-oxblood-dark: #5E2D22;
+  --jb-moss: #4B5A48;
+  --jb-bronze: #B08D57;
+  --jb-line: #C9BFAE;
+  --jb-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --jb-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+  background: var(--jb-bg);
+  color: var(--jb-ink);
+  font-family: var(--jb-body);
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 96px 32px 128px;
+  text-align: left;
+}
+
+#jb-media *, #jb-media *::before, #jb-media *::after { box-sizing: border-box; }
+#jb-media p, #jb-media h1, #jb-media h2, #jb-media h3,
+#jb-media ul, #jb-media li { margin: 0; padding: 0; font-family: inherit; color: inherit; }
+#jb-media ul { list-style: none; }
+#jb-media a { color: inherit; text-decoration: none; }
+#jb-media :focus-visible { outline: 2px solid var(--jb-oxblood); outline-offset: 4px; }
+
+/* ---------- head ---------- */
+#jb-media .jb-mark {
+  font-family: var(--jb-display);
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-size: clamp(38px, 7vw, 52px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--jb-oxblood);
+  margin-bottom: 30px;
+}
+#jb-media .jb-lede {
+  font-weight: 500; font-size: 21px; line-height: 1.6;
+  color: var(--jb-ink); max-width: 40ch; margin-bottom: 20px;
+}
+#jb-media .jb-sub {
+  font-size: 16px; line-height: 1.7; color: var(--jb-ink-soft); max-width: 52ch;
+}
+
+/* ---------- sections ---------- */
+#jb-media .jb-section { margin-top: 84px; }
+#jb-media .jb-section-title {
+  font-family: var(--jb-display); font-weight: 600; font-size: 20px;
+  color: var(--jb-ink); padding-bottom: 14px; margin-bottom: 10px;
+  border-bottom: 1px solid var(--jb-line);
+}
+
+/* ---------- one entry ---------- */
+#jb-media .jb-item {
+  display: block; position: relative;
+  padding: 28px 30px 28px 0;
+  transition: padding-left .22s cubic-bezier(.22,.7,.25,1);
+}
+#jb-media a.jb-item:hover { padding-left: 10px; }
+#jb-media .jb-outlet {
+  font-size: 13px; letter-spacing: .02em; color: var(--jb-bronze); margin-bottom: 7px;
+}
+#jb-media .jb-title {
+  display: block; font-size: 19px; font-weight: 500; line-height: 1.4;
+  color: var(--jb-ink); margin-bottom: 7px; max-width: 46ch;
+  transition: color .18s ease;
+}
+#jb-media a.jb-item:hover .jb-title { color: var(--jb-oxblood); }
+#jb-media .jb-note { font-size: 15px; line-height: 1.6; color: var(--jb-ink-soft); max-width: 52ch; }
+
+/* the arrow only appears on things you can actually open */
+#jb-media a.jb-item::after {
+  content: ""; position: absolute; right: 6px; top: 36px;
+  width: 7px; height: 7px; border-top: 1px solid var(--jb-line);
+  border-right: 1px solid var(--jb-line); transform: rotate(45deg);
+  transition: border-color .18s ease, transform .22s cubic-bezier(.22,.7,.25,1);
+}
+#jb-media a.jb-item:hover::after {
+  border-color: var(--jb-oxblood); transform: rotate(45deg) translate(2px, -2px);
+}
+
+/* ---------- writing elsewhere ---------- */
+#jb-media .jb-elsewhere { margin-top: 26px; font-size: 16px; color: var(--jb-ink-soft); }
+#jb-media .jb-elsewhere a {
+  color: var(--jb-oxblood); border-bottom: 1px solid var(--jb-line);
+  transition: border-color .18s ease;
+}
+#jb-media .jb-elsewhere a:hover { border-color: var(--jb-oxblood); }
+
+/* ---------- closing ---------- */
+#jb-media .jb-cta {
+  margin-top: 96px; background: var(--jb-ink); color: var(--jb-bg);
+  border-radius: 2px; padding: 46px 42px;
+}
+#jb-media .jb-cta h2 {
+  font-family: var(--jb-display); font-weight: 600; font-size: 25px;
+  line-height: 1.25; color: var(--jb-bg); margin-bottom: 16px; max-width: 26ch;
+}
+#jb-media .jb-cta p { font-size: 15px; line-height: 1.7; color: #D9D4C8; max-width: 52ch; }
+#jb-media .jb-cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+#jb-media .jb-btn {
+  display: inline-block; background: var(--jb-bg); color: var(--jb-ink);
+  font-weight: 500; font-size: 15px; border-radius: 2px; padding: 16px 30px;
+  transition: background .15s ease, color .15s ease;
+}
+#jb-media .jb-btn:hover { background: #FBF8F3; color: var(--jb-oxblood-dark); }
+#jb-media .jb-btn-ghost {
+  background: none; color: var(--jb-bg);
+  box-shadow: inset 0 0 0 1px rgba(237,232,223,.45);
+}
+#jb-media .jb-btn-ghost:hover { background: rgba(237,232,223,.12); color: var(--jb-bg); }
+
+@media (max-width: 640px) {
+  #jb-media { padding: 64px 22px 88px; font-size: 16px; }
+  #jb-media .jb-section { margin-top: 64px; }
+  #jb-media .jb-title { font-size: 18px; }
+  #jb-media .jb-cta { padding: 32px 24px; margin-top: 72px; }
+  #jb-media .jb-cta-row { flex-direction: column; }
+  #jb-media .jb-btn { text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #jb-media .jb-item, #jb-media a.jb-item::after { transition: none; }
+  #jb-media a.jb-item:hover { padding-left: 0; }
+}
+</style>
+
+<div id="jb-media">
+
+  <h1 class="jb-mark">Media</h1>
+
+  <p class="jb-lede">Conversations and writing on gravitas, presence, and what
+    actually moves a career.</p>
+  <p class="jb-sub">Janet Bartucci is a leadership coach and speaker. She talks and writes
+    about how people are read before they speak, and what to do about it.</p>
+
+  <!-- ============ CONVERSATIONS ============ -->
+  <div class="jb-section">
+    <h2 class="jb-section-title">Conversations</h2>
+
+    <a class="jb-item" href="https://open.spotify.com/episode/33LedxgI2OWqrgjI62UWmZ"
+       target="_blank" rel="noopener">
+      <div class="jb-outlet">Podcast, with Heather Wiese</div>
+      <span class="jb-title">Gravitas Is the Ultimate Luxury</span>
+      <p class="jb-note">Why presence is the one thing you cannot buy, and what it is worth
+        in a room where everyone is already accomplished. Listen on Spotify.</p>
+    </a>
+
+    <a class="jb-item" href="https://open.spotify.com/episode/7EwmaB4UvCpNeyIejD4b0Y"
+       target="_blank" rel="noopener">
+      <div class="jb-outlet">Podcast, with Emily Paulsen</div>
+      <span class="jb-title">Gravitas: What Does It Really Mean, and How Do We Develop It?</span>
+      <p class="jb-note">The long version of the question: where gravitas comes from, and
+        the parts of it that can be built on purpose. Listen on Spotify.</p>
+    </a>
+
+    <a class="jb-item" href="https://www.youtube.com/watch?v=38GB1-NA420"
+       target="_blank" rel="noopener">
+      <div class="jb-outlet">Success Leaves Clues</div>
+      <span class="jb-title">The Power of Self-Awareness in Leadership and Life</span>
+      <p class="jb-note">On seeing yourself the way a room sees you, and why that is the
+        starting point for everything else. Watch on YouTube.</p>
+    </a>
+  </div>
+
+  <!-- ============ WRITING ============ -->
+  <div class="jb-section">
+    <h2 class="jb-section-title">Writing</h2>
+
+    <a class="jb-item" href="https://www.entreprenista.com/articles/sustainable-business-success-starts-inward"
+       target="_blank" rel="noopener">
+      <div class="jb-outlet">Entreprenista</div>
+      <span class="jb-title">The Burnt English Muffin Principle: Why Sustainable Success
+        Starts Inward</span>
+      <p class="jb-note">On building a business that does not quietly cost you the thing
+        you built it for.</p>
+    </a>
+
+    <a class="jb-item" href="https://www.entreprenista.com/articles/is-your-business-thriving-while-its-most-valuable-asset-is-short-circuiting"
+       target="_blank" rel="noopener">
+      <div class="jb-outlet">Entreprenista</div>
+      <span class="jb-title">Is Your Business Thriving While Its Most Valuable Asset is
+        Short-Circuiting?</span>
+      <p class="jb-note">The asset is you. What it looks like when it is running down, and
+        what that does to everything downstream.</p>
+    </a>
+
+    <p class="jb-elsewhere">Janet also writes regularly on
+      <a href="https://www.linkedin.com/in/janetbartucci" target="_blank" rel="noopener">LinkedIn</a>.</p>
+  </div>
+
+  <!-- ============ SPEAKING ============ -->
+  <div class="jb-section">
+    <h2 class="jb-section-title">Speaking</h2>
+
+    <div class="jb-item">
+      <div class="jb-outlet">IEEE</div>
+      <span class="jb-title">Leading through uncertainty in the age of AI</span>
+      <p class="jb-note">A session for engineers on holding your footing when the ground
+        keeps moving, and on the human judgement that does not get automated.</p>
+    </div>
+
+    <p class="jb-elsewhere">For speaking enquiries, write to
+      <a href="mailto:janet@janetbartucci.com">janet@janetbartucci.com</a>.</p>
+  </div>
+
+  <!-- ============ CLOSING ============ -->
+  <div class="jb-cta">
+    <h2>Before you say a word, your presence has already spoken.</h2>
+    <p>If any of this sounds like the room you are walking into next, there are two ways
+      in. Take the scorecard and see where you actually stand, or book fifteen minutes and
+      bring the question with you.</p>
+    <div class="jb-cta-row">
+      <a class="jb-btn" href="https://www.janetbartucci.coach/gravitas-scorecard">Take the Gravitas Scorecard</a>
+      <a class="jb-btn jb-btn-ghost" href="https://calendly.com/janetbartucci/discovery"
+         target="_blank" rel="noopener">Book fifteen minutes</a>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
