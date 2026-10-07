@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Janet Bartucci | Media and Speaker Kit</title>
+<meta name="description" content="Bio, talk topics, podcast appearances and press features for Janet Bartucci, Conscious Living Coaching.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#204C34; --green-deep:#173826; --gold:#A6884A; --gold-soft:#C9B27E;
+  --ink:#1D2A22; --muted:#5B665F; --paper:#FBF9F4; --card:#FFFFFF; --line:#E6E0D2;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Work Sans",system-ui,-apple-system,Segoe UI,sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;font-weight:600;line-height:1.15;margin:0;color:var(--green)}
+a{color:var(--green);text-decoration-color:var(--gold);text-underline-offset:3px}
+a:hover{color:var(--gold)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+.eyebrow{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--gold)}
+
+/* hero */
+.hero{background:var(--green);color:#F4EFE2;padding:84px 0 72px;border-bottom:4px solid var(--gold)}
+.hero h1{color:#fff;font-size:clamp(40px,7vw,68px);margin:14px 0 18px}
+.hero p.lead{max-width:640px;font-size:20px;color:#E8E2D2;margin:0 0 30px}
+.hero .meta{font-size:14.5px;color:var(--gold-soft);letter-spacing:.03em}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.btn{display:inline-block;padding:13px 22px;border-radius:2px;font-weight:600;font-size:15px;text-decoration:none;border:1.5px solid var(--gold);transition:.15s}
+.btn.solid{background:var(--gold);color:#fff}
+.btn.solid:hover{background:#8f743c;color:#fff;border-color:#8f743c}
+.btn.ghost{background:transparent;color:#F4EFE2}
+.btn.ghost:hover{background:rgba(255,255,255,.08);color:#fff}
+
+section{padding:68px 0}
+section h2{font-size:clamp(30px,4.5vw,42px);margin:8px 0 22px}
+.rule{width:56px;height:2px;background:var(--gold);margin:0 0 26px;border:0}
+
+/* quick facts */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:34px}
+.facts div{background:var(--card);padding:20px 22px}
+.facts dt{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px}
+.facts dd{margin:0;font-size:16px}
+
+/* bio */
+.bio{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:start}
+.bio p{margin:0 0 16px}
+.pull{border-left:3px solid var(--gold);padding:6px 0 6px 22px;font-family:"Cormorant Garamond",Georgia,serif;font-size:27px;line-height:1.3;color:var(--green);font-weight:600}
+.acr{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.acr span{border:1px solid var(--line);background:var(--card);padding:5px 12px;font-size:13.5px;letter-spacing:.04em}
+.acr span b{color:var(--gold);font-weight:600}
+
+/* talks */
+.talks{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
+.card{background:var(--card);border:1px solid var(--line);padding:28px 26px;border-top:3px solid var(--gold)}
+.card h3{font-size:26px;margin-bottom:10px}
+.card p{margin:0;color:var(--muted);font-size:16px}
+
+/* media */
+.band{background:#F3EEE2}
+.group-title{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:40px 0 14px}
+.group-title:first-of-type{margin-top:6px}
+.items{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.item{display:flex;flex-direction:column;justify-content:space-between;background:var(--card);border:1px solid var(--line);padding:22px 24px;text-decoration:none;color:var(--ink);transition:.15s}
+.item:hover{border-color:var(--gold);transform:translateY(-2px);color:var(--ink)}
+.item .src{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.item h3{font-size:23px;margin:8px 0 6px;line-height:1.2}
+.item .with{font-size:14.5px;color:var(--muted)}
+.item .go{margin-top:16px;font-size:14px;font-weight:600;color:var(--green)}
+.item:hover .go{color:var(--gold)}
+
+/* kit */
+.kit{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.kit a.item h3{font-size:22px}
+
+/* contact */
+.contact{background:var(--green-deep);color:#EFE9D8;text-align:center;border-top:4px solid var(--gold)}
+.contact h2{color:#fff}
+.contact .rule{margin-left:auto;margin-right:auto}
+.contact p{max-width:560px;margin:0 auto 26px;color:#DCD5C2}
+.contact .line{font-size:15px;color:var(--gold-soft);margin-top:28px;line-height:1.9}
+.contact .line a{color:var(--gold-soft)}
+.contact .line a:hover{color:#fff}
+.btns.center{justify-content:center}
+footer{background:var(--green-deep);color:#8F9A92;text-align:center;font-size:13px;padding:0 24px 34px}
+
+@media(max-width:760px){
+  .hero{padding:60px 0 52px}
+  .bio{grid-template-columns:1fr;gap:30px}
+  section{padding:52px 0}
+  body{font-size:16.5px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Media and Speaker Kit</div>
+    <h1>Janet Bartucci</h1>
+    <p class="lead">Conscious Living Coaching. Leadership and Core Energy Coaching™ for women in business, women in transition, and teams and organizations. Gravitas, the quiet kind of power that lets you own the room.</p>
+    <div class="btns">
+      <a class="btn solid" href="#media">See press and podcasts</a>
+      <a class="btn ghost" href="mailto:janet@janetbartucci.com?subject=Speaking%20and%20media%20inquiry">Speaking and media inquiries</a>
+    </div>
+    <p class="meta" style="margin-top:34px">Certified Professional Core Energy Coach (CPC) &nbsp;·&nbsp; ELI-MP &nbsp;·&nbsp; Decades advising C-suite leaders</p>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">About</div>
+    <h2>Bio</h2>
+    <hr class="rule">
+    <div class="bio">
+      <div>
+        <p>Janet Bartucci is the founder of Conscious Living Coaching. She spent decades advising C-suite executives through pivotal transitions and brand evolutions at The Estée Lauder Companies and Hill &amp; Knowlton.</p>
+        <p>Today she is a Certified Professional Core Energy Coach (CPC) and ELI-MP, helping leaders bridge the gap between success and fulfillment. Her signature framework, Gravitas, describes how you present yourself to clients and colleagues in a powerful, quiet way, and it is about everyday presence, not only how you act under pressure.</p>
+        <p>She coaches individual women in business and in career or lifestyle transitions, and works with teams and organizations through group coaching, ELI assessments and talks.</p>
+        <div class="acr">
+          <span><b>CPC</b> Certified Professional Core Energy Coach</span>
+          <span><b>ELI-MP</b> Energy Leadership Index Master Practitioner</span>
+        </div>
+      </div>
+      <div class="pull">Gravitas is how you present yourself in a powerful, quiet way that helps you own the room.</div>
+    </div>
+
+    <dl class="facts">
+      <div><dt>Practice</dt><dd>Conscious Living Coaching</dd></div>
+      <div><dt>Background</dt><dd>The Estée Lauder Companies, Hill &amp; Knowlton</dd></div>
+      <div><dt>Methods</dt><dd>Core Energy Coaching™, Energy Leadership™ Index</dd></div>
+      <div><dt>Gravitas stands for</dt><dd>Grace, Respect, Assurance, Voice, Integrity, Tact, Authenticity, Substance</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="band" id="talks">
+  <div class="wrap">
+    <div class="eyebrow">Speaking</div>
+    <h2>Talks and workshops</h2>
+    <hr class="rule">
+    <div class="talks">
+      <div class="card">
+        <h3>Leading with Gravitas</h3>
+        <p>What presence really is, how to build it, and why it shapes whether people see you as a leader. Built around the eight elements of Gravitas: Grace, Respect, Assurance, Voice, Integrity, Tact, Authenticity, Substance.</p>
+      </div>
+      <div class="card">
+        <h3>Navigating leadership uncertainty in the age of AI</h3>
+        <p>How leaders stay grounded and credible while the ground keeps moving. Delivered to professional audiences, including an engineering group.</p>
+      </div>
+      <div class="card">
+        <h3>Energy Leadership for teams</h3>
+        <p>Using the Energy Leadership™ Index and Core Energy Coaching™ to understand daily presence, performance and stress reactions, and to build stronger, more productive teams.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="media">
+  <div class="wrap">
+    <div class="eyebrow">In the media</div>
+    <h2>Podcasts, press and features</h2>
+    <hr class="rule">
+
+    <div class="group-title">Podcasts and video</div>
+    <div class="items">
+      <a class="item" href="https://open.spotify.com/episode/33LedxgI2OWqrgjI62UWmZ" target="_blank" rel="noopener">
+        <div><span class="src">Spotify · Podcast</span><h3>Gravitas Is the Ultimate Luxury</h3><div class="with">With Heather Wiese</div></div>
+        <div class="go">Listen →</div>
+      </a>
+      <a class="item" href="https://open.spotify.com/episode/7EwmaB4UvCpNeyIejD4b0Y" target="_blank" rel="noopener">
+        <div><span class="src">Spotify · Podcast</span><h3>Gravitas: What Does It Really Mean, and How Do We Develop It?</h3><div class="with">With Emily Paulsen</div></div>
+        <div class="go">Listen →</div>
+      </a>
+      <a class="item" href="https://www.youtube.com/watch?v=38GB1-NA420" target="_blank" rel="noopener">
+        <div><span class="src">YouTube · Success Leaves Clues</span><h3>The Power of Self-Awareness in Leadership and Life</h3><div class="with">Interview</div></div>
+        <div class="go">Watch →</div>
+      </a>
+    </div>
+
+    <div class="group-title">Articles by Janet</div>
+    <div class="items">
+      <a class="item" href="https://www.entreprenista.com/articles/sustainable-business-success-starts-inward" target="_blank" rel="noopener">
+        <div><span class="src">Entreprenista</span><h3>The Burnt English Muffin Principle: Why Sustainable Success Starts Inward</h3></div>
+        <div class="go">Read →</div>
+      </a>
+      <a class="item" href="https://www.entreprenista.com/articles/is-your-business-thriving-while-its-most-valuable-asset-is-short-circuiting" target="_blank" rel="noopener">
+        <div><span class="src">Entreprenista</span><h3>Is Your Business Thriving While Its Most Valuable Asset Is Short-Circuiting?</h3></div>
+        <div class="go">Read →</div>
+      </a>
+    </div>
+
+    <div class="group-title">Features about Janet</div>
+    <div class="items">
+      <a class="item" href="https://alistbusinesses.substack.com/p/the-brand-alchemist-how-janet-bartucci" target="_blank" rel="noopener">
+        <div><span class="src">A-List Businesses · Substack</span><h3>The Brand Alchemist: How Janet Bartucci…</h3></div>
+        <div class="go">Read →</div>
+      </a>
+      <a class="item" href="https://drive.google.com/file/d/1YZGipE-lYLLlX9a-dIjmw19s1jfqQnKL/view" target="_blank" rel="noopener">
+        <div><span class="src">Next Chapter · Newsletter</span><h3>Newsletter #7, September 2026</h3></div>
+        <div class="go">Open PDF →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="kit">
+  <div class="wrap">
+    <div class="eyebrow">For hosts and organizers</div>
+    <h2>Press kit</h2>
+    <hr class="rule">
+    <div class="kit">
+      <a class="item" href="https://drive.google.com/drive/folders/1OQvmqE0PDt-T5FUxrn9M-4zC3bmDnZim" target="_blank" rel="noopener">
+        <div><span class="src">Google Drive</span><h3>Gravitas podcast marketing materials</h3><div class="with">Ready-to-share graphics and assets</div></div>
+        <div class="go">Open folder →</div>
+      </a>
+      <a class="item" href="https://janetbartucci.coach/onesheet" target="_blank" rel="noopener">
+        <div><span class="src">Website</span><h3>One Sheet</h3><div class="with">Services, approach and FAQ on a single page</div></div>
+        <div class="go">View →</div>
+      </a>
+      <a class="item" href="https://www.linkedin.com/in/janetbartucci" target="_blank" rel="noopener">
+        <div><span class="src">LinkedIn</span><h3>Professional profile</h3><div class="with">Background and recent posts</div></div>
+        <div class="go">Connect →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="eyebrow">Get in touch</div>
+    <h2>Ready to lead with Gravitas?</h2>
+    <hr class="rule">
+    <p>For speaking requests, podcast invitations and press inquiries, write to Janet directly. Not ready yet? Start with the Gravitas Scorecard and see how you show up.</p>
+    <div class="btns center">
+      <a class="btn solid" href="mailto:janet@janetbartucci.com?subject=Speaking%20and%20media%20inquiry">Email Janet</a>
+      <a class="btn ghost" href="https://www.janetbartucci.coach/gravitas-scorecard" target="_blank" rel="noopener">Take the Gravitas Scorecard</a>
+    </div>
+    <div class="line">
+      Janet Bartucci · Conscious Living Coaching<br>
+      <a href="mailto:janet@janetbartucci.com">janet@janetbartucci.com</a> · <a href="https://www.janetbartucci.coach" target="_blank" rel="noopener">janetbartucci.coach</a> · <a href="https://www.linkedin.com/in/janetbartucci" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+<footer>© Janet Bartucci, Conscious Living Coaching</footer>
+
+</body>
+</html>
