@@ -146,7 +146,7 @@
       <div class="cols">
         <figure class="quote reveal">
           <blockquote>The way you humanized both the patient and the doctor was helpful and hopeful. This is about healing someone, not winning an argument. We need more of that attitude.</blockquote>
-          <figcaption><strong>Jay Nelson</strong><span class="muted"><span class="todo">Pilot audience, September 2026</span></span></figcaption>
+          <figcaption><strong>Jay Nelson</strong></figcaption>
         </figure>
         <div class="reveal" style="align-self:end">
           <p class="eyebrow muted">Tested live</p>
@@ -209,8 +209,8 @@
         <h4>Contact</h4>
         <ul>
           <li><a href="contact.html">Booking inquiry</a></li>
-          <li><a href="#" class="todo">LinkedIn</a></li>
-          <li><a href="mailto:hello@joepatneaude.com" class="todo">hello@joepatneaude.com</a></li>
+          <li><a href="https://www.linkedin.com/in/joepatneaude/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="mailto:hello@joepatneaude.com">hello@joepatneaude.com</a></li>
         </ul>
       </div>
     </div>
@@ -221,17 +221,6 @@
   </div>
 </footer>
 
-<script>
-  // Draft only: compare hero backgrounds via ?hero=studio | stage | light
-  (function () {
-    const v = new URLSearchParams(location.search).get("hero");
-    const h = document.getElementById("hero");
-    if (!h || !v) return;
-    h.classList.remove("studio", "stage", "dark");
-    if (v === "stage") h.classList.add("stage", "dark");
-    if (v === "studio") h.classList.add("studio");
-  })();
-</script>
 <script src="assets/main.js"></script>
 </body>
 </html>
