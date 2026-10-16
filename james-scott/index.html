@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
+  <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <!-- Draft v5 -->
@@ -37,8 +38,8 @@
   <section class="hero">
     <div class="wrap">
       <h1 class="mega" aria-label="Coaching for everyone">
-        <span class="rot" aria-hidden="true"><span>Coaching</span></span><br>
-        <span aria-hidden="true">for everyone.</span>
+        <span class="line" aria-hidden="true"><span class="in"><span class="rot"><span>Coaching</span></span></span></span>
+        <span class="line" aria-hidden="true"><span class="in">for everyone.</span></span>
       </h1>
       <div class="hero-row">
         <p class="tag">For growing companies<br>with James Scott</p>
@@ -94,8 +95,8 @@
       <div class="bar"><p class="tag">Track record</p></div>
       <div class="stats light">
         <div class="stat"><span class="v">Top 1%</span><p>Upward leadership feedback at Deloitte, consistently, over nine years.</p></div>
-        <div class="stat"><span class="v">25+</span><p>Years leading teams, practices and businesses.</p></div>
-        <div class="stat"><span class="v">4</span><p>Businesses and practices built from scratch, from a construction company to a Deloitte practice.</p></div>
+        <div class="stat"><span class="v" data-count="25" data-suffix="+">25+</span><p>Years leading teams, practices and businesses.</p></div>
+        <div class="stat"><span class="v" data-count="4">4</span><p>Businesses and practices built from scratch, from a construction company to a Deloitte practice.</p></div>
         <div class="stat"><span class="v">MD</span><p>Former Managing Director at Deloitte. Earlier senior roles at ADP and Aon.</p></div>
       </div>
     </div>
@@ -149,19 +150,20 @@
   <section class="section" id="about">
     <div class="wrap">
       <div class="bar"><p class="tag">About James</p><a href="https://www.bearmac.ca/how-i-work">Full story &rarr;</a></div>
-      <div class="feature flip">
-        <div class="fig worlds">
+      <h2 class="about-h">Serious work.<br><span class="soft">No need to be miserable doing&nbsp;it.</span></h2>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p class="about-lead">&ldquo;You just get it.&rdquo; &ldquo;You're so much fun to work with.&rdquo;<span>The feedback James hears most.</span></p>
+          <p>He has built a construction company, coached rep soccer, led global teams and spent years at Deloitte as the person people brought the hard stuff to.</p>
+          <p>He used to hand people his answer. Coaching taught him to use that instinct differently: notice what he sees, challenge directly, and let you make the call. Truth and trust, your decisions.</p>
+        </div>
+        <div class="worlds">
           <p class="tag">Worlds he's worked in</p>
           <ul class="wl">
             <li>Construction</li><li>Recruiting</li><li>Technology</li><li>Customer support</li><li>Security</li>
             <li>Investigation</li><li>Consulting</li><li>Facilitation</li><li>Leadership</li><li class="hl">Elite sport</li>
           </ul>
           <p class="meta">Reinvented more than once, and rarely the obvious candidate. That's why he can usually tell quickly what someone is carrying, without assuming he knows their answer.</p>
-        </div>
-        <div class="body">
-          <h2>Serious work. No need to be miserable doing it.</h2>
-          <p>James has built a construction company, coached rep soccer, led global teams and spent years at Deloitte as the person people brought the hard stuff to. The feedback he hears most: &ldquo;you just get it&rdquo; and &ldquo;you're so much fun to work with.&rdquo;</p>
-          <p>He used to hand people his answer. Coaching taught him to use that instinct differently: notice what he sees, challenge directly, and let you make the call. Truth and trust, your decisions.</p>
         </div>
       </div>
     </div>
@@ -247,7 +249,45 @@
     rot.dataset.c = c; rot.style.width = (measure(txt) + pad()) + 'px';
     requestAnimationFrame(() => requestAnimationFrame(() => { nu.classList.remove('go-in'); old.classList.add('go-out'); }));
     setTimeout(() => old.remove(), 700);
-  }, 2400);
+  }, 2800);
+</script>
+<script>
+  // Polish: header state, scroll reveals, count-up
+  (() => {
+    const header = document.querySelector('.site-header');
+    const onScroll = () => header.classList.toggle('scrolled', scrollY > 12);
+    addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const groups = [
+      ['.hero-row > *', .08], ['.panel > *', .1], ['.bar', 0], ['main h2:not(.mega)', 0],
+      ['.big', .05], ['.lines li', .07], ['.chips', 0], ['.stat', .1], ['.card', .12],
+      ['.aq', 0], ['.about-copy > p', .08], ['.about-h', 0], ['.wl li', .04], ['.worlds .meta', 0], ['.q', .12], ['.cta-side > *', .08]
+    ];
+    groups.forEach(([sel, step]) => {
+      const els = document.querySelectorAll(sel);
+      els.forEach((el, i) => { if (!el.closest('.mega')) { el.classList.add('rv'); el.style.setProperty('--d', (i % 6) * step + 's'); } });
+    });
+    document.querySelectorAll('.portrait').forEach(el => el.classList.add('rv-img'));
+
+    const count = el => {
+      const to = +el.dataset.count, suf = el.dataset.suffix || '', t0 = performance.now(), dur = 1400;
+      const tick = t => { const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 4);
+        el.textContent = Math.round(to * e) + suf; if (p < 1) requestAnimationFrame(tick); };
+      requestAnimationFrame(tick);
+    };
+    if (reduce) { document.querySelectorAll('.rv,.rv-img').forEach(el => el.classList.add('in')); return; }
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (!e.isIntersecting && e.boundingClientRect.top > 0) return;
+      e.target.classList.add('in'); io.unobserve(e.target);
+      e.target.querySelectorAll && e.target.querySelectorAll('[data-count]').forEach(count);
+    }), { rootMargin: '0px 0px -10% 0px', threshold: .05 });
+    document.querySelectorAll('.rv, .rv-img').forEach(el => io.observe(el));
+    // Safety net: anything already scrolled past gets shown
+    addEventListener('scroll', () => document.querySelectorAll('.rv:not(.in), .rv-img:not(.in)').forEach(el => {
+      if (el.getBoundingClientRect().top < innerHeight * .9) { el.classList.add('in'); io.unobserve(el); }
+    }), { passive: true });
+  })();
 </script>
 </body>
 </html>
