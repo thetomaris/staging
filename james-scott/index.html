@@ -2,57 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#FFFFFF">
   <title>BearMac | Coaching for everyone, with James Scott</title>
-  <meta name="description" content="Professional coaching for people at every level of an organization. Leaders, founders and teams, with James Scott, former Managing Director at Deloitte.">
+  <meta name="description" content="Coaching for everyone on your team, not just the top floor. James Scott, former Managing Director at Deloitte, works with growing companies, leaders and founders.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/james.webp">
   <link rel="stylesheet" href="assets/style.css">
   <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
-<!-- Draft v5 -->
 
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="index.html" aria-label="BearMac, home">
+    <a class="brand" href="#top" aria-label="BearMac, back to top">
       <span class="bear" aria-hidden="true"></span>
       <span class="brand-name">BearMac</span>
     </a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
-    <nav class="nav" id="nav">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav"><i aria-hidden="true"></i><span>Menu</span></button>
+    <nav class="nav" id="nav" aria-label="Main">
       <a href="#built">For organizations</a>
-      <a href="#who">Programs</a>
+      <a href="#programs">Programs</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
-      <a class="btn sm push" href="https://calendly.com/bearmac-coaching/intro-discovery-call">Book a conversation <span>&rarr;</span></a>
+      <a class="btn sm" href="https://calendly.com/bearmac-coaching/intro-discovery-call">Book a conversation <span aria-hidden="true">&rarr;</span></a>
     </nav>
   </div>
 </header>
 
-<main>
+<main id="top">
 
   <!-- Hero -->
   <section class="hero">
     <div class="wrap">
-      <h1 class="mega" aria-label="Coaching for everyone">
-        <span class="line" aria-hidden="true"><span class="in"><span class="rot"><span>Coaching</span></span></span></span>
-        <span class="line" aria-hidden="true"><span class="in">for everyone.</span></span>
+      <h1 class="mega" aria-label="Coaching for everyone.">
+        <span class="ln" aria-hidden="true"><span><span class="rot"><span>Coaching</span></span></span></span>
+        <span class="ln" aria-hidden="true"><span>for everyone.</span></span>
       </h1>
       <div class="hero-row">
-        <p class="tag">For growing companies<br>with James Scott</p>
+        <p class="tag">For growing companies<br> with James Scott</p>
         <p class="intro">Coaching for everyone on your team, not just the top floor. Every conversation ends with a next step people can act on that week.</p>
         <div class="actions">
-          <a class="btn" href="https://calendly.com/bearmac-coaching/intro-discovery-call">Book a conversation <span>&rarr;</span></a>
-          <a class="btn line" href="#built">Is this for us? <span>&rarr;</span></a>
+          <a class="btn" href="https://calendly.com/bearmac-coaching/intro-discovery-call">Book a conversation <span aria-hidden="true">&rarr;</span></a>
+          <a class="btn ghost" href="#built">Is this for us? <span aria-hidden="true">&rarr;</span></a>
           <span class="meta">First call is free. 30 minutes.</span>
         </div>
       </div>
       <div class="intro-split">
-        <figure class="portrait"><img src="assets/james.webp" alt="James Scott, founder of BearMac Coaching &amp; Leadership"></figure>
-        <div class="panel blue-block">
+        <figure class="portrait"><img src="assets/james.webp" width="800" height="800" alt="James Scott, founder of BearMac Coaching &amp; Leadership"></figure>
+        <div class="panel s-blue">
           <p class="tag">How people find James</p>
           <h2>&ldquo;You should have a chat with James.&rdquo;</h2>
           <div>
@@ -68,60 +69,60 @@
   <section class="section" id="built">
     <div class="wrap">
       <div class="bar"><p class="tag">Built for</p><a href="https://calendly.com/bearmac-coaching/intro-discovery-call">Talk to James &rarr;</a></div>
-      <div class="grid">
-        <div class="c-6" style="display:flex;flex-direction:column;gap:2rem">
+      <div class="split">
+        <div class="a stack">
           <h2>Growing companies where good people carry too much.</h2>
           <p>Professional services, consulting, operations and technology. The worlds James led in for 25 years, where strategy, process, tech and people all pull on the same decisions.</p>
-          <div class="chips">
-            <span class="chip">Professional services</span><span class="chip">Consulting</span><span class="chip">Operations</span><span class="chip">Technology</span><span class="chip">Founder-led companies</span>
-          </div>
+          <ul class="chips">
+            <li class="chip">Professional services</li><li class="chip">Consulting</li><li class="chip">Operations</li><li class="chip">Technology</li><li class="chip">Founder-led companies</li>
+          </ul>
         </div>
-        <div class="c-6" style="grid-column:7 / -1">
-          <p class="tag" style="margin-bottom:1rem">Sound familiar?</p>
-          <ul class="lines">
+        <div class="b">
+          <p class="tag">Sound familiar?</p>
+          <ol class="lines">
             <li><span class="n">01</span>You promoted your best people into management. Now they're doing two jobs.</li>
             <li><span class="n">02</span>Decisions keep landing back on the same few desks.</li>
             <li><span class="n">03</span>The company grew faster than the way your leaders lead.</li>
             <li><span class="n">04</span>Coaching has only ever reached the top few.</li>
-          </ul>
+          </ol>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Track record -->
-  <section class="section flush-top">
+  <section class="section tight">
     <div class="wrap">
       <div class="bar"><p class="tag">Track record</p></div>
-      <div class="stats light">
-        <div class="stat"><span class="v">Top 1%</span><p>Upward leadership feedback at Deloitte, consistently, over nine years.</p></div>
-        <div class="stat"><span class="v" data-count="25" data-suffix="+">25+</span><p>Years leading teams, practices and businesses.</p></div>
-        <div class="stat"><span class="v" data-count="4">4</span><p>Businesses and practices built from scratch, from a construction company to a Deloitte practice.</p></div>
-        <div class="stat"><span class="v">MD</span><p>Former Managing Director at Deloitte. Earlier senior roles at ADP and Aon.</p></div>
+      <div class="stats">
+        <div class="stat"><span class="v cond">Top 1%</span><p>Upward leadership feedback at Deloitte, consistently, over nine years.</p></div>
+        <div class="stat"><span class="v cond" data-count="25" data-suffix="+">25+</span><p>Years leading teams, practices and businesses.</p></div>
+        <div class="stat"><span class="v cond" data-count="4">4</span><p>Businesses and practices built from scratch, from a construction company to a Deloitte practice.</p></div>
+        <div class="stat"><span class="v cond">MD</span><p>Former Managing Director at Deloitte. Earlier senior roles at ADP and Aon.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- Who it's for -->
-  <section class="section" id="who">
+  <!-- Programs -->
+  <section class="section" id="programs">
     <div class="wrap">
       <div class="bar"><p class="tag">Three ways in</p><a href="https://calendly.com/bearmac-coaching/intro-discovery-call">Book a conversation &rarr;</a></div>
       <div class="cards">
-        <article class="card blue">
+        <article class="card s-blue">
           <p class="who">For your whole team</p>
-          <h3 class="cond k">Teams</h3>
+          <h3 class="cond">Teams</h3>
           <p>Managers, senior specialists and the people about to step up, not only executives. They bring real situations from their week and leave with something to do about them.</p>
           <span class="foot">Organizational program · Ask James</span>
         </article>
         <article class="card">
           <p class="who">Managers to executives</p>
-          <h3 class="cond k">Leaders</h3>
+          <h3 class="cond">Leaders</h3>
           <p>Your role has grown, and how you lead needs to grow with it. Work out where you really add value, where you create dependency without noticing, and what you can let go of.</p>
           <span class="foot">1:1 coaching</span>
         </article>
         <article class="card">
           <p class="who">Founders and owners</p>
-          <h3 class="cond k">Founders</h3>
+          <h3 class="cond">Founders</h3>
           <p>You're building something while figuring out what the business needs from you next. James has been there more than once, from a construction company to a Deloitte practice. Now BearMac.</p>
           <span class="foot">1:1 coaching</span>
         </article>
@@ -130,16 +131,14 @@
   </section>
 
   <!-- Into action -->
-  <section class="section honey-block">
+  <section class="section s-honey">
     <div class="wrap">
       <div class="bar"><p class="tag">Into action</p></div>
-      <div class="grid">
-        <h2 class="c-7">Every conversation ends with a next step.</h2>
-        <div class="c-5" style="align-self:end">
-          <p class="big" style="max-width:none">Not a framework. Not homework from a binder. One or two real changes people can start making that week.</p>
-        </div>
+      <div class="split wide">
+        <h2 class="a">Every conversation ends with a next step.</h2>
+        <p class="b big">Not a framework. Not homework from a binder. One or two real changes people can start making that week.</p>
       </div>
-      <figure class="aq">
+      <figure class="action-quote">
         <blockquote>&ldquo;James provides a non-judgmental space and asks insightful questions that help me explore beyond my current perspective. I leave each session feeling clearer, with something meaningful to reflect on and a tangible action to take forward.&rdquo;</blockquote>
         <figcaption><b>Hayley D.</b>, HR Professional</figcaption>
       </figure>
@@ -153,13 +152,13 @@
       <h2 class="about-h">Serious work.<br><span class="soft">No need to be miserable doing&nbsp;it.</span></h2>
       <div class="about-grid">
         <div class="about-copy">
-          <p class="about-lead">&ldquo;You just get it.&rdquo; &ldquo;You're so much fun to work with.&rdquo;<span>The feedback James hears most.</span></p>
+          <p class="lead">&ldquo;You just get it.&rdquo; &ldquo;You're so much fun to work with.&rdquo;<span>The feedback James hears most</span></p>
           <p>He has built a construction company, coached rep soccer, led global teams and spent years at Deloitte as the person people brought the hard stuff to.</p>
           <p>He used to hand people his answer. Coaching taught him to use that instinct differently: notice what he sees, challenge directly, and let you make the call. Truth and trust, your decisions.</p>
         </div>
         <div class="worlds">
           <p class="tag">Worlds he's worked in</p>
-          <ul class="wl">
+          <ul>
             <li>Construction</li><li>Recruiting</li><li>Technology</li><li>Customer support</li><li>Security</li>
             <li>Investigation</li><li>Consulting</li><li>Facilitation</li><li>Leadership</li><li class="hl">Elite sport</li>
           </ul>
@@ -170,15 +169,15 @@
   </section>
 
   <!-- Testimonials -->
-  <section class="section flush-top">
+  <section class="section tight">
     <div class="wrap">
       <div class="bar"><p class="tag">Clients</p></div>
       <div class="quotes">
-        <figure class="q">
+        <figure>
           <blockquote>&ldquo;Through thoughtful questions, James helps me see situations from a different lens, uncover new insights, and approach difficult circumstances with greater clarity and confidence. His coaching strengthens both my leadership effectiveness and my self-confidence.&rdquo;</blockquote>
           <figcaption><b>Naomi S., CPHR</b>, Director, People + Culture</figcaption>
         </figure>
-        <figure class="q">
+        <figure>
           <blockquote>&ldquo;Talking with James helps me see things differently and get clearer about what I want to do next.&rdquo;</blockquote>
           <figcaption><b>Anirudh B.</b>, Program Manager</figcaption>
         </figure>
@@ -186,15 +185,15 @@
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section black-block" id="contact">
+  <!-- Closing CTA -->
+  <section class="section s-black" id="contact">
     <div class="wrap">
       <div class="bar"><p class="tag">Start here</p></div>
-      <div class="grid">
-        <h2 class="c-8 cta-h">Have a chat with James.</h2>
-        <div class="c-4 cta-side">
+      <div class="split wide">
+        <h2 class="a cta-h">Have a chat with James.</h2>
+        <div class="b cta-side">
           <p>A free 30-minute conversation. No commitment to continue.</p>
-          <a class="btn honey" href="https://calendly.com/bearmac-coaching/intro-discovery-call">Book a conversation <span>&rarr;</span></a>
+          <a class="btn honey" href="https://calendly.com/bearmac-coaching/intro-discovery-call">Book a conversation <span aria-hidden="true">&rarr;</span></a>
           <a class="mail" href="mailto:info@bearmac.ca">Prefer email? info@bearmac.ca</a>
         </div>
       </div>
@@ -206,10 +205,10 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="cols">
-      <p class="lead">Coaching for everyone.<br>With James Scott.</p>
-      <div><h4>Site</h4><ul><li><a href="#built">For organizations</a></li><li><a href="#who">Programs</a></li><li><a href="#about">About</a></li></ul></div>
-      <div><h4>Contact</h4><ul><li><a href="mailto:info@bearmac.ca">info@bearmac.ca</a></li><li><a href="https://calendly.com/bearmac-coaching/intro-discovery-call">Book a conversation</a></li></ul></div>
-      <div><h4>Follow</h4><ul><li><a href="https://www.linkedin.com/in/jamesscott7268">LinkedIn</a></li></ul></div>
+      <p class="claim">Coaching for everyone.<br>With James Scott.</p>
+      <div><p class="h">Site</p><ul><li><a href="#built">For organizations</a></li><li><a href="#programs">Programs</a></li><li><a href="#about">About</a></li></ul></div>
+      <div><p class="h">Contact</p><ul><li><a href="mailto:info@bearmac.ca">info@bearmac.ca</a></li><li><a href="https://calendly.com/bearmac-coaching/intro-discovery-call">Book a conversation</a></li></ul></div>
+      <div><p class="h">Follow</p><ul><li><a href="https://www.linkedin.com/in/jamesscott7268">LinkedIn</a></li></ul></div>
     </div>
     <div class="wordmark" aria-hidden="true"><span class="bear"></span><span class="cond">BearMac</span></div>
     <div class="bottom"><span>&copy; 2026 BearMac Coaching &amp; Leadership</span><a href="https://www.bearmac.ca/privacy-policy">Privacy policy</a></div>
@@ -217,12 +216,28 @@
 </footer>
 
 <script>
-  // Mobile nav
-  const t = document.querySelector('.nav-toggle'), n = document.getElementById('nav');
-  t.addEventListener('click', () => { const o = n.classList.toggle('open'); t.setAttribute('aria-expanded', o); t.textContent = o ? 'Close' : 'Menu'; });
-  n.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { n.classList.remove('open'); t.textContent = 'Menu'; }));
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Rotating hero word: outcomes of coaching for people in a team
+  /* Header: hairline and blur once scrolled */
+  const header = document.querySelector('.site-header');
+  const onScroll = () => header.classList.toggle('scrolled', scrollY > 12);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* Mobile menu */
+  const toggle = document.querySelector('.nav-toggle'), nav = document.getElementById('nav');
+  const setMenu = open => {
+    nav.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+    toggle.querySelector('span').textContent = open ? 'Close' : 'Menu';
+    document.body.classList.toggle('menu-open', open);
+  };
+  toggle.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+  matchMedia('(min-width: 961px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
+
+  /* Rotating hero word: outcomes of coaching for people in a team */
   const words = [
     ['Coaching', 'blue'], ['Clarity', 'honey'], ['Ownership', 'forest'], ['Better calls', 'rust'],
     ['Next steps', 'black'], ['Confidence', 'blue'], ['Action', 'honey'], ['Focus', 'forest'], ['Trust', 'rust']
@@ -230,64 +245,62 @@
   const rot = document.querySelector('.rot');
   const measure = txt => {
     const m = document.createElement('span');
-    m.textContent = txt; m.style.cssText = 'position:absolute;display:inline-block;visibility:hidden;white-space:nowrap;padding:0';
-    rot.appendChild(m); const w = m.offsetWidth; m.remove(); return w;
+    m.textContent = txt;
+    m.style.cssText = 'position:absolute;display:inline-block;visibility:hidden;white-space:nowrap;padding:0';
+    rot.appendChild(m); const w = m.offsetWidth; m.remove();
+    return w + parseFloat(getComputedStyle(rot).paddingLeft) * 2;
   };
-  const pad = () => parseFloat(getComputedStyle(rot).paddingLeft) * 2;
-  let i = 0;
-  const fit = () => { rot.style.width = (measure(words[i][0]) + pad()) + 'px'; };
-  fit(); addEventListener('resize', fit);
+  let i = 0, heroVisible = true;
+  const fit = () => { rot.style.width = measure(words[i][0]) + 'px'; };
+  fit(); addEventListener('resize', fit); addEventListener('load', fit);
   if (document.fonts) document.fonts.ready.then(fit);
-  addEventListener('load', fit);
-  setInterval(() => {
+  new IntersectionObserver(([e]) => { heroVisible = e.isIntersecting; }).observe(rot);
+  if (!reduce) setInterval(() => {
+    if (!heroVisible || document.hidden) return;
     i = (i + 1) % words.length;
-    const [txt, c] = words[i];
+    const [txt, color] = words[i];
     const old = rot.querySelector('span:not(.go-out)');
-    const nu = document.createElement('span');
-    nu.textContent = txt; nu.className = 'go-in';
-    rot.appendChild(nu);
-    rot.dataset.c = c; rot.style.width = (measure(txt) + pad()) + 'px';
-    requestAnimationFrame(() => requestAnimationFrame(() => { nu.classList.remove('go-in'); old.classList.add('go-out'); }));
-    setTimeout(() => old.remove(), 700);
+    const next = document.createElement('span');
+    next.textContent = txt; next.className = 'go-in';
+    rot.appendChild(next);
+    rot.dataset.c = color; rot.style.width = measure(txt) + 'px';
+    requestAnimationFrame(() => requestAnimationFrame(() => { next.classList.remove('go-in'); old.classList.add('go-out'); }));
+    setTimeout(() => old.remove(), 900);
   }, 2800);
-</script>
-<script>
-  // Polish: header state, scroll reveals, count-up
-  (() => {
-    const header = document.querySelector('.site-header');
-    const onScroll = () => header.classList.toggle('scrolled', scrollY > 12);
-    addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
-    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const groups = [
-      ['.hero-row > *', .08], ['.panel > *', .1], ['.bar', 0], ['main h2:not(.mega)', 0],
-      ['.big', .05], ['.lines li', .07], ['.chips', 0], ['.stat', .1], ['.card', .12],
-      ['.aq', 0], ['.about-copy > p', .08], ['.about-h', 0], ['.wl li', .04], ['.worlds .meta', 0], ['.q', .12], ['.cta-side > *', .08]
-    ];
-    groups.forEach(([sel, step]) => {
-      const els = document.querySelectorAll(sel);
-      els.forEach((el, i) => { if (!el.closest('.mega')) { el.classList.add('rv'); el.style.setProperty('--d', (i % 6) * step + 's'); } });
-    });
-    document.querySelectorAll('.portrait').forEach(el => el.classList.add('rv-img'));
+  /* Scroll reveals with gentle stagger */
+  const groups = [
+    ['.hero-row > *', .08], ['.panel > *', .1], ['.bar', 0], ['main h2:not(.mega)', 0], ['.big', .05],
+    ['.lines li', .07], ['.chips', 0], ['.stat', .1], ['.card', .12], ['.action-quote', 0],
+    ['.about-copy > p', .08], ['.worlds li', .04], ['.worlds .meta', 0], ['.quotes figure', .12], ['.cta-side > *', .08]
+  ];
+  groups.forEach(([sel, step]) => document.querySelectorAll(sel).forEach((el, n) => {
+    el.classList.add('rv'); el.style.setProperty('--d', (n % 6) * step + 's');
+  }));
+  document.querySelectorAll('.portrait').forEach(el => el.classList.add('rv-img'));
+  const targets = document.querySelectorAll('.rv, .rv-img');
 
-    const count = el => {
-      const to = +el.dataset.count, suf = el.dataset.suffix || '', t0 = performance.now(), dur = 1400;
-      const tick = t => { const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 4);
-        el.textContent = Math.round(to * e) + suf; if (p < 1) requestAnimationFrame(tick); };
-      requestAnimationFrame(tick);
+  const countUp = el => {
+    const to = +el.dataset.count, suffix = el.dataset.suffix || '', t0 = performance.now();
+    const tick = t => {
+      const p = Math.min(1, (t - t0) / 1400);
+      el.textContent = Math.round(to * (1 - Math.pow(1 - p, 4))) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
     };
-    if (reduce) { document.querySelectorAll('.rv,.rv-img').forEach(el => el.classList.add('in')); return; }
-    const io = new IntersectionObserver(entries => entries.forEach(e => {
-      if (!e.isIntersecting && e.boundingClientRect.top > 0) return;
-      e.target.classList.add('in'); io.unobserve(e.target);
-      e.target.querySelectorAll && e.target.querySelectorAll('[data-count]').forEach(count);
-    }), { rootMargin: '0px 0px -10% 0px', threshold: .05 });
-    document.querySelectorAll('.rv, .rv-img').forEach(el => io.observe(el));
-    // Safety net: anything already scrolled past gets shown
-    addEventListener('scroll', () => document.querySelectorAll('.rv:not(.in), .rv-img:not(.in)').forEach(el => {
-      if (el.getBoundingClientRect().top < innerHeight * .9) { el.classList.add('in'); io.unobserve(el); }
-    }), { passive: true });
-  })();
+    requestAnimationFrame(tick);
+  };
+  const show = el => { el.classList.add('in'); if (!reduce) el.querySelectorAll('[data-count]').forEach(countUp); };
+
+  if (reduce || !('IntersectionObserver' in window)) { targets.forEach(el => el.classList.add('in')); return; }
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting || e.boundingClientRect.top < 0) { show(e.target); io.unobserve(e.target); }
+  }), { rootMargin: '0px 0px -8% 0px', threshold: .05 });
+  targets.forEach(el => io.observe(el));
+  /* Safety net for fast jumps (anchor links) */
+  addEventListener('scroll', () => document.querySelectorAll('.rv:not(.in), .rv-img:not(.in)').forEach(el => {
+    if (el.getBoundingClientRect().top < innerHeight * .92) { show(el); io.unobserve(el); }
+  }), { passive: true });
+})();
 </script>
 </body>
 </html>
