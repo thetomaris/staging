@@ -317,7 +317,6 @@ h3 { margin: 0; }
   text-transform: uppercase; line-height: .95; color: var(--black);
   transition: background-color .35s, color .35s, transform .5s var(--ease-out);
 }
-.worlds li.hl { background: var(--honey); }
 @media (max-width: 900px) { .about-copy, .worlds { grid-column: 1 / -1; } }
 @media (max-width: 600px) { .worlds li { padding: .9rem .85rem; } }
 
