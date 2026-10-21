@@ -6,6 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <title>The Resilient Execution Protocol</title>
 <link rel="stylesheet" href="/kennon/theme.css">
+<script src="/kennon/theme.js"></script>
 <style>
   .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
   section { padding: 96px 0; border-top: 1px solid var(--line); }
@@ -13,7 +14,7 @@
   .lede { font-size: 19px; color: var(--dim); max-width: 700px; }
 
   /* Top bar */
-  .topbar { border-bottom: 1px solid var(--line); background: rgba(7,11,20,.86); position: sticky; top: 0; z-index: 5; backdrop-filter: blur(8px); }
+  .topbar { border-bottom: 1px solid var(--line); background: var(--bar); position: sticky; top: 0; z-index: 5; backdrop-filter: blur(8px); }
   .topbar .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 16px; padding-bottom: 16px; }
   .mark { display: flex; align-items: center; gap: 12px; font: 600 15px/1 var(--head); letter-spacing: .22em; text-transform: uppercase; }
   .mark svg { flex: none; }
@@ -127,10 +128,13 @@
 <header class="topbar">
   <div class="wrap">
     <div class="mark">
-      <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="1" width="20" height="20" fill="none" stroke="#c8d0db" stroke-width="1.5"/><rect x="7" y="7" width="8" height="8" fill="#c9343c"/></svg>
+      <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="1" width="20" height="20" fill="none" style="stroke:var(--steel)" stroke-width="1.5"/><rect x="7" y="7" width="8" height="8" style="fill:var(--signal)"/></svg>
       <span data-bind="firm">Quest Coaching</span>
     </div>
-    <div class="dossier"><span>Ref <b data-bind="ref"></b></span><span>Valid through <b data-bind="validUntil"></b></span></div>
+    <div class="bar-right">
+      <div class="dossier"><span>Ref <b data-bind="ref"></b></span><span>Valid through <b data-bind="validUntil"></b></span></div>
+      <button class="theme-toggle" data-theme-toggle aria-label="Switch between dark and light design"><span class="t-dark">Dark</span><span class="t-light">Light</span></button>
+    </div>
   </div>
 </header>
 
@@ -236,7 +240,7 @@
       </div>
 
       <div class="panel corners guarantee">
-        <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 56 13v18c0 15-10 25-24 29C18 56 8 46 8 31V13Z" fill="none" stroke="#c8d0db" stroke-width="1.5"/><path d="m22 32 7 7 14-15" fill="none" stroke="#c9343c" stroke-width="2.5"/></svg>
+        <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 56 13v18c0 15-10 25-24 29C18 56 8 46 8 31V13Z" fill="none" style="stroke:var(--steel)" stroke-width="1.5"/><path d="m22 32 7 7 14-15" fill="none" style="stroke:var(--signal)" stroke-width="2.5"/></svg>
         <div>
           <h3>Leadership Clarity Guarantee</h3>
           <p>If, after your debrief and Action Session, you do not have actionable clarity on at least one significant leadership pattern you did not fully understand before, you get your fee back. The promise is useful clarity, not a stack of personality reports.</p>

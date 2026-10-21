@@ -6,13 +6,14 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Executive Briefing</title>
 <link rel="stylesheet" href="/kennon/theme.css">
+<script src="/kennon/theme.js"></script>
 <style>
   html, body { height: 100%; overflow: hidden; }
   body { font-size: clamp(16px, 1.25vw, 21px); }
 
   .chrome { position: fixed; left: 0; right: 0; z-index: 10; padding: 0 clamp(20px, 4vw, 64px); display: flex; justify-content: space-between; align-items: center; gap: 16px; pointer-events: none; }
-  .chrome.top { top: 0; height: 64px; border-bottom: 1px solid var(--line); background: rgba(7,11,20,.7); backdrop-filter: blur(6px); }
-  .chrome.bottom { bottom: 0; height: 56px; border-top: 1px solid var(--line); background: rgba(7,11,20,.7); backdrop-filter: blur(6px); }
+  .chrome.top { top: 0; height: 64px; border-bottom: 1px solid var(--line); background: var(--bar); backdrop-filter: blur(6px); }
+  .chrome.bottom { bottom: 0; height: 56px; border-top: 1px solid var(--line); background: var(--bar); backdrop-filter: blur(6px); }
   .chrome .mark { display: flex; align-items: center; gap: 12px; font: 600 14px/1 var(--head); letter-spacing: .22em; text-transform: uppercase; }
   .nav { display: flex; align-items: center; gap: 18px; pointer-events: auto; }
   .nav button { background: none; border: 1px solid var(--line-strong); color: var(--steel); width: 34px; height: 30px; cursor: pointer; font: 500 14px/1 var(--mono); }
@@ -129,10 +130,13 @@
 
 <div class="chrome top">
   <div class="mark">
-    <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="1" width="20" height="20" fill="none" stroke="#c8d0db" stroke-width="1.5"/><rect x="7" y="7" width="8" height="8" fill="#c9343c"/></svg>
+    <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="1" width="20" height="20" fill="none" style="stroke:var(--steel)" stroke-width="1.5"/><rect x="7" y="7" width="8" height="8" style="fill:var(--signal)"/></svg>
     <span data-bind="firm">Quest Coaching</span>
   </div>
-  <div class="dossier"><span>Executive Briefing</span><span>Ref <b data-bind="ref"></b></span><span>Principal <b data-bind="principal"></b></span></div>
+  <div class="bar-right">
+    <div class="dossier"><span>Executive Briefing</span><span>Ref <b data-bind="ref"></b></span><span>Principal <b data-bind="principal"></b></span></div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Switch between dark and light design"><span class="t-dark">Dark</span><span class="t-light">Light</span></button>
+  </div>
 </div>
 
 <main class="deck" id="deck">
@@ -244,7 +248,7 @@
   <!-- 8 Guarantee -->
   <section class="slide">
     <div class="inner guarantee">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 56 13v18c0 15-10 25-24 29C18 56 8 46 8 31V13Z" fill="none" stroke="#c8d0db" stroke-width="1.2"/><path d="m22 32 7 7 14-15" fill="none" stroke="#c9343c" stroke-width="2.2"/></svg>
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 56 13v18c0 15-10 25-24 29C18 56 8 46 8 31V13Z" fill="none" style="stroke:var(--steel)" stroke-width="1.2"/><path d="m22 32 7 7 14-15" fill="none" style="stroke:var(--signal)" stroke-width="2.2"/></svg>
       <div>
         <div class="label kicker">05 · Assurance</div>
         <h2 class="wide">The Leadership Clarity Guarantee</h2>
@@ -294,7 +298,7 @@
 
 <div class="chrome bottom">
   <div class="progress" id="progress"></div>
-  <div class="dossier"><span data-bind="footerLine"></span><span class="hint">→ next · ← back · D option · F fullscreen · H hints</span></div>
+  <div class="dossier"><span data-bind="footerLine"></span><span class="hint">→ next · ← back · D option · T theme · F fullscreen · H hints</span></div>
   <div class="nav">
     <span class="label" id="counter"></span>
     <button id="prev" aria-label="Previous">‹</button>
