@@ -5,310 +5,227 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>The Resilient Execution Protocol</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/kennon/theme.css">
 <style>
-  :root {
-    --paper: #f6f3ee;
-    --card: #ffffff;
-    --ink: #1b2230;
-    --ink-soft: #4a5263;
-    --muted: #7b8291;
-    --line: #e3ddd3;
-    --accent: #a8612f;
-    --accent-soft: #f3e6da;
-    --navy: #1f2a3d;
-    --ok: #2f6b55;
-    --serif: "Newsreader", Georgia, serif;
-    --sans: "Inter", system-ui, -apple-system, sans-serif;
-  }
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0; background: var(--paper); color: var(--ink);
-    font: 400 17px/1.6 var(--sans);
-  }
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
-  section { padding: 72px 0; border-top: 1px solid var(--line); }
-  h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.15; margin: 0; }
-  h1 { font-size: clamp(36px, 5.4vw, 60px); letter-spacing: -0.01em; }
-  h2 { font-size: clamp(28px, 3.6vw, 40px); margin-bottom: 20px; }
-  h3 { font-size: 24px; }
-  p { margin: 0 0 16px; }
-  .eyebrow {
-    font: 600 12px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 16px; display: block;
-  }
-  .lede { font-size: 20px; color: var(--ink-soft); max-width: 680px; }
-  .hidden { display: none !important; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+  section { padding: 96px 0; border-top: 1px solid var(--line); }
+  h2 { font-size: clamp(34px, 4.4vw, 54px); margin: 18px 0 22px; max-width: 860px; }
+  .lede { font-size: 19px; color: var(--dim); max-width: 700px; }
 
-  /* Header */
-  header { padding: 28px 0; }
-  header .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
-  .brand { font-family: var(--serif); font-size: 20px; }
-  .meta { font-size: 13px; color: var(--muted); text-align: right; }
-  .meta strong { color: var(--ink); font-weight: 600; }
+  /* Top bar */
+  .topbar { border-bottom: 1px solid var(--line); background: rgba(7,11,20,.86); position: sticky; top: 0; z-index: 5; backdrop-filter: blur(8px); }
+  .topbar .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 16px; padding-bottom: 16px; }
+  .mark { display: flex; align-items: center; gap: 12px; font: 600 15px/1 var(--head); letter-spacing: .22em; text-transform: uppercase; }
+  .mark svg { flex: none; }
 
   /* Hero */
-  .hero { padding: 56px 0 80px; border-top: 0; }
-  .hero h1 { max-width: 860px; margin-bottom: 24px; }
-  .prepared {
-    display: inline-flex; gap: 10px; align-items: center; margin-bottom: 32px;
-    background: var(--card); border: 1px solid var(--line); border-radius: 999px;
-    padding: 8px 16px; font-size: 14px; color: var(--ink-soft);
+  .hero { border-top: 0; padding: 88px 0 104px; }
+  .hero h1 { font-size: clamp(48px, 7.6vw, 104px); text-transform: uppercase; letter-spacing: .01em; margin: 28px 0 28px; max-width: 980px; }
+  .hero h1 span { color: var(--dim); }
+  .hero .lede { font-size: 21px; color: var(--steel); }
+  .file {
+    margin-top: 56px; display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); background: rgba(15,23,40,.7);
   }
-  .prepared .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .file div { padding: 18px 20px; border-right: 1px solid var(--line); }
+  .file div:last-child { border-right: 0; }
+  .file .label { display: block; margin-bottom: 8px; font-size: 10.5px; color: var(--faint); }
+  .file strong { font-weight: 500; font-size: 15px; }
 
   /* Situation */
-  .two-col { display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: start; }
-  .situation-list { list-style: none; padding: 0; margin: 0; }
-  .situation-list li {
-    background: var(--card); border: 1px solid var(--line); border-left: 3px solid var(--accent);
-    padding: 18px 20px; border-radius: 6px; margin-bottom: 12px;
-    font-family: var(--serif); font-size: 20px; line-height: 1.4;
-  }
-  .initiative { margin-top: 20px; font-size: 15px; color: var(--ink-soft); }
+  .two-col { display: grid; grid-template-columns: 1fr 1.25fr; gap: 56px; align-items: start; }
+  .intel { list-style: none; padding: 0; margin: 0; counter-reset: i; }
+  .intel li { counter-increment: i; padding: 22px 24px 22px 76px; position: relative; border: 1px solid var(--line); background: var(--panel); margin-bottom: 10px; font-size: 19px; }
+  .intel li::before { content: "0" counter(i); position: absolute; left: 24px; top: 24px; font: 500 13px/1 var(--mono); color: var(--signal); letter-spacing: .1em; }
+  .initiative { margin-top: 18px; color: var(--dim); font-size: 15px; }
 
-  /* Cost of inaction */
-  .costs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
-  .cost { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 22px; }
-  .cost .n { font: 600 13px/1 var(--sans); color: var(--accent); margin-bottom: 12px; display: block; }
-  .cost p { margin: 0; font-size: 16px; }
-  .quote {
-    margin: 48px 0 0; padding: 32px 36px; background: var(--navy); color: #f2efe9; border-radius: 10px;
-    font-family: var(--serif); font-size: clamp(22px, 2.6vw, 28px); line-height: 1.35;
-  }
-  .quote cite { display: block; margin-top: 14px; font: 500 13px/1 var(--sans); color: #b9bfcc; font-style: normal; letter-spacing: .04em; }
+  /* Cost */
+  .threats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 40px; }
+  .threat { background: var(--bg-2); padding: 28px 26px 30px; }
+  .threat .label { color: var(--signal); }
+  .threat p { margin: 14px 0 0; font-size: 17px; color: var(--steel); }
+  .quote-block { margin-top: 64px; padding: 48px 52px; }
+  .quote-block .quote { font-size: clamp(28px, 3.4vw, 42px); max-width: 920px; }
 
   /* Method */
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 32px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--card); }
-  .step { padding: 28px; border-right: 1px solid var(--line); position: relative; }
-  .step:last-child { border-right: 0; }
-  .step.now { background: var(--accent-soft); }
-  .step .tag { font: 600 11px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-  .step.now .tag { color: var(--accent); }
-  .step h3 { margin: 10px 0 10px; }
-  .step p { font-size: 15px; color: var(--ink-soft); margin: 0; }
+  .phases3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
+  .ph { padding: 30px 28px 32px; }
+  .ph h3 { font-size: 40px; text-transform: uppercase; margin: 16px 0 12px; }
+  .ph p { color: var(--dim); font-size: 16px; margin: 0; }
+  .ph.now .label { color: var(--signal); }
 
   /* Offer */
-  .offer-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 32px; }
+  .offer-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 40px; }
   .offer-grid.with-downsell { grid-template-columns: 1.55fr 1fr; }
-  .offer {
-    background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 36px;
-    display: flex; flex-direction: column;
-  }
-  .offer.featured { border: 2px solid var(--accent); box-shadow: 0 18px 40px -24px rgba(27,34,48,.35); }
-  .badge {
-    align-self: flex-start; background: var(--accent); color: #fff; border-radius: 999px;
-    font: 600 11px/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; padding: 7px 12px; margin-bottom: 18px;
-  }
-  .badge.quiet { background: var(--accent-soft); color: var(--accent); }
-  .offer h3 { font-size: 30px; margin-bottom: 8px; }
-  .offer .sub { color: var(--ink-soft); margin-bottom: 24px; }
-  .price { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
-  .price .amt { font-family: var(--serif); font-size: 52px; line-height: 1; }
-  .price .unit { color: var(--muted); font-size: 14px; }
-  .credit { font-size: 14px; color: var(--ok); font-weight: 500; margin-bottom: 26px; }
-  .checks { list-style: none; padding: 0; margin: 0 0 24px; }
-  .checks li { padding: 10px 0 10px 30px; border-top: 1px solid var(--line); position: relative; font-size: 16px; }
-  .checks li::before {
-    content: ""; position: absolute; left: 4px; top: 17px; width: 12px; height: 7px;
-    border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: rotate(-45deg);
-  }
-  .checks li small { display: block; color: var(--muted); font-size: 14px; }
-  .outcome { background: var(--paper); border-radius: 8px; padding: 18px 20px; font-size: 15px; margin-bottom: 26px; }
-  .outcome strong { display: block; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
-  .btn {
-    display: inline-block; text-align: center; text-decoration: none; font: 600 16px/1 var(--sans);
-    padding: 18px 26px; border-radius: 8px; background: var(--ink); color: #fff; margin-top: auto;
-  }
-  .btn:hover { background: #000; }
-  .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
-  .btn.ghost:hover { background: var(--ink); color: #fff; }
-  .fine { font-size: 13px; color: var(--muted); margin-top: 14px; }
-
-  .guarantee {
-    margin-top: 24px; display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: start;
-    background: var(--card); border: 1px dashed var(--accent); border-radius: 12px; padding: 28px 32px;
-  }
-  .seal {
-    width: 64px; height: 64px; border-radius: 50%; border: 2px solid var(--accent); color: var(--accent);
-    display: grid; place-items: center; font-family: var(--serif); font-size: 26px;
-  }
-  .guarantee h3 { font-size: 22px; margin-bottom: 8px; }
-  .guarantee p { margin: 0; color: var(--ink-soft); font-size: 16px; }
-
-  /* Roadmap */
-  .roadmap { margin-top: 32px; }
-  .phase {
-    display: grid; grid-template-columns: 140px 1fr 200px; gap: 28px; padding: 28px 0;
-    border-top: 1px solid var(--line); align-items: start;
-  }
-  .phase:last-child { border-bottom: 1px solid var(--line); }
-  .phase .when { font: 600 12px/1.4 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-  .phase h3 { margin-bottom: 8px; }
-  .phase p { color: var(--ink-soft); font-size: 15px; margin: 0; }
-  .phase .cost-col { text-align: right; }
-  .phase .big { font-family: var(--serif); font-size: 28px; display: block; }
-  .phase .was { font-size: 14px; color: var(--muted); text-decoration: line-through; }
-  .phase .note { font-size: 13px; color: var(--ok); display: block; margin-top: 4px; }
-  .phase.you { background: linear-gradient(90deg, var(--accent-soft), transparent 70%); padding-left: 16px; margin-left: -16px; border-radius: 6px; }
-  .total { text-align: right; font-size: 14px; color: var(--muted); margin-top: 16px; }
-
-  /* Next steps */
-  .next-steps { counter-reset: s; list-style: none; padding: 0; margin: 28px 0 36px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .next-steps li { counter-increment: s; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 22px; font-size: 16px; }
-  .next-steps li::before { content: counter(s); display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--ink); color: #fff; font: 600 14px/1 var(--sans); margin-bottom: 14px; }
-  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
-
-  footer { padding: 40px 0 60px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
-  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-
-  /* Presenter hint, only visible while toggling */
-  .toast {
-    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(20px);
-    background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 8px; font-size: 13px;
-    opacity: 0; transition: .2s; pointer-events: none;
-  }
-  .toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .offer { padding: 40px; display: flex; flex-direction: column; }
+  .offer h3 { font-size: 44px; text-transform: uppercase; margin: 18px 0 8px; }
+  .offer .sub { color: var(--dim); margin-bottom: 28px; }
+  .offer .priceline { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
+  .offer .price { font-size: 72px; }
+  .offer .unit { font: 500 12px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
+  .offer .credit { font-size: 14px; margin-bottom: 30px; }
+  .offer .checks { margin-bottom: 28px; }
+  .outcome { border-left: 2px solid var(--signal); padding: 4px 0 4px 18px; margin-bottom: 30px; color: var(--steel); font-size: 16px; }
+  .outcome .label { display: block; margin-bottom: 6px; }
+  .offer .btn { margin-top: auto; }
+  .fine { font-size: 13px; color: var(--faint); margin: 14px 0 0; }
+  .downsell .price { font-size: 56px; }
+  .downsell h3 { font-size: 34px; }
   .downsell { animation: rise .35s ease-out; }
   @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 
-  @media (max-width: 860px) {
+  .guarantee { margin-top: 20px; padding: 32px 36px; display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; }
+  .guarantee h3 { font-size: 30px; text-transform: uppercase; margin-bottom: 8px; }
+  .guarantee p { color: var(--dim); margin: 0; }
+
+  /* Roadmap */
+  .roadmap { margin-top: 40px; border-top: 1px solid var(--line-strong); }
+  .row { display: grid; grid-template-columns: 170px 1fr 220px; gap: 32px; padding: 30px 0; border-bottom: 1px solid var(--line); align-items: start; }
+  .row h3 { font-size: 30px; text-transform: uppercase; margin-bottom: 8px; }
+  .row p { color: var(--dim); font-size: 15px; margin: 0; }
+  .row .cost { text-align: right; }
+  .row .cost .price { font-size: 38px; display: block; }
+  .row .cost small { display: block; font-size: 13px; margin-top: 4px; }
+  .row.now { background: linear-gradient(90deg, var(--signal-soft), transparent 60%); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+  .row.now .label { color: var(--signal); }
+
+  /* Next */
+  .steps3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 36px 0 40px; }
+  .steps3 .panel { padding: 26px; }
+  .steps3 .label { color: var(--signal); }
+  .steps3 p { margin: 12px 0 0; color: var(--steel); }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  footer { border-top: 1px solid var(--line); padding: 36px 0 56px; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  .toast { position: fixed; bottom: 20px; left: 50%; transform: translate(-50%, 16px); background: var(--text); color: var(--bg); padding: 10px 16px; font: 500 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; opacity: 0; transition: .2s; pointer-events: none; }
+  .toast.on { opacity: 1; transform: translate(-50%, 0); }
+
+  @media (max-width: 880px) {
     body { font-size: 16px; }
     .wrap { padding: 0 16px; }
-    section { padding: 52px 0; }
-    .two-col, .offer-grid.with-downsell { grid-template-columns: 1fr; gap: 24px; }
-    .costs, .next-steps { grid-template-columns: 1fr; }
-    .steps { grid-template-columns: 1fr; }
-    .step { border-right: 0; border-bottom: 1px solid var(--line); }
-    .step:last-child { border-bottom: 0; }
-    .offer { padding: 26px 22px; }
-    .phase { grid-template-columns: 1fr; gap: 8px; }
-    .phase .cost-col { text-align: left; }
-    .phase.you { margin-left: -8px; padding-left: 8px; }
-    .guarantee { grid-template-columns: 1fr; padding: 24px 22px; }
-    .meta { text-align: left; }
-    .quote { padding: 26px 22px; }
-  }
-  @media print {
-    .btn, .cta-row, .toast { display: none !important; }
-    section { break-inside: avoid; }
+    section { padding: 64px 0; }
+    .hero { padding: 56px 0 72px; }
+    .file { grid-template-columns: 1fr 1fr; }
+    .file div:nth-child(2) { border-right: 0; }
+    .file div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    .two-col, .offer-grid.with-downsell { grid-template-columns: 1fr; gap: 28px; }
+    .threats, .phases3, .steps3 { grid-template-columns: 1fr; }
+    .offer { padding: 28px 22px; }
+    .offer .price { font-size: 60px; }
+    .quote-block { padding: 32px 24px; }
+    .guarantee { grid-template-columns: 1fr; padding: 26px 22px; }
+    .row { grid-template-columns: 1fr; gap: 10px; }
+    .row .cost { text-align: left; }
+    .row.now { margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
+    .topbar .dossier { display: none; }
   }
 </style>
 </head>
-<body>
+<body class="grid-bg soft">
 
-<header>
+<header class="topbar">
   <div class="wrap">
-    <div class="brand" data-bind="coachLine">Kennon</div>
-    <div class="meta">
-      <div class="when-prepared">Prepared <strong data-bind="sentOn"></strong></div>
-      <div>Valid through <strong data-bind="validUntil"></strong></div>
+    <div class="mark">
+      <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="1" width="20" height="20" fill="none" stroke="#c8d0db" stroke-width="1.5"/><rect x="7" y="7" width="8" height="8" fill="#c9343c"/></svg>
+      <span data-bind="firm">Quest Coaching</span>
     </div>
+    <div class="dossier"><span>Ref <b data-bind="ref"></b></span><span>Valid through <b data-bind="validUntil"></b></span></div>
   </div>
 </header>
 
 <main>
   <section class="hero">
     <div class="wrap">
-      <div class="prepared" data-if="fullName"><span class="dot"></span><span>Prepared for <strong data-bind="preparedFor"></strong></span></div>
-      <span class="eyebrow">The Resilient Execution Protocol</span>
-      <h1>From CEO-dependent execution to a leadership team that can act with confidence.</h1>
-      <p class="lede" data-bind="heroLede"></p>
+      <div class="label signal"><span class="dot"></span>Executive Briefing · Confidential</div>
+      <h1>The Resilient Execution <span>Protocol</span></h1>
+      <p class="lede">From CEO-dependent execution to a leadership team that can act with confidence.</p>
+      <p class="lede" data-bind="heroLede" style="font-size:17px;color:var(--dim)"></p>
+      <div class="file">
+        <div><span class="label">Principal</span><strong data-bind="principal"></strong></div>
+        <div><span class="label">Role</span><strong data-bind="principalRole">CEO</strong></div>
+        <div><span class="label">Prepared by</span><strong data-bind="coachLine"></strong></div>
+        <div><span class="label">Date</span><strong data-bind="sentOn"></strong></div>
+      </div>
     </div>
   </section>
 
-  <section id="situation" data-if="situation">
+  <section data-if="situation">
     <div class="wrap two-col">
       <div>
-        <span class="eyebrow">Where you are</span>
+        <div class="label">01 · Situation</div>
         <h2>What you shared with me</h2>
         <p class="lede" style="font-size:17px">In your own words. This is the starting point, not a diagnosis.</p>
       </div>
       <div>
-        <ul class="situation-list" data-list="situation"></ul>
+        <ol class="intel" data-list="situation"></ol>
         <p class="initiative" data-if="initiative">What depends on it: <strong data-bind="initiative"></strong></p>
       </div>
     </div>
   </section>
 
-  <section id="cost">
+  <section>
     <div class="wrap">
-      <span class="eyebrow">Why it matters now</span>
+      <div class="label">02 · Exposure</div>
       <h2>Leadership friction rarely shows up on a P&amp;L. It still has a price.</h2>
       <p class="lede">The question is not whether your team could be more effective. It is what your current decision patterns already cost you, and whether that continues if nothing changes.</p>
-      <div class="costs">
-        <div class="cost"><span class="n">01</span><p>Decisions wait for your approval that your team could make.</p></div>
-        <div class="cost"><span class="n">02</span><p>Strategic initiatives slip milestones while issues travel up and back down.</p></div>
-        <div class="cost"><span class="n">03</span><p>Your time goes to rework and arbitration instead of strategy.</p></div>
-        <div class="cost"><span class="n">04</span><p>Departments pull in different directions under pressure.</p></div>
-        <div class="cost"><span class="n">05</span><p>Responses to new opportunities or threats come late.</p></div>
-        <div class="cost"><span class="n">06</span><p>The organization performs best only when you are in the room.</p></div>
+      <div class="threats">
+        <div class="threat"><span class="label">Risk 01</span><p>Decisions wait for your approval that your team could make.</p></div>
+        <div class="threat"><span class="label">Risk 02</span><p>Strategic initiatives slip milestones while issues travel up and back down.</p></div>
+        <div class="threat"><span class="label">Risk 03</span><p>Your time goes to rework and arbitration instead of strategy.</p></div>
+        <div class="threat"><span class="label">Risk 04</span><p>Departments pull in different directions under pressure.</p></div>
+        <div class="threat"><span class="label">Risk 05</span><p>Responses to new opportunities or threats come late.</p></div>
+        <div class="threat"><span class="label">Risk 06</span><p>The organization performs best only when you are in the room.</p></div>
       </div>
-      <blockquote class="quote">
-        The real test of leadership isn't just what happens when you're in the room. It's what your organization is capable of when you're not.
-        <cite data-bind="coachName">Kennon</cite>
-      </blockquote>
+      <div class="panel corners quote-block">
+        <p class="quote">"The real test of leadership isn't just what happens when you're in the room. It's what your organization is capable of when you're not."<cite data-bind="coachLine"></cite></p>
+      </div>
     </div>
   </section>
 
-  <section id="method">
+  <section>
     <div class="wrap">
-      <span class="eyebrow">The approach</span>
+      <div class="label">03 · Method</div>
       <h2>Understand. Align. Enable.</h2>
-      <p class="lede">Individual behavioral intelligence, team effectiveness, and practical operating disciplines. Every engagement starts with understanding, and that starts with you.</p>
-      <div class="steps">
-        <div class="step now">
-          <span class="tag">Starts here</span>
-          <h3>Understand</h3>
-          <p>The behavioral tendencies, motivations and blind spots that shape how decisions move through your organization.</p>
-        </div>
-        <div class="step">
-          <span class="tag">Then</span>
-          <h3>Align</h3>
-          <p>Shared priorities, operating norms, decision principles and clear accountability across the executive team.</p>
-        </div>
-        <div class="step">
-          <span class="tag">Then</span>
-          <h3>Enable</h3>
-          <p>Leaders with the information, authority and practices to execute without unnecessary escalation.</p>
-        </div>
+      <p class="lede">Individual behavioral intelligence, team effectiveness and practical operating disciplines. Every engagement starts with understanding, and that starts with you.</p>
+      <div class="phases3">
+        <div class="panel corners ph now"><span class="label"><span class="dot"></span>Starts here</span><h3>Understand</h3><p>The behavioral tendencies, motivations and blind spots that shape how decisions move through your organization.</p></div>
+        <div class="panel ph"><span class="label">Then</span><h3>Align</h3><p>Shared priorities, operating norms, decision principles and clear accountability across the executive team.</p></div>
+        <div class="panel ph"><span class="label">Then</span><h3>Enable</h3><p>Leaders with the information, authority and practices to execute without unnecessary escalation.</p></div>
       </div>
     </div>
   </section>
 
   <section id="offer">
     <div class="wrap">
-      <span class="eyebrow">Your first step</span>
+      <div class="label">04 · First step</div>
       <h2>Start with the one person every decision runs through.</h2>
       <p class="lede">Before we look at your whole team, we look at you. In two to three weeks you see how your own leadership patterns shape what lands on your desk, and what to change first.</p>
 
       <div class="offer-grid" id="offerGrid">
-        <article class="offer featured">
-          <span class="badge">Recommended</span>
+        <article class="panel signal corners offer">
+          <span class="label signal"><span class="dot"></span>Recommended</span>
           <h3>The CEO Diagnostic</h3>
           <p class="sub">Hogan-based executive diagnostic for the CEO. About 2 to 3 weeks.</p>
-          <div class="price"><span class="amt">$2,500</span><span class="unit">one time</span></div>
-          <div class="credit" data-bind="diagCredit"></div>
+          <div class="priceline"><span class="price">$2,500</span><span class="unit">One time</span></div>
+          <div class="credit ok" data-bind="diagCredit"></div>
           <ul class="checks">
             <li>Hogan Assessment Suite for you<small>HPI, HDS and MVPI: everyday strengths, risks under pressure, core values</small></li>
             <li>Confidential 90-minute debrief<small>What your profile means for how you lead, decide and delegate</small></li>
             <li>Your CEO Decision Map<small>The decisions that escalate to you, which ones could move, and what keeps them with you</small></li>
             <li>60-minute Action Session<small>A prioritized short list of first moves you can start the same week</small></li>
           </ul>
-          <div class="outcome"><strong>The outcome</strong>Clarity on at least one leadership pattern that affects how decisions move in your organization, and a concrete plan to change it.</div>
+          <div class="outcome"><span class="label">Outcome</span>Clarity on at least one leadership pattern that affects how decisions move in your organization, and a concrete plan to change it.</div>
           <a class="btn" data-href="pay" href="#">Reserve your CEO Diagnostic</a>
-          <p class="fine">Covered by the Leadership Clarity Guarantee below.</p>
+          <p class="fine">Covered by the Leadership Clarity Guarantee.</p>
         </article>
 
-        <article class="offer downsell hidden" id="downsell">
-          <span class="badge quiet">A smaller first step</span>
+        <article class="panel offer downsell hidden" id="downsell">
+          <span class="label">A smaller first step</span>
           <h3>Decision Rights Session</h3>
           <p class="sub">One focused working session with you. No assessment.</p>
-          <div class="price"><span class="amt">$750</span><span class="unit">one time</span></div>
-          <div class="credit" data-bind="sessionCredit"></div>
+          <div class="priceline"><span class="price">$750</span><span class="unit">One time</span></div>
+          <div class="credit ok" data-bind="sessionCredit"></div>
           <ul class="checks">
             <li>90-minute 1:1 working session</li>
             <li>A first Decision Map for the three decisions that slow you down most</li>
@@ -318,63 +235,50 @@
         </article>
       </div>
 
-      <div class="guarantee">
-        <div class="seal">✓</div>
+      <div class="panel corners guarantee">
+        <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 56 13v18c0 15-10 25-24 29C18 56 8 46 8 31V13Z" fill="none" stroke="#c8d0db" stroke-width="1.5"/><path d="m22 32 7 7 14-15" fill="none" stroke="#c9343c" stroke-width="2.5"/></svg>
         <div>
-          <h3>The Leadership Clarity Guarantee</h3>
+          <h3>Leadership Clarity Guarantee</h3>
           <p>If, after your debrief and Action Session, you do not have actionable clarity on at least one significant leadership pattern you did not fully understand before, you get your fee back. The promise is useful clarity, not a stack of personality reports.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="roadmap">
+  <section>
     <div class="wrap">
-      <span class="eyebrow">Where this can lead</span>
+      <div class="label">05 · Path</div>
       <h2>The full path, if and when it makes sense.</h2>
       <p class="lede">Each step stands on its own. You decide after each one whether the next is worth it. Your investment in the CEO Diagnostic carries over.</p>
       <div class="roadmap">
-        <div class="phase you">
-          <div class="when">Now<br>Weeks 1 to 3</div>
-          <div>
-            <h3>The CEO Diagnostic</h3>
-            <p>Your Hogan profile, debrief, CEO Decision Map and Action Session.</p>
-          </div>
-          <div class="cost-col"><span class="big">$2,500</span></div>
+        <div class="row now">
+          <div class="label"><span class="dot"></span>Now · Weeks 1 to 3</div>
+          <div><h3>The CEO Diagnostic</h3><p>Your Hogan profile, debrief, CEO Decision Map and Action Session.</p></div>
+          <div class="cost"><span class="price">$2,500</span></div>
         </div>
-        <div class="phase">
-          <div class="when">Phase 1<br>Month 1</div>
-          <div>
-            <h3>The Executive Diagnostic</h3>
-            <p>Hogan assessments for up to six executive leaders, confidential debriefs, an integrated Leadership Friction Map, a half-day CEO Strategy Session and a prioritized action plan.</p>
-          </div>
-          <div class="cost-col">
-            <span class="was">$18,500</span>
-            <span class="big">$16,000</span>
-            <span class="note">after your $2,500 credit</span>
-          </div>
+        <div class="row">
+          <div class="label">Phase 1 · Month 1</div>
+          <div><h3>The Executive Diagnostic</h3><p>Hogan assessments for up to six executive leaders, confidential debriefs, an integrated Leadership Friction Map, a half-day CEO Strategy Session and a prioritized action plan.</p></div>
+          <div class="cost"><small class="strike">$18,500</small><span class="price">$16,000</span><small class="ok">after your $2,500 credit</small></div>
         </div>
-        <div class="phase">
-          <div class="when">Phase 2<br>Months 2 to 6</div>
-          <div>
-            <h3>The Execution Engine</h3>
-            <p>Team effectiveness baseline, an executive Alignment Offsite, a Decision Rights and Escalation Matrix, a Strategic Execution Scorecard, applied decision practice, and a Leadership Operating Playbook. Includes ongoing CEO and team advisory.</p>
-          </div>
-          <div class="cost-col"><span class="big">$6,500</span><span class="note" style="color:var(--muted)">per month, five months</span></div>
+        <div class="row">
+          <div class="label">Phase 2 · Months 2 to 6</div>
+          <div><h3>The Execution Engine</h3><p>Team effectiveness baseline, an executive Alignment Offsite, a Decision Rights and Escalation Matrix, a Strategic Execution Scorecard, applied decision practice and a Leadership Operating Playbook. Includes ongoing CEO and team advisory.</p></div>
+          <div class="cost"><span class="price">$6,500</span><small style="color:var(--faint)">per month, five months</small></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="next">
+  <section>
     <div class="wrap">
-      <span class="eyebrow">Next steps</span>
-      <h2 data-bind="nextHeadline">Three steps to get started.</h2>
-      <ol class="next-steps">
-        <li>Reserve your CEO Diagnostic. You receive your Hogan access the same day.</li>
-        <li>Complete the assessment online. It takes about 45 to 60 minutes.</li>
-        <li>We meet for your debrief within the following week.</li>
-      </ol>
+      <div class="label">06 · Next steps</div>
+      <h2 data-bind="nextHeadline">Here is how we start.</h2>
+      <div class="steps3">
+        <div class="panel"><span class="label">Step 01</span><p>Reserve your CEO Diagnostic. You receive your Hogan access the same day.</p></div>
+        <div class="panel"><span class="label">Step 02</span><p>Complete the assessment online. It takes about 45 to 60 minutes.</p></div>
+        <div class="panel"><span class="label">Step 03</span><p>We meet for your debrief within the following week.</p></div>
+      </div>
       <div class="cta-row">
         <a class="btn" data-href="pay" href="#">Reserve your CEO Diagnostic</a>
         <a class="btn ghost" data-href="book" href="#">Pick a kickoff time</a>
@@ -384,65 +288,20 @@
 </main>
 
 <footer>
-  <div class="wrap">
+  <div class="wrap dossier">
     <span data-bind="footerLine"></span>
-    <span>Confidential. Prepared for the named recipient only.</span>
+    <span>Confidential · Prepared for the named principal only</span>
   </div>
 </footer>
 
 <div class="toast" id="toast"></div>
 
 <script src="/kennon/prospects.js"></script>
+<script src="/kennon/common.js"></script>
 <script>
 (function () {
-  var cfg = window.OFFER_CONFIG || { prospects: { default: {} }, coach: {}, links: {} };
-  var params = new URLSearchParams(location.search);
-  var segment = location.pathname.replace(/\/(index\.html)?$/, "").split("/").pop();
-  var key = (params.get("p") || segment || "default").toLowerCase();
-  var p = Object.assign({}, cfg.prospects.default || {}, cfg.prospects[key] || {});
-
-  var fmt = function (d) { return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }); };
-  var sent = p.sentOn ? new Date(p.sentOn + "T12:00:00") : new Date();
-  var until = new Date(sent); until.setDate(until.getDate() + (cfg.validDays || 30));
-  var coach = cfg.coach || {};
-  var coachLine = coach.firm ? coach.name + ", " + coach.firm : coach.name;
-
-  var preparedFor = [p.fullName, [p.title, p.company].filter(Boolean).join(", ")].filter(Boolean).join(" · ");
-  var heroLede = p.attendedRoundtable && cfg.roundtable
-    ? (p.firstName ? p.firstName + ", thank" : "Thank") + " you for joining the " + cfg.roundtable.title + ". This page lays out a low-risk way to apply what we discussed to your own leadership team."
-    : "A structured path to a leadership team that makes better-aligned decisions and executes with less unnecessary CEO intervention.";
-
-  var values = {
-    coachLine: coachLine, coachName: coach.name,
-    sentOn: fmt(sent), validUntil: fmt(until),
-    preparedFor: preparedFor, heroLede: heroLede,
-    initiative: p.initiative,
-    diagCredit: "Credited in full toward Phase 1 if you continue by " + fmt(until) + ".",
-    sessionCredit: "Credited in full toward the CEO Diagnostic if you continue by " + fmt(until) + ".",
-    nextHeadline: p.firstName ? p.firstName + ", here is how we start." : "Three steps to get started.",
-    footerLine: "© " + sent.getFullYear() + " " + coachLine + (coach.email ? " · " + coach.email : "")
-  };
-
-  document.querySelectorAll("[data-bind]").forEach(function (el) {
-    var v = values[el.dataset.bind];
-    if (v) el.textContent = v;
-  });
-  document.querySelectorAll("[data-if]").forEach(function (el) {
-    var v = p[el.dataset.if];
-    if (!v || (Array.isArray(v) && !v.length)) el.classList.add("hidden");
-  });
-  document.querySelectorAll("[data-list]").forEach(function (el) {
-    (p[el.dataset.list] || []).forEach(function (item) {
-      var li = document.createElement("li"); li.textContent = item; el.appendChild(li);
-    });
-  });
-  document.querySelectorAll("[data-href]").forEach(function (el) {
-    var href = (cfg.links || {})[el.dataset.href];
-    if (href) el.href = href;
-  });
-  if (p.fullName) document.title = "The Resilient Execution Protocol · " + p.fullName;
-
-  // Presenter control: press D to reveal or hide the Decision Rights Session during the call.
+  OFFER.fill();
+  // Press D to reveal or hide the Decision Rights Session.
   var downsell = document.getElementById("downsell");
   var grid = document.getElementById("offerGrid");
   var toast = document.getElementById("toast");
@@ -450,7 +309,7 @@
     downsell.classList.toggle("hidden", !on);
     grid.classList.toggle("with-downsell", on);
   }
-  if (params.get("downsell") === "1") setDownsell(true);
+  if (OFFER.params.get("downsell") === "1") setDownsell(true);
   document.addEventListener("keydown", function (e) {
     if (e.metaKey || e.ctrlKey || e.altKey || /input|textarea/i.test(e.target.tagName)) return;
     if (e.key === "d" || e.key === "D") {

@@ -5,7 +5,7 @@
 window.OFFER_CONFIG = {
   coach: {
     name: "Kennon",            // TODO: full name
-    firm: "",                  // TODO: advisory firm name, if any
+    firm: "Quest Coaching",
     email: "",                 // TODO
     photo: ""                  // optional: path or URL to a headshot
   },
@@ -35,6 +35,22 @@ window.OFFER_CONFIG = {
       sentOn: "",              // YYYY-MM-DD, defaults to today
       situation: [],           // 2 to 3 points from the conversation, in the CEO's words
       initiative: ""           // the strategic initiative that depends on this, if named
+    },
+
+    // Sample data to rehearse with: /kennon/demo
+    demo: {
+      firstName: "Jordan",
+      fullName: "Jordan Sample",
+      title: "CEO",
+      company: "Sample Logistics",
+      attendedRoundtable: true,
+      sentOn: "",
+      situation: [
+        "Most cross-functional decisions still end up on my desk.",
+        "My leadership team is strong individually but slow together.",
+        "We are about to expand into two new regions."
+      ],
+      initiative: "Expansion into two new regions in 2027"
     },
 
     britt: {
