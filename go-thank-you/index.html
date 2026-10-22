@@ -124,7 +124,7 @@ footer a { color: #8A8276; }
   .grid { display: flex; flex-direction: column; gap: 1.5rem; }
   .main { display: contents; }
   .main > * { order: 1; }
-  .main > .eyebrow, .main > h1, .main > .lede { order: -2; }
+  .main > .eyebrow, .main > h1, .main > .lede, .main > .video, .main > .caption { order: -2; }
   aside { position: static; order: -1; }
   /* Compact agenda on phones: show all steps but tighter */
   ol.track li { padding: 0.6rem 0; }
@@ -147,6 +147,13 @@ footer a { color: #8A8276; }
       <h1>You're in. One small step left.</h1>
       <p class="lede">Thank you for registering. Your details reached us, and Tom has your name on the list. Here is what happens next, so you arrive prepared and get the most out of the hour.</p>
 
+      <div class="video">
+        <div class="frame">
+          <iframe src="https://www.loom.com/embed/3c9cfbfb9b814c08a969735f2a13a921?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" title="A short message from Tom" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <p class="caption"><img src="https://go.mycoachpath.xyz/assets/tom.jpg" alt="Tom Aris" width="80" height="80"><span><strong style="color: var(--ink)">A short message from Tom.</strong> What to expect from the session and how to prepare.</span></p>
+
       <div class="card action">
         <p class="k">Action needed · Step 2</p>
         <p class="t">Check your inbox and confirm your seat.</p>
@@ -157,12 +164,6 @@ footer a { color: #8A8276; }
         </ul>
       </div>
 
-      <div class="video">
-        <div class="frame">
-          <iframe src="https://www.loom.com/embed/3c9cfbfb9b814c08a969735f2a13a921?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" title="A short message from Tom" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-        </div>
-      </div>
-      <p class="caption"><img src="https://go.mycoachpath.xyz/assets/tom.jpg" alt="Tom Aris" width="80" height="80"><span><strong style="color: var(--ink)">A short message from Tom.</strong> What to expect from the session and how to prepare.</span></p>
 
       <div class="label" style="margin-top: 1rem"><b>03</b><i></i><span>Before we meet</span></div>
       <div class="prep">
