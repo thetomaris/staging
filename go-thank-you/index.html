@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>You're in · My Coach Path</title>
+<meta name="theme-color" content="#F6F4EF">
+<link rel="icon" href="https://go.mycoachpath.xyz/favicon.ico" sizes="any">
+<link rel="preload" href="./fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- Umami analytics (cookieless), same site ID as the landing page -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="f05a68b4-de18-4805-b0cf-682141271e3a"></script>
+<!-- Meta Pixel: PageView only. Lead is tracked on the landing page form. -->
+<script>
+  var META_PIXEL_ID = '771102668078113';
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  if (/^\d+$/.test(META_PIXEL_ID)) { fbq('init', META_PIXEL_ID); fbq('track', 'PageView'); }
+</script>
+<style>
+@font-face { font-family: Archivo; font-style: normal; font-weight: 400 800; font-display: swap; src: url(./fonts/archivo-latin.woff2) format("woff2"); }
+:root { --bg: #F6F4EF; --bg2: #E9E5DC; --card: #FFFFFF; --line: #D6D3CB; --line2: #E9E5DC; --ink: #0E0D0B; --text: #211E1A; --muted: #46413A; --soft: #6B645A; --gold: #E3CDA4; --gold-d: #CBB185; --gold-ink: #7A6340; --dark: #211E1A; }
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: Archivo, "Helvetica Neue", Arial, sans-serif; font-size: 1.0625rem; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: var(--text); }
+img, iframe { max-width: 100%; }
+p { margin: 0; }
+.wrap { max-width: 72rem; margin: 0 auto; padding: 0 1.25rem; }
+header { border-bottom: 1px solid var(--line); }
+header .wrap { padding-top: 0.9rem; padding-bottom: 0.9rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.brand { font-size: 0.9375rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); }
+.status { font-size: 0.8125rem; font-weight: 700; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold-d); flex: 0 0 auto; }
+.eyebrow { display: flex; align-items: center; gap: 0.6rem; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.4; color: var(--muted); }
+h1 { margin: 0; font-size: clamp(2.3rem, 9vw, 3.4rem); font-weight: 800; line-height: 0.98; letter-spacing: -0.035em; text-wrap: balance; color: var(--ink); }
+h2 { margin: 0; font-size: clamp(1.9rem, 7vw, 2.6rem); font-weight: 800; line-height: 1.02; letter-spacing: -0.03em; text-wrap: balance; color: var(--ink); }
+.lede { font-size: clamp(1.125rem, 4.2vw, 1.25rem); font-weight: 500; line-height: 1.45; color: var(--muted); text-wrap: pretty; }
+
+/* Layout: content left, step agenda right (sticky). On mobile the agenda moves above the content. */
+.top { padding: clamp(2rem, 6vw, 3.5rem) 0 clamp(3rem, 8vw, 5rem); }
+.grid { display: grid; grid-template-columns: minmax(0, 1fr) 21rem; gap: clamp(2rem, 4vw, 3.5rem); align-items: start; }
+.main { display: flex; flex-direction: column; gap: 1.5rem; min-width: 0; }
+aside { position: sticky; top: 1.25rem; }
+
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 4px; }
+.steps { padding: 1.35rem 1.25rem 1.1rem; }
+.steps-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--line2); }
+.steps-head p:first-child { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--soft); }
+.steps-head p:last-child { font-size: 0.875rem; font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
+.bar { height: 4px; background: var(--line2); border-radius: 2px; margin: 1rem 0 0.4rem; overflow: hidden; }
+.bar span { display: block; height: 100%; width: 37.5%; background: var(--gold-d); }
+ol.track { list-style: none; margin: 0; padding: 0; }
+ol.track li { position: relative; display: grid; grid-template-columns: 1.75rem minmax(0, 1fr); gap: 0.85rem; padding: 0.9rem 0; }
+ol.track li:not(:last-child)::after { content: ""; position: absolute; left: calc(0.875rem - 1px); top: 2.55rem; bottom: -0.15rem; width: 2px; background: var(--line2); }
+ol.track li.done:not(:last-child)::after { background: var(--gold-d); }
+.mark { width: 1.75rem; height: 1.75rem; border-radius: 50%; display: grid; place-items: center; font-size: 0.8125rem; font-weight: 800; border: 2px solid var(--line); color: var(--soft); background: var(--card); font-variant-numeric: tabular-nums; }
+.done .mark { background: var(--dark); border-color: var(--dark); color: var(--gold); }
+.now .mark { border-color: var(--gold-d); background: var(--gold); color: #2A2318; box-shadow: 0 0 0 4px rgba(227, 205, 164, 0.35); }
+.st { font-size: 1rem; font-weight: 800; line-height: 1.25; color: var(--ink); }
+.done .st { color: var(--muted); }
+.sd { font-size: 0.9375rem; line-height: 1.45; color: var(--muted); margin-top: 0.2rem; }
+.tag { display: inline-block; margin-top: 0.45rem; font-size: 0.6875rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 3px; }
+.tag.ok { background: var(--bg2); color: var(--muted); }
+.tag.todo { background: var(--dark); color: var(--gold); }
+.help { margin-top: 0.4rem; padding-top: 0.9rem; border-top: 1px solid var(--line2); font-size: 0.875rem; line-height: 1.45; color: var(--soft); }
+
+.action { border-left: 4px solid var(--gold-d); padding: 1.35rem 1.4rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.action .k { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-ink); }
+.action .t { font-size: clamp(1.25rem, 5vw, 1.45rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); }
+.action ul { margin: 0.2rem 0 0; padding-left: 1.15rem; color: var(--muted); }
+.action li { margin: 0.25rem 0; }
+
+.video { position: relative; padding: 0 12px 12px 0; }
+.video::before { content: ""; position: absolute; top: 12px; left: 12px; right: 0; bottom: 0; background: var(--gold); border-radius: 4px; }
+.video .frame { position: relative; aspect-ratio: 16 / 9; background: var(--ink); border: 1px solid #C7C3B9; border-radius: 4px; overflow: hidden; }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.caption { display: flex; align-items: center; gap: 0.75rem; font-size: 0.9375rem; color: var(--muted); }
+.caption img { width: 2.5rem; height: 2.5rem; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); }
+
+.prep { display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
+.prep .card { padding: 1.2rem 1.2rem 1.3rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.n { font-size: 0.8125rem; font-weight: 800; letter-spacing: 0.06em; color: var(--gold-ink); font-variant-numeric: tabular-nums; }
+.prep .h { font-size: 1.0625rem; font-weight: 800; line-height: 1.2; color: var(--ink); }
+.prep .b { font-size: 0.9375rem; line-height: 1.5; color: var(--muted); }
+.label { display: flex; align-items: center; gap: 0.75rem; padding-bottom: 0.9rem; border-bottom: 1px solid #C7C3B9; }
+.label b { font-size: 0.8125rem; font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
+.label i { width: 1.5rem; height: 1px; background: #8A8276; }
+.label span { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+
+/* Proof */
+.proof { background: var(--bg2); padding: clamp(3rem, 9vw, 5.5rem) 0; }
+.proof .wrap { display: flex; flex-direction: column; gap: clamp(1.75rem, 5vw, 2.5rem); }
+.cases { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr)); }
+.case { padding: 1.6rem 1.5rem 1.7rem; display: flex; flex-direction: column; gap: 0.9rem; }
+.who { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--soft); }
+.big { font-size: clamp(2.6rem, 10vw, 3.4rem); font-weight: 800; line-height: 0.95; letter-spacing: -0.04em; color: var(--ink); }
+.case .h { font-size: clamp(1.2rem, 4.6vw, 1.35rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.015em; color: var(--ink); text-wrap: balance; }
+.case .b { color: var(--muted); text-wrap: pretty; }
+.facts { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.facts span { font-size: 0.8125rem; font-weight: 700; padding: 0.3rem 0.6rem; border: 1px solid var(--line); border-radius: 3px; color: var(--muted); background: var(--bg); }
+.browser { border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: var(--bg); }
+.browser .chrome { display: flex; align-items: center; gap: 0.35rem; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--line); font-size: 0.75rem; color: var(--soft); }
+.browser .chrome i { width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
+.browser .chrome span { margin-left: 0.5rem; }
+.browser .view { position: relative; height: 15rem; overflow: hidden; }
+.browser iframe { position: absolute; top: 0; left: 0; width: 250%; height: 250%; transform: scale(0.4); transform-origin: 0 0; border: 0; pointer-events: none; }
+.browser a.cover { position: absolute; inset: 0; }
+.case a.more { font-size: 0.9375rem; font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--gold-d); align-self: flex-start; }
+
+.close { background: var(--dark); color: #D9D3C7; padding: clamp(2.5rem, 7vw, 4rem) 0; }
+.close .wrap { display: flex; flex-direction: column; gap: 0.9rem; max-width: 44rem; }
+.close .q { font-size: clamp(1.35rem, 5vw, 1.75rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; color: #F6F4EF; text-wrap: balance; }
+.close a { color: var(--gold); }
+footer { background: var(--dark); border-top: 1px solid #3A3530; color: #8A8276; font-size: 0.8125rem; padding: 1.25rem 0 calc(1.25rem + env(safe-area-inset-bottom, 0px)); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; justify-content: space-between; }
+footer a { color: #8A8276; }
+
+@media (max-width: 880px) {
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  aside { position: static; order: -1; }
+  /* Compact agenda on phones: show all steps but tighter */
+  ol.track li { padding: 0.6rem 0; }
+  .sd { font-size: 0.875rem; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <p class="brand">My Coach Path</p>
+    <p class="status"><span class="dot"></span>Registration received</p>
+  </div>
+</header>
+
+<section class="top">
+  <div class="wrap grid">
+    <div class="main">
+      <p class="eyebrow"><span class="dot"></span><span>Free live working session for executive leadership coaches</span></p>
+      <h1>You're in. One small step left.</h1>
+      <p class="lede">Thank you for registering. Your details reached us, and Tom has your name on the list. Here is what happens next, so you arrive prepared and get the most out of the hour.</p>
+
+      <div class="card action">
+        <p class="k">Action needed · Step 2</p>
+        <p class="t">Check your inbox and confirm your seat.</p>
+        <ul>
+          <li>Look for an email from My Coach Path. It should arrive within a few minutes.</li>
+          <li>Accept the calendar invite so the session lands in your calendar with the join link.</li>
+          <li>Not there? Check Promotions or Spam and move it to your inbox, so you get the reminders too.</li>
+        </ul>
+      </div>
+
+      <div class="video">
+        <div class="frame">
+          <iframe src="https://www.loom.com/embed/3c9cfbfb9b814c08a969735f2a13a921?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" title="A short message from Tom" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <p class="caption"><img src="https://go.mycoachpath.xyz/assets/tom.jpg" alt="Tom Aris" width="80" height="80"><span><strong style="color: var(--ink)">A short message from Tom.</strong> What to expect from the session and how to prepare.</span></p>
+
+      <div class="label" style="margin-top: 1rem"><b>03</b><i></i><span>Before we meet</span></div>
+      <div class="prep">
+        <div class="card"><span class="n">01</span><p class="h">Bring one real question</p><p class="b">The one about clients, pricing or visibility that has been on your mind longest. We work on real situations.</p></div>
+        <div class="card"><span class="n">02</span><p class="h">Know your numbers roughly</p><p class="b">Current clients, typical engagement size, where they come from. A rough picture is enough.</p></div>
+        <div class="card"><span class="n">03</span><p class="h">Block the full hour</p><p class="b">It is a working session, not a webinar. Camera on if you can, notepad ready.</p></div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="card steps" aria-label="Your progress">
+        <div class="steps-head"><p>Your path</p><p>Step 2 of 4</p></div>
+        <div class="bar" aria-hidden="true"><span></span></div>
+        <ol class="track">
+          <li class="done">
+            <span class="mark" aria-hidden="true">✓</span>
+            <div><p class="st">Registration</p><p class="sd">Your details are with us.</p><span class="tag ok">Done</span></div>
+          </li>
+          <li class="now" aria-current="step">
+            <span class="mark" aria-hidden="true">2</span>
+            <div><p class="st">Confirm your seat</p><p class="sd">Open our email and accept the calendar invite.</p><span class="tag todo">Pending</span></div>
+          </li>
+          <li>
+            <span class="mark" aria-hidden="true">3</span>
+            <div><p class="st">Prepare</p><p class="sd">Watch Tom's short video and bring one real question.</p></div>
+          </li>
+          <li>
+            <span class="mark" aria-hidden="true">4</span>
+            <div><p class="st">Live working session</p><p class="sd">60 minutes with Tom on Google Meet.</p></div>
+          </li>
+        </ol>
+        <p class="help">Questions or no email after 15 minutes? Write to <a href="mailto:tom@mycoachpath.com">tom@mycoachpath.com</a>. A real person answers.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="proof">
+  <div class="wrap">
+    <div style="display: flex; flex-direction: column; gap: 1.25rem; max-width: 44rem">
+      <div class="label"><b>04</b><i></i><span>Coaches we work with</span></div>
+      <h2>Experienced coaches, real results.</h2>
+      <p class="lede">No hacks and no funnels that feel wrong. Clear positioning, an offer that is easy to say yes to, and visibility built on real expertise.</p>
+    </div>
+    <div class="cases">
+      <article class="card case">
+        <p class="who">Miranda · Executive coach</p>
+        <p class="big">2×</p>
+        <p class="h">Doubled her business in under a year.</p>
+        <p class="b">With two months of the quarter still to go, Miranda had already matched her revenue for the entire previous year. Not by working more hours, but with a sharper offer and a steady path to the right conversations.</p>
+        <div class="facts"><span>Last year's revenue matched early</span><span>Higher-value engagements</span></div>
+      </article>
+      <article class="card case">
+        <p class="who">Joe Patneaude · Speaker and leadership advisor</p>
+        <p class="h">From 25 years in financial services to a speaker brand that books the stage.</p>
+        <p class="b">We sharpened Joe's message into one keynote idea, "Don't Trust the Process", and built the brand and website around it. He was named an IAOTP Top Rising Voice in Leadership.</p>
+        <div class="facts"><span>Clear keynote positioning</span><span>New brand and website</span><span>IAOTP recognition</span></div>
+        <div class="browser">
+          <div class="chrome"><i></i><i></i><i></i><span>joepatneaude.com</span></div>
+          <div class="view">
+            <iframe src="https://joepatneaude.com/" title="Preview of joepatneaude.com" loading="lazy" tabindex="-1" aria-hidden="true"></iframe>
+            <a class="cover" href="https://joepatneaude.com/" target="_blank" rel="noopener" aria-label="Open joepatneaude.com"></a>
+          </div>
+        </div>
+        <a class="more" href="https://joepatneaude.com/" target="_blank" rel="noopener">See Joe's website</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <p class="q">We keep these sessions small on purpose, so we can actually look at your situation.</p>
+    <p>Confirm your seat in the email, and we will see you live. Anything you want Tom to know in advance? Just reply to the email or write to <a href="mailto:tom@mycoachpath.com">tom@mycoachpath.com</a>.</p>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <span>© My Coach Path</span>
+    <span><a href="https://mycoachpath.com/imprint/">Imprint</a> · <a href="https://mycoachpath.com/privacy-policy/">Privacy</a> · <a href="https://mycoachpath.com/disclaimer/">Disclaimer</a></span>
+  </div>
+</footer>
+<script>
+  try { if (window.umami) umami.track('Thank you page'); } catch (x) {}
+  document.querySelectorAll('a[href^="https://joepatneaude.com"]').forEach(function (a) {
+    a.addEventListener('click', function () { try { if (window.umami) umami.track('Case study click', { who: 'joe' }); } catch (x) {} });
+  });
+</script>
+</body>
+</html>
