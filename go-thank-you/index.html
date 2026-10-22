@@ -120,7 +120,11 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; justify-conte
 footer a { color: #8A8276; }
 
 @media (max-width: 880px) {
-  .grid { grid-template-columns: minmax(0, 1fr); }
+  /* Phones: headline first, then the agenda, then the rest */
+  .grid { display: flex; flex-direction: column; gap: 1.5rem; }
+  .main { display: contents; }
+  .main > * { order: 1; }
+  .main > .eyebrow, .main > h1, .main > .lede { order: -2; }
   aside { position: static; order: -1; }
   /* Compact agenda on phones: show all steps but tighter */
   ol.track li { padding: 0.6rem 0; }
