@@ -26,7 +26,7 @@ const io = new IntersectionObserver((entries) => {
     if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
   });
 }, { threshold: 0.1, rootMargin: "0px 0px -5% 0px" });
-document.querySelectorAll(".reveal, .mark, .chapter, .lines li, .path, [data-count]").forEach((el) => io.observe(el));
+document.querySelectorAll(".reveal, .mark, .chapter, .path").forEach((el) => io.observe(el));
 
 // Zahlen zählen hoch
 const counter = new IntersectionObserver((entries) => {
@@ -44,7 +44,7 @@ const counter = new IntersectionObserver((entries) => {
     requestAnimationFrame(step);
   });
 }, { threshold: 0.6 });
-document.querySelectorAll("[data-count]").forEach((el) => counter.observe(el));
+document.querySelectorAll("[data-count]").forEach((el) => { if (!calm) el.textContent = "0"; counter.observe(el); });
 
 // Statement: Wörter leuchten beim Scrollen nacheinander auf
 document.querySelectorAll(".words").forEach((block) => {
@@ -75,7 +75,7 @@ const onScroll = () => {
   header && header.classList.toggle("scrolled", y > 8);
   words.forEach((block) => {
     const r = block.getBoundingClientRect();
-    const p = Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (r.height + vh * 0.35)));
+    const p = Math.min(1, Math.max(0, (vh * 0.9 - r.top) / (r.height + vh * 0.1)));
     const ws = block.querySelectorAll(".w"), lit = Math.round(p * ws.length);
     ws.forEach((w, i) => w.classList.toggle("on", calm || i < lit));
   });
@@ -107,20 +107,42 @@ if (media) {
   document.querySelectorAll(".chapter[data-media]").forEach((c) => chapterIo.observe(c));
 }
 
-// Wechselndes Wort: alle 2,2 Sekunden das nächste
+// Wechselndes Wort: alle 2,2 Sekunden das nächste.
+// Das abgelöste Wort springt ohne Übergang zurück nach unten, sonst fliegt es sichtbar durchs Bild.
 document.querySelectorAll(".rotator").forEach((r) => {
   const items = [...r.children];
   let i = 0;
   items[0].classList.add("on");
   if (calm || items.length < 2) return;
-  setInterval(() => {
-    const prev = items[i];
-    i = (i + 1) % items.length;
-    prev.classList.remove("on"); prev.classList.add("out");
-    items[i].classList.remove("out"); items[i].classList.add("on");
-    setTimeout(() => prev.classList.remove("out"), 700);
-  }, 2200);
+  const next = () => {
+    if (!document.hidden) {
+      const prev = items[i];
+      i = (i + 1) % items.length;
+      prev.classList.replace("on", "out");
+      items[i].classList.add("on");
+      setTimeout(() => {
+        prev.style.transition = "none";
+        prev.classList.remove("out");
+        void prev.offsetWidth;
+        prev.style.transition = "";
+      }, 750);
+    }
+    setTimeout(next, 2200);
+  };
+  setTimeout(next, 2200);
 });
+
+// Typische Situationen: immer die Zeile in der Bildschirmmitte hervorheben
+const lines = [...document.querySelectorAll(".lines li")];
+if (lines.length) {
+  lines[0].classList.add("active");
+  const lineIo = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) lines.forEach((li) => li.classList.toggle("active", li === e.target));
+    });
+  }, { rootMargin: "-45% 0px -45% 0px" });
+  lines.forEach((li) => lineIo.observe(li));
+}
 
 // Stimmen: wechseln automatisch, Punkte zum Umschalten
 document.querySelectorAll("[data-voices]").forEach((wrap) => {
