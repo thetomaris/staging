@@ -90,7 +90,7 @@ p { margin: 0 0 1em; }
   display: inline-flex; align-items: center; gap: 10px;
   background: var(--ink); color: #fff;
   text-decoration: none; font-weight: 600; font-size: 16px;
-  padding: 17px 28px; border-radius: 999px;
+  padding: 17px 26px; border-radius: 2px;
   transition: transform .3s var(--ease), background .3s;
 }
 .btn::after { content: "\2192"; transition: transform .3s var(--ease); }
@@ -168,6 +168,13 @@ section.forest .soft { color: rgba(255, 255, 255, 0.38); }
 .statement { text-align: left; }
 .statement .mega { max-width: 16ch; }
 .words .w { opacity: 0.16; transition: opacity .25s linear; }
+
+/* Wechselndes Wort am Satzende */
+.rotator { display: inline-grid; vertical-align: bottom; overflow: hidden; padding-bottom: 0.14em; margin-bottom: -0.14em; }
+.rotator > * { grid-area: 1 / 1; transform: translateY(140%); transition: transform .7s var(--ease); white-space: nowrap; }
+.rotator > .on { transform: none; }
+.rotator > .out { transform: translateY(-140%); }
+.rotator .leaf-line { color: var(--ink); background-image: linear-gradient(var(--leaf), var(--leaf)); background-repeat: no-repeat; background-position: 0 88%; background-size: 100% 0.1em; }
 .words .w.on { opacity: 1; }
 .statement cite { display: block; margin-top: 40px; font-style: normal; font-size: 15px; color: var(--muted); }
 
@@ -185,7 +192,6 @@ section.forest .soft { color: rgba(255, 255, 255, 0.38); }
 
 .story { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(40px, 7vw, 120px); }
 .story-aside { position: sticky; top: 120px; align-self: start; }
-.story-aside img { border-radius: 6px; margin-top: 40px; }
 .chapter { padding: 0 0 clamp(56px, 7vw, 96px); border-left: 1px solid var(--line); padding-left: clamp(24px, 3vw, 48px); position: relative; }
 .chapter::before {
   content: ""; position: absolute; left: -6px; top: 10px; width: 11px; height: 11px; border-radius: 50%;
@@ -198,19 +204,21 @@ section.forest .soft { color: rgba(255, 255, 255, 0.38); }
 .chapter p { color: var(--muted); max-width: 32em; }
 @media (max-width: 860px) { .story { grid-template-columns: 1fr; } .story-aside { position: static; } }
 
-/* Erinnerungsfoto im Polaroid-Stil: niedrige Auflösung wird zum Stilmittel */
-.snapshot {
-  margin: 36px 0 8px; max-width: 360px;
-  background: #fff; padding: 12px 12px 0;
-  box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 18px 40px -18px rgba(30, 47, 26, .35);
-  transform: rotate(-2.5deg);
-  transition: transform .5s var(--ease);
+/* Bildwechsel links: das Bild folgt dem Kapitel, das gerade gelesen wird */
+.story-media { position: relative; margin-top: 40px; aspect-ratio: 4 / 3; border-radius: 6px; overflow: hidden; background: var(--sand); }
+.story-media img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 0;
+  opacity: 0; transform: scale(1.06); margin: 0;
+  transition: opacity .8s var(--ease), transform 1.6s var(--ease);
 }
-.js .snapshot.reveal { transform: translateY(28px) rotate(-6deg); }
-.js .snapshot.reveal.in { transform: rotate(-2.5deg); }
-.snapshot:hover, .js .snapshot.reveal.in:hover { transform: rotate(0deg) scale(1.02); }
-.snapshot img { filter: sepia(.18) saturate(.9) contrast(.96); }
-.snapshot figcaption { font-family: var(--font-serif); font-style: italic; font-size: 17px; color: var(--muted); padding: 12px 4px 14px; }
+.story-media img.active { opacity: 1; transform: scale(1); }
+.story-caption { margin: 14px 0 0; font-family: var(--font-serif); font-style: italic; font-size: 18px; color: var(--muted); min-height: 1.5em; transition: opacity .4s; }
+.story-caption.fade { opacity: 0; }
+.chapter-img { display: none; }
+@media (max-width: 860px) {
+  .story-media, .story-caption { display: none; }
+  .chapter-img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; margin-bottom: 20px; }
+}
 
 /* ---------- Angebote als große Zeilen ---------- */
 
@@ -246,7 +254,7 @@ section.forest .soft { color: rgba(255, 255, 255, 0.38); }
 .voice figcaption { display: flex; align-items: center; gap: 14px; margin-top: 36px; font-size: 15px; line-height: 1.4; }
 .voice figcaption strong { display: block; }
 .avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--paper); border: 1px dashed var(--soft); flex: none; }
-.ph-label { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); background: var(--leaf-soft); border-radius: 999px; padding: 5px 12px; margin-bottom: 28px; }
+.ph-label { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); background: var(--leaf-soft); border-radius: 2px; padding: 5px 12px; margin-bottom: 28px; }
 .voice.placeholder blockquote { color: var(--muted); }
 .voice-dots { display: flex; gap: 8px; margin-top: 40px; }
 .voice-dots button { width: 10px; height: 10px; border-radius: 50%; border: 0; padding: 0; background: var(--soft); cursor: pointer; transition: all .3s; }
@@ -264,14 +272,17 @@ section.forest .soft { color: rgba(255, 255, 255, 0.38); }
 /* ---------- Szenen (Change-Seite) ---------- */
 
 .lines { list-style: none; margin: 0; padding: 0; }
+.lines-wrap { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(40px, 7vw, 120px); }
+.lines-head { position: sticky; top: 120px; align-self: start; }
+@media (max-width: 860px) { .lines-wrap { grid-template-columns: 1fr; } .lines-head { position: static; } }
 .lines li {
-  font-family: var(--font-display); font-weight: 600; letter-spacing: -0.035em; line-height: 1.05;
-  font-size: clamp(1.9rem, 4.6vw, 4rem);
-  padding: 0.28em 0; border-bottom: 1px solid var(--line);
+  font-family: var(--font-display); font-weight: 600; letter-spacing: -0.025em; line-height: 1.15;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  padding: clamp(28px, 3.6vw, 44px) 0; border-bottom: 1px solid var(--line);
   color: var(--soft); transition: color .5s var(--ease);
 }
-.lines li.in { color: var(--ink); }
-.lines li small { display: block; font-family: var(--font-body); font-weight: 400; letter-spacing: 0; font-size: 16px; line-height: 1.5; color: var(--muted); margin-top: 10px; max-width: 40em; }
+.lines li:first-child { padding-top: 0; }
+.lines li small { display: block; font-family: var(--font-body); font-weight: 400; letter-spacing: 0; font-size: 16px; line-height: 1.6; color: var(--muted); margin-top: 14px; max-width: 34em; }
 
 /* Weg zum Gipfel: vier Etappen auf einer Linie */
 .path { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: clamp(48px, 6vw, 80px); }

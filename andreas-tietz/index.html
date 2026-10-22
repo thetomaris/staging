@@ -22,7 +22,7 @@
       <a href="change-management.html">Change-Management</a>
       <a href="#geschichte">Meine Geschichte</a>
       <a href="#angebote">Zusammenarbeit</a>
-      <a class="btn small green" href="#termin" data-book data-umami-event="Termin buchen: Header">Termin buchen</a>
+      <a class="btn small green" href="#termin" data-book data-umami-event="Termin buchen: Header">Anlaufgespräch</a>
     </nav>
   </div>
 </header>
@@ -42,7 +42,7 @@
         <div class="reveal d2">
           <p class="lede">Für Geschäftsführung, Bereichsleitung und Führungskräfte, wenn ein Wandel ansteht oder ins Stocken gerät. Mit 25 Jahren Erfahrung aus Volkswagen und Porsche, und mit dem Blick auf die Menschen, die ihn tragen.</p>
           <div class="btn-row">
-            <a class="btn green" href="#termin" data-book data-umami-event="Termin buchen: Hero">Erstgespräch buchen</a>
+            <a class="btn green" href="#termin" data-book data-umami-event="Termin buchen: Hero">Anlaufgespräch buchen</a>
             <a class="btn ghost" href="change-management.html">Change-Management</a>
           </div>
         </div>
@@ -75,30 +75,36 @@
       <div class="story-aside">
         <p class="eyebrow">Meine Geschichte</p>
         <h2>25 Jahre Industrie. Dann ein <em>Neustart.</em></h2>
-        <img class="reveal" src="assets/img/andreas-karriere.jpg" alt="Andreas Tietz erzählt seinen beruflichen Weg vor einer Präsentation" width="1600" height="1066" loading="lazy">
+        <div class="story-media reveal" aria-hidden="true">
+          <img class="active" src="assets/img/andreas-karriere.jpg" alt="" width="1600" height="1066" loading="lazy">
+          <img src="assets/img/andreas-porsche.jpg" alt="" width="1024" height="768" loading="lazy">
+          <img src="assets/img/andreas-buehne.jpg" alt="" width="1800" height="1200" loading="lazy">
+          <img src="assets/img/andreas-gespraech.jpg" alt="" width="1600" height="1066" loading="lazy">
+        </div>
+        <p class="story-caption" aria-hidden="true">Mein Weg, erzählt auf der Bühne</p>
       </div>
       <div>
-        <article class="chapter">
+        <article class="chapter" data-media="0" data-caption="Mein Weg, erzählt auf der Bühne">
+          <img class="chapter-img" src="assets/img/andreas-karriere.jpg" alt="Andreas Tietz erzählt seinen beruflichen Weg vor einer Präsentation" loading="lazy">
           <p class="when">Wolfsburg · Volkswagen</p>
           <h3>Führung habe ich dort gelernt, wo sie zählt: im Tagesgeschäft.</h3>
           <p>Als Diplom-Ingenieur bin ich bei Volkswagen eingestiegen und habe technische Informationssysteme, die Produktpflege und das Produktmanagement für Modellpflegen geleitet. Viele Jahre nah am Vorstand, mitten in Entscheidungen, die tausende Menschen betreffen.</p>
         </article>
-        <article class="chapter">
+        <article class="chapter" data-media="1" data-caption="Aus dem Fotoalbum: die Porsche-Zeit">
+          <img class="chapter-img" src="assets/img/andreas-porsche.jpg" alt="Andreas Tietz lachend am Steuer eines Porsche-Rennwagens" loading="lazy">
           <p class="when">Leipzig · Porsche</p>
           <h3>25 Serienanläufe. Jeder einzelne ein Wandel unter Zeitdruck.</h3>
           <p>Als Leiter Anlaufmanagement im Porsche Werk Leipzig war ich verantwortlich, wenn ein neues Fahrzeug in Serie ging. Der Termin steht, und Technik, Abteilungen und Menschen müssen gleichzeitig mitziehen. Dort habe ich gelernt: Veränderung scheitert selten an der Technik.</p>
           <p>Einer der Anläufe, die mich am meisten geprägt haben: der Taycan, der erste vollelektrische Porsche. Ein Wandel nicht nur für ein Werk, sondern für eine ganze Marke.</p>
-          <figure class="snapshot reveal">
-            <img src="assets/img/andreas-porsche.jpg" alt="Andreas Tietz lachend am Steuer eines Porsche-Rennwagens" width="1024" height="768" loading="lazy">
-            <figcaption>Aus dem Fotoalbum: die Porsche-Zeit</figcaption>
-          </figure>
         </article>
-        <article class="chapter">
+        <article class="chapter" data-media="2" data-caption="Neustart: heute auf der Bühne statt im Werk">
+          <img class="chapter-img" src="assets/img/andreas-buehne.jpg" alt="Andreas Tietz bei einem Vortrag" loading="lazy">
           <p class="when">Ende 2021</p>
           <h3>Dann habe ich das Buch zugeklappt.</h3>
           <p>Nach 25 Jahren im Konzern habe ich Porsche verlassen, das Haus in Sachsen verkauft und bin ins Allgäu gezogen. Viele haben gefragt: Was machst du jetzt? Meine Antwort war ein Neustart. Auf Englisch: Reboot.</p>
         </article>
-        <article class="chapter">
+        <article class="chapter" data-media="3" data-caption="Im Gespräch, mitten in der Veränderung">
+          <img class="chapter-img" src="assets/img/andreas-gespraech.jpg" alt="Andreas Tietz im Gespräch mit einer Gruppe" loading="lazy">
           <p class="when">Heute · Allgäu</p>
           <h3>Ich begleite Menschen und Unternehmen durch genau solche Übergänge.</h3>
           <p>Mit der Erfahrung aus der Industrie, fundierter Persönlichkeitsentwicklung und New Work. Und mit dem Wissen, wie es sich anfühlt, selbst mittendrin zu stehen.</p>
@@ -179,9 +185,9 @@
   <section class="booking" id="termin">
     <div class="glow" aria-hidden="true"></div>
     <div class="wrap">
-      <p class="eyebrow">Termin</p>
-      <h2 class="reveal">Klarheit beginnt mit einem guten <em>ersten Gespräch.</em></h2>
-      <p class="lede muted reveal" style="margin-top:28px">30 Minuten, kostenfrei und ohne Verpflichtung. Du erzählst, wo du stehst. Ich sage dir ehrlich, ob und wie ich helfen kann.</p>
+      <p class="eyebrow">Anlaufgespräch</p>
+      <h2 class="reveal">Jede Veränderung braucht einen guten <em>Anlauf.</em></h2>
+      <p class="lede muted reveal" style="margin-top:28px">Das Anlaufgespräch: 30 Minuten, kostenfrei und ohne Verpflichtung. Du erzählst, wo du stehst. Ich sage dir ehrlich, ob und wie ich helfen kann.</p>
       <div class="calendar-slot">Hier erscheint der Buchungskalender.<br>Das Buchungstool wird noch festgelegt.</div>
       <div class="btn-row">
         <a class="btn ghost" href="mailto:andreas@livingreboot.de" data-umami-event="E-Mail">andreas@livingreboot.de</a>
@@ -205,7 +211,7 @@
           <li><a href="change-management.html">Change-Management</a></li>
           <li><a href="#geschichte">Meine Geschichte</a></li>
           <li><a href="#angebote">Zusammenarbeit</a></li>
-          <li><a href="#termin" data-book>Termin buchen</a></li>
+          <li><a href="#termin" data-book>Anlaufgespräch buchen</a></li>
         </ul>
       </div>
       <div>

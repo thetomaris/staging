@@ -57,7 +57,8 @@ document.querySelectorAll(".words").forEach((block) => {
           const s = document.createElement("span"); s.className = "w"; s.textContent = part; frag.append(s);
         });
         n.replaceWith(frag);
-      } else if (n.nodeType === 1) walk(n);
+      } else if (n.nodeType === 1 && n.classList.contains("rotator")) n.classList.add("w");
+      else if (n.nodeType === 1) walk(n);
     });
   };
   walk(block);
@@ -82,6 +83,44 @@ const onScroll = () => {
 };
 window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
 onScroll();
+
+// Geschichte: links wechselt das Bild mit dem Kapitel in der Bildschirmmitte
+const media = document.querySelector(".story-media");
+const caption = document.querySelector(".story-caption");
+if (media) {
+  const imgs = [...media.querySelectorAll("img")];
+  let current = 0;
+  const showMedia = (n, text) => {
+    if (n === current) return;
+    current = n;
+    imgs.forEach((img, k) => img.classList.toggle("active", k === n));
+    if (caption) {
+      caption.classList.add("fade");
+      setTimeout(() => { caption.textContent = text; caption.classList.remove("fade"); }, 250);
+    }
+  };
+  const chapterIo = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) showMedia(Number(e.target.dataset.media), e.target.dataset.caption || "");
+    });
+  }, { rootMargin: "-45% 0px -45% 0px" });
+  document.querySelectorAll(".chapter[data-media]").forEach((c) => chapterIo.observe(c));
+}
+
+// Wechselndes Wort: alle 2,2 Sekunden das nächste
+document.querySelectorAll(".rotator").forEach((r) => {
+  const items = [...r.children];
+  let i = 0;
+  items[0].classList.add("on");
+  if (calm || items.length < 2) return;
+  setInterval(() => {
+    const prev = items[i];
+    i = (i + 1) % items.length;
+    prev.classList.remove("on"); prev.classList.add("out");
+    items[i].classList.remove("out"); items[i].classList.add("on");
+    setTimeout(() => prev.classList.remove("out"), 700);
+  }, 2200);
+});
 
 // Stimmen: wechseln automatisch, Punkte zum Umschalten
 document.querySelectorAll("[data-voices]").forEach((wrap) => {
