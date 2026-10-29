@@ -94,21 +94,25 @@ ol.track li.done:not(:last-child)::after { background: var(--gold-d); }
 /* Proof */
 .proof { background: var(--bg2); padding: clamp(3rem, 9vw, 5.5rem) 0; }
 .proof .wrap { display: flex; flex-direction: column; gap: clamp(1.75rem, 5vw, 2.5rem); }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); border-top: 1px solid #C7C3B9; border-bottom: 1px solid #C7C3B9; }
+.stats div { padding: 1.4rem 1.25rem 1.5rem 0; display: flex; flex-direction: column; gap: 0.4rem; }
+.stats div + div { padding-left: 1.25rem; border-left: 1px solid #C7C3B9; }
+.stats b { font-size: clamp(2.2rem, 8vw, 2.8rem); font-weight: 800; line-height: 1; letter-spacing: -0.035em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.stats span { font-size: 0.9375rem; line-height: 1.4; color: var(--muted); }
+.stats em { font-style: normal; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); margin-top: 0.2rem; }
 .cases { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr)); }
-.case { padding: 1.5rem 1.5rem 1.6rem; display: flex; flex-direction: column; gap: 1rem; }
-.who { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--soft); }
-.big { font-size: clamp(2.4rem, 9vw, 3rem); font-weight: 800; line-height: 0.95; letter-spacing: -0.04em; color: var(--ink); }
-.case .h { font-size: clamp(1.2rem, 4.6vw, 1.35rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.015em; color: var(--ink); text-wrap: balance; }
-.case .b { color: var(--muted); text-wrap: pretty; }
-.facts { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.facts span { font-size: 0.8125rem; font-weight: 700; padding: 0.3rem 0.6rem; border: 1px solid var(--line); border-radius: 3px; color: var(--muted); background: var(--bg); }
-.case-top { display: flex; align-items: center; gap: 0.8rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line2); }
-.avatar { flex: 0 0 auto; width: 2.75rem; height: 2.75rem; border-radius: 50%; display: grid; place-items: center; background: var(--dark); color: var(--gold); font-size: 0.9375rem; font-weight: 800; letter-spacing: 0.02em; }
-.case-top .name { font-size: 1rem; font-weight: 800; line-height: 1.2; color: var(--ink); }
-.case-top .role { font-size: 0.875rem; line-height: 1.3; color: var(--soft); }
-.stat { display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; }
-.stat small { font-size: 0.9375rem; font-weight: 700; line-height: 1.3; color: var(--gold-ink); max-width: 14rem; }
-.case .facts { margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--line2); }
+.case { padding: 1.75rem 1.6rem 1.6rem; display: flex; flex-direction: column; gap: 1.25rem; }
+.quote { margin: 0; font-size: clamp(1.4rem, 5.2vw, 1.75rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
+.quote::before { content: "\201C"; display: block; font-size: 3rem; line-height: 0.6; color: var(--gold-d); margin-bottom: 0.35rem; }
+.who2 { display: flex; flex-direction: column; gap: 0.1rem; }
+.who2 b { font-size: 1rem; font-weight: 800; color: var(--ink); }
+.who2 span { font-size: 0.875rem; color: var(--soft); }
+.ba { display: grid; gap: 0; margin-top: auto; border-top: 1px solid var(--line2); }
+.ba div { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: 0.75rem; padding: 0.8rem 0; border-bottom: 1px solid var(--line2); font-size: 0.9375rem; line-height: 1.45; color: var(--muted); }
+.ba div:last-child { border-bottom: 0; padding-bottom: 0; }
+.ba dt { font-size: 0.6875rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); padding-top: 0.2rem; }
+.ba dd { margin: 0; }
+.ba .res dd { color: var(--ink); font-weight: 700; }
 .case a.more { font-size: 0.9375rem; font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--gold-d); align-self: flex-start; }
 
 .close { background: var(--dark); color: #D9D3C7; padding: clamp(2.5rem, 7vw, 4rem) 0; }
@@ -144,7 +148,7 @@ footer a { color: #8A8276; }
   <div class="wrap grid">
     <div class="main">
       <p class="eyebrow"><span class="dot"></span><span>Free live working session for executive leadership coaches</span></p>
-      <h1>You're booked.</h1>
+      <h1>You're booked. One step left.</h1>
       <p class="lede">Your seat is reserved and Tom has your name on the list. One quick confirmation in your inbox and you're all set.</p>
 
       <div class="video">
@@ -204,24 +208,33 @@ footer a { color: #8A8276; }
 <section class="proof">
   <div class="wrap">
     <div style="display: flex; flex-direction: column; gap: 1.25rem; max-width: 44rem">
-      <div class="label"><b>04</b><i></i><span>Coaches we work with</span></div>
-      <h2>Experienced coaches, real results.</h2>
-      <p class="lede">No hacks and no funnels that feel wrong. Clear positioning, an offer that is easy to say yes to, and visibility built on real expertise.</p>
+      <div class="label"><b>04</b><i></i><span>Where this path leads</span></div>
+      <h2>What coaches built after the session.</h2>
+      <p class="lede">Results from executive and leadership coaches in our programs, in their own words.</p>
+    </div>
+    <div class="stats">
+      <div><b>2.08×</b><span>last year's full revenue, reached by October with 10 weeks left.</span><em>Miranda C.</em></div>
+      <div><b>$60K</b><span>in two new clients, closed in week 3 of the program, both through LinkedIn.</span><em>Angelo S.</em></div>
+      <div><b>$2K → $20K</b><span>monthly recurring revenue after moving from hourly rates to a niche offer.</span><em>John B.</em></div>
     </div>
     <div class="cases">
       <article class="card case">
-        <div class="case-top"><span class="avatar" aria-hidden="true">M</span><div><p class="name">Miranda</p><p class="role">Executive coach</p></div></div>
-        <div class="stat"><p class="big">2×</p><small>revenue in under a year</small></div>
-        <p class="h">Last year's revenue, matched with two months of the quarter to spare.</p>
-        <p class="b">Miranda doubled her business in less than a year. Not by working more hours, but with a sharper offer and a steady path to the right conversations.</p>
-        <div class="facts"><span>Sharper offer</span><span>Higher-value engagements</span><span>Steady pipeline</span></div>
+        <p class="quote">I have now officially hit double my revenue of last year.</p>
+        <p class="who2"><b>Miranda C.</b><span>Executive coach</span></p>
+        <dl class="ba">
+          <div><dt>Before</dt><dd>First full year closed at about $73K. Naming her price felt hard.</dd></div>
+          <div><dt>Changed</dt><dd>Higher prices, cross-selling inside existing corporate accounts, and a lower-risk entry offer that turned into a subscription.</dd></div>
+          <div class="res"><dt>Result</dt><dd>2.08× the year before, with 10 weeks of the year still to go.</dd></div>
+        </dl>
       </article>
       <article class="card case">
-        <div class="case-top"><span class="avatar" aria-hidden="true">JP</span><div><p class="name">Joe Patneaude</p><p class="role">Speaker and leadership advisor</p></div></div>
-        <div class="stat"><p class="big">IAOTP</p><small>Top Rising Voice in Leadership 2027</small></div>
-        <p class="h">From 25 years in financial services to a speaker brand built on one clear idea.</p>
-        <p class="b">We sharpened Joe's message into one keynote, "Don't Trust the Process", and built his brand and website around it. Leaders now know exactly what he stands for.</p>
-        <div class="facts"><span>Clear keynote positioning</span><span>New brand and website</span></div>
+        <p class="quote">This would have taken me 6 years.</p>
+        <p class="who2"><b>Joe Patneaude</b><span>Keynote speaker, on his new website</span></p>
+        <dl class="ba">
+          <div><dt>Before</dt><dd>Daily posts and cold outreach that did not sound like him.</dd></div>
+          <div><dt>Built</dt><dd>His full personal brand: positioning, the keynote "Don't Trust the Process", a new website and promo videos.</dd></div>
+          <div class="res"><dt>Result</dt><dd>Named Top Rising Voice in Leadership 2027 by IAOTP. TEDx talk submitted.</dd></div>
+        </dl>
         <a class="more" href="https://joepatneaude.com/" target="_blank" rel="noopener">See Joe's website</a>
       </article>
     </div>
