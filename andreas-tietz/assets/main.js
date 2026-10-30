@@ -1,9 +1,20 @@
 // Ein einziger Buchungslink für die ganze Seite.
-// Buchungstool ist noch offen: sobald es feststeht, nur diese Zeile ändern.
-const BOOKING_URL = "#termin";
+// Buchungstool ist noch offen: sobald es feststeht, hier die URL eintragen.
+// Leer = interner Terminbereich (#termin auf der Seite, sonst auf der Startseite).
+const BOOKING_URL = "";
 
-document.querySelectorAll("[data-book]").forEach((a) => { a.href = BOOKING_URL; });
+// LinkedIn-Profil: OFFEN, URL fehlt noch. Platzhalter bis Andreas sie schickt.
+const LINKEDIN_URL = "https://www.linkedin.com/";
+
+const bookingHref = BOOKING_URL || (document.getElementById("termin") ? "#termin" : "index.html#termin");
+document.querySelectorAll("[data-book]").forEach((a) => { a.href = bookingHref; });
+document.querySelectorAll("[data-linkedin]").forEach((a) => { a.href = LINKEDIN_URL; });
 document.querySelectorAll("[data-year]").forEach((el) => { el.textContent = new Date().getFullYear(); });
+
+// Zeitgesteuert: data-hide-after blendet ab dem Zeitpunkt aus, data-show-after blendet dann ein.
+const now = Date.now();
+document.querySelectorAll("[data-hide-after]").forEach((el) => { if (now > Date.parse(el.dataset.hideAfter)) el.hidden = true; });
+document.querySelectorAll("[data-show-after]").forEach((el) => { el.hidden = now <= Date.parse(el.dataset.showAfter); });
 
 const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -163,4 +174,31 @@ document.querySelectorAll("[data-voices]").forEach((wrap) => {
   });
   show(0);
   if (!calm) timer = setInterval(() => show((i + 1) % items.length), 7000);
+});
+
+// Anmeldung Impulsabend: sendet an die action des Formulars (vorerst Netlify Forms).
+// Für ein anderes Anmelde-Tool nur action und Feldnamen im HTML anpassen.
+document.querySelectorAll("form[data-signup]").forEach((form) => {
+  const done = document.getElementById(form.dataset.signup);
+  const error = form.querySelector(".form-error");
+  form.addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    if (!form.reportValidity()) return;
+    const btn = form.querySelector("[type=submit]");
+    btn.disabled = true;
+    if (error) error.hidden = true;
+    try {
+      const res = await fetch(form.getAttribute("action") || "/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(new FormData(form)).toString(),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      form.hidden = true;
+      if (done) { done.hidden = false; done.focus(); }
+    } catch (e) {
+      if (error) error.hidden = false;
+      btn.disabled = false;
+    }
+  });
 });

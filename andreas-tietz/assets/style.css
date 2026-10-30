@@ -37,6 +37,7 @@ body {
   overflow-x: hidden;
 }
 img { max-width: 100%; display: block; height: auto; }
+[hidden] { display: none !important; }
 a { color: inherit; }
 ::selection { background: var(--leaf); color: var(--ink); }
 .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
@@ -314,6 +315,101 @@ section.forest .soft { color: rgba(255, 255, 255, 0.38); }
   .stage { padding-top: 0; padding-left: 24px; border-left: 2px solid var(--leaf); }
 }
 
+/* ---------- Zwei Wege ---------- */
+
+.ways { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.way {
+  display: flex; flex-direction: column; text-decoration: none; position: relative; isolation: isolate; overflow: hidden;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 6px;
+  padding: clamp(28px, 4vw, 56px); min-height: clamp(280px, 30vw, 420px);
+}
+.way::before { content: ""; position: absolute; inset: 0; background: var(--leaf-soft); transform: scaleY(0); transform-origin: bottom; transition: transform .5s var(--ease); z-index: -1; }
+.way:hover::before { transform: scaleY(1); }
+.way .for { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.way h3 { font-size: clamp(2rem, 4vw, 3.4rem); letter-spacing: -0.035em; line-height: 1; margin: 18px 0 20px; }
+.way p { color: var(--muted); max-width: 30em; }
+.way .go { margin-top: auto; padding-top: 24px; font-weight: 600; display: inline-flex; gap: 8px; }
+.way .go::after { content: "\2192"; transition: transform .3s var(--ease); }
+.way:hover .go::after { transform: translateX(6px); }
+.way.dark { background: var(--forest); border-color: var(--forest); color: #fff; }
+.way.dark::before { background: var(--forest-2); }
+.way.dark .for, .way.dark p { color: rgba(255, 255, 255, 0.68); }
+@media (max-width: 860px) { .ways { grid-template-columns: 1fr; } }
+.bridge { margin-top: clamp(56px, 8vw, 110px); }
+
+/* ---------- Hinweisleiste Impulsabend ---------- */
+
+.notice { background: var(--leaf); color: var(--ink); }
+.notice .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; padding-top: 22px; padding-bottom: 22px; }
+.notice p { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.05rem, 1.6vw, 1.3rem); letter-spacing: -0.015em; line-height: 1.3; }
+.notice p span { font-weight: 500; color: rgba(22, 23, 20, 0.72); }
+.notice .btn { background: var(--ink); color: #fff; }
+
+/* ---------- Kacheln ---------- */
+
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.tile { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: clamp(24px, 3vw, 40px); }
+.sand .tile { background: var(--paper); }
+.tile .k { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+.tile h3 { margin-bottom: 12px; }
+.tile p { margin: 0; color: var(--muted); font-size: 16px; }
+.tile .big { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.6rem, 2.6vw, 2.2rem); letter-spacing: -0.03em; line-height: 1.1; color: var(--ink); }
+@media (max-width: 860px) { .tiles { grid-template-columns: 1fr; } }
+
+/* ---------- Ablauf ---------- */
+
+.stations { border-top: 1px solid var(--line); counter-reset: none; }
+.station { display: grid; grid-template-columns: 80px 1fr 1.3fr; gap: 24px; align-items: baseline; padding: clamp(24px, 3.4vw, 40px) clamp(0px, 2vw, 24px); border-bottom: 1px solid var(--line); }
+.station .no { font-family: var(--font-serif); font-style: italic; font-size: 2.2rem; line-height: 1; color: var(--soft); }
+.station h3 { font-size: clamp(1.6rem, 3vw, 2.4rem); letter-spacing: -0.03em; }
+.station p { margin: 0; color: var(--muted); }
+.station .tag { display: inline-block; margin-top: 10px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; background: var(--leaf); color: var(--ink); padding: 4px 10px; border-radius: 2px; }
+.station.accent { background: var(--leaf-soft); }
+.station.accent .no { color: var(--leaf); }
+@media (max-width: 860px) { .station { grid-template-columns: 48px 1fr; } .station p { grid-column: 2; } }
+
+/* ---------- Rahmen, Preis ---------- */
+
+.facts-list { list-style: none; margin: 0; padding: 0; font-size: 16px; }
+.facts-list li { padding: 10px 0; border-top: 1px solid var(--line); color: var(--muted); }
+.facts-list li:first-child { border-top: 0; padding-top: 0; }
+.facts-list strong { color: var(--ink); font-weight: 600; }
+.tile .price { font-family: var(--font-display); font-weight: 600; font-size: clamp(2.4rem, 4.4vw, 3.6rem); letter-spacing: -0.04em; line-height: 1; color: var(--ink); }
+.tile .price small { font-family: var(--font-body); font-size: 15px; font-weight: 400; letter-spacing: 0; color: var(--muted); }
+.price-old { text-decoration: line-through; color: var(--soft); font-size: 0.55em; margin-right: 10px; }
+.tile.highlight { border: 2px solid var(--leaf); }
+
+/* ---------- Querverbindung ---------- */
+
+.crosslink { border-top: 1px solid var(--line); }
+.crosslink .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; padding-top: 40px; padding-bottom: 40px; }
+.crosslink p { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.2rem, 2vw, 1.6rem); letter-spacing: -0.02em; }
+
+/* ---------- Anmeldeformular ---------- */
+
+.signup { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 20px; margin-top: 48px; max-width: 760px; }
+.signup .full { grid-column: 1 / -1; }
+.signup label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px; color: rgba(255, 255, 255, 0.8); }
+.signup input[type=text], .signup input[type=email] {
+  width: 100%; font: inherit; font-size: 17px; color: #fff;
+  background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.28); border-radius: 2px;
+  padding: 14px 16px;
+}
+.signup input:focus { outline: 2px solid var(--leaf); outline-offset: 1px; border-color: var(--leaf); }
+.signup .check { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: rgba(255, 255, 255, 0.75); line-height: 1.5; }
+.signup .check input { margin-top: 4px; width: 18px; height: 18px; accent-color: var(--leaf); flex: none; }
+.signup .check a { color: #fff; }
+.signup .opt { color: rgba(255, 255, 255, 0.5); font-weight: 400; }
+.signup button { font: inherit; border: 0; cursor: pointer; }
+.signup button:disabled { opacity: .6; cursor: wait; }
+.form-error { color: #ffd2c2; font-size: 15px; margin: 0; }
+.bot-field { position: absolute; left: -9999px; }
+.thanks { margin-top: 48px; max-width: 760px; border: 1px solid var(--leaf); border-radius: 6px; padding: clamp(24px, 3vw, 40px); }
+.thanks:focus { outline: none; }
+.thanks h3 { color: var(--leaf); margin-bottom: 14px; }
+.closed { margin-top: 48px; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.4rem, 2.4vw, 2rem); }
+@media (max-width: 860px) { .signup { grid-template-columns: 1fr; } }
+
 /* ---------- Buchung ---------- */
 
 .booking { background: var(--forest); color: #fff; position: relative; overflow: hidden; }
@@ -331,6 +427,7 @@ section.forest .soft { color: rgba(255, 255, 255, 0.38); }
 
 .site-footer { padding: 64px 0 88px; font-size: 15px; color: var(--muted); }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; }
+.formula { margin-top: 20px; font-family: var(--font-serif); font-style: italic; font-size: 19px; color: var(--ink); }
 .site-footer h4 { margin: 0 0 12px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); }
 .site-footer ul { list-style: none; margin: 0; padding: 0; line-height: 2; }
 .site-footer a { text-decoration: none; }
