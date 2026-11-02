@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>A Stability Plan for Co-operative Plating</title>
+<link rel="stylesheet" href="/kennon/theme.css">
+<script src="/kennon/theme.js"></script>
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+  section { padding: 96px 0; border-top: 1px solid var(--line); }
+  h2 { font-size: clamp(34px, 4.4vw, 54px); margin: 18px 0 22px; max-width: 860px; }
+  .lede { font-size: 19px; color: var(--dim); max-width: 700px; }
+
+  .topbar { border-bottom: 1px solid var(--line); background: var(--bar); position: sticky; top: 0; z-index: 5; backdrop-filter: blur(8px); }
+  .topbar .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 16px; padding-bottom: 16px; }
+  .mark { display: flex; align-items: center; gap: 12px; font: 600 15px/1 var(--head); letter-spacing: .22em; text-transform: uppercase; }
+  .mark svg { flex: none; }
+
+  .hero { border-top: 0; padding: 88px 0 104px; }
+  .hero h1 { font-size: clamp(48px, 7.6vw, 104px); text-transform: uppercase; letter-spacing: .01em; margin: 28px 0 28px; max-width: 980px; }
+  .hero h1 span { color: var(--dim); }
+  .hero .lede { font-size: 21px; color: var(--steel); }
+  .file { margin-top: 56px; display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); background: rgba(15,23,40,.7); }
+  .file div { padding: 18px 20px; border-right: 1px solid var(--line); }
+  .file div:last-child { border-right: 0; }
+  .file .label { display: block; margin-bottom: 8px; font-size: 10.5px; color: var(--faint); }
+  .file strong { font-weight: 500; font-size: 15px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1.25fr; gap: 56px; align-items: start; }
+  .intel { list-style: none; padding: 0; margin: 0; counter-reset: i; }
+  .intel li { counter-increment: i; padding: 22px 24px 22px 76px; position: relative; border: 1px solid var(--line); background: var(--panel); margin-bottom: 10px; font-size: 19px; }
+  .intel li::before { content: "0" counter(i); position: absolute; left: 24px; top: 24px; font: 500 13px/1 var(--mono); color: var(--signal); letter-spacing: .1em; }
+
+  .phases2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 40px; }
+  .ph { padding: 36px 34px 38px; display: flex; flex-direction: column; }
+  .ph h3 { font-size: 40px; text-transform: uppercase; margin: 16px 0 12px; }
+  .ph .sub { color: var(--dim); font-size: 16px; margin: 0 0 24px; }
+  .ph .checks { margin-bottom: 24px; }
+  .ph.now .label { color: var(--signal); }
+  .ph .priceline { display: flex; align-items: baseline; gap: 14px; margin-top: auto; padding-top: 8px; }
+  .ph .price { font-size: 56px; }
+  .ph .unit { font: 500 12px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
+  .outcome { border-left: 2px solid var(--signal); padding: 4px 0 4px 18px; margin-bottom: 24px; color: var(--steel); font-size: 16px; }
+  .outcome .label { display: block; margin-bottom: 6px; }
+
+  .guarantee { margin-top: 20px; padding: 32px 36px; display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; }
+  .guarantee h3 { font-size: 30px; text-transform: uppercase; margin-bottom: 8px; }
+  .guarantee p { color: var(--dim); margin: 0; }
+
+  .roadmap { margin-top: 48px; border-top: 1px solid var(--line-strong); }
+  .row { display: grid; grid-template-columns: 190px 1fr 200px; gap: 32px; padding: 28px 0; border-bottom: 1px solid var(--line); align-items: start; }
+  .row h3 { font-size: 28px; text-transform: uppercase; margin-bottom: 8px; }
+  .row p { color: var(--dim); font-size: 15px; margin: 0; }
+  .row .cost { text-align: right; font: 500 12px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+  .row.now { background: linear-gradient(90deg, var(--signal-soft), transparent 60%); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+  .row.now .label { color: var(--signal); }
+  .steps3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 36px 0 40px; }
+  .steps3 .panel { padding: 26px; }
+  .steps3 .label { color: var(--signal); }
+  .steps3 p { margin: 12px 0 0; color: var(--steel); }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  footer { border-top: 1px solid var(--line); padding: 36px 0 56px; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  @media (max-width: 880px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 16px; }
+    section { padding: 64px 0; }
+    .hero { padding: 56px 0 72px; }
+    .file { grid-template-columns: 1fr 1fr; }
+    .file div:nth-child(2) { border-right: 0; }
+    .file div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    .two-col { grid-template-columns: 1fr; gap: 28px; }
+    .phases2, .steps3 { grid-template-columns: minmax(0, 1fr); }
+    .ph { padding: 28px 22px; }
+    .ph h3 { font-size: 30px; overflow-wrap: anywhere; }
+    .row { grid-template-columns: 1fr; gap: 10px; }
+    .row .cost { text-align: left; }
+    .row.now { margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
+    .guarantee { grid-template-columns: 1fr; padding: 26px 22px; }
+  }
+</style>
+</head>
+<body class="grid-bg soft">
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="mark">
+      <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="1" width="20" height="20" fill="none" style="stroke:var(--steel)" stroke-width="1.5"/><rect x="7" y="7" width="8" height="8" style="fill:var(--signal)"/></svg>
+      <span data-bind="firm">Quest Coaching</span>
+    </div>
+    <div class="bar-right">
+      <button class="theme-toggle" data-theme-toggle aria-label="Switch between dark and light design"><span class="t-dark">Dark</span><span class="t-light">Light</span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="label signal"><span class="dot"></span>Proposal · Confidential</div>
+      <h1>A Stability Plan <span>for Co-operative Plating</span></h1>
+      <p class="lede">A short, practical plan to turn the stability you have built into a shared long-term picture, and a clear, repeatable way to keep everyone above and around you aligned.</p>
+      <div class="file">
+        <div><span class="label">Principal</span><strong data-bind="principal"></strong></div>
+        <div><span class="label">Role</span><strong data-bind="principalRole">CEO</strong></div>
+        <div><span class="label">Prepared by</span><strong data-bind="coachLine"></strong></div>
+        <div><span class="label">Date</span><strong data-bind="sentOn"></strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section data-if="situation">
+    <div class="wrap two-col">
+      <div>
+        <div class="label">01 · What I heard</div>
+        <h2>Where you stand today</h2>
+        <p class="lede" style="font-size:17px">As I understood it from our call. This is the starting point, not a diagnosis.</p>
+      </div>
+      <div>
+        <ol class="intel" data-list="situation"></ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="plan">
+    <div class="wrap">
+      <div class="label">02 · The plan</div>
+      <h2>Two small phases. The first one is timed for your next monthly review.</h2>
+      <p class="lede">Each phase stands on its own. You decide after Phase 1a whether Phase 1b is worth it.</p>
+      <div class="phases2">
+        <article class="panel signal corners ph now">
+          <span class="label"><span class="dot"></span>Phase 1a · Starts now · About 2 weeks</span>
+          <h3>Vision Session</h3>
+          <p class="sub">A facilitated working session with a small group of about six, including Keith, to refine the 3 to 5 year vision.</p>
+          <ul class="checks">
+            <li>Short prep call with you<small>What the vision section of your monthly review needs to do</small></li>
+            <li>Facilitated session with the small group<small>One shared picture of where Co-operative Plating is heading</small></li>
+            <li>Your vision slide<small>Ready to present in your next monthly review</small></li>
+          </ul>
+          <div class="outcome"><span class="label">Outcome</span>A vision your team recognizes as its own, and a slide you can present with confidence.</div>
+          <div class="priceline hidden" data-price="phase1aPrice"><span class="price"></span><span class="unit">One time</span></div>
+        </article>
+
+        <article class="panel ph">
+          <span class="label">Phase 1b · After the monthly review</span>
+          <h3>Upward Communication Protocol</h3>
+          <p class="sub">A simple, repeatable way to share progress, priorities and decisions upward, built on what already works in your monthly review.</p>
+          <ul class="checks">
+            <li>Review of your current monthly format<small>What to keep, what to sharpen</small></li>
+            <li>A one-page upward update<small>The same structure every month, easy for your team to contribute to</small></li>
+            <li>Light rhythm for follow-up<small>So expectations are clear before the next review</small></li>
+          </ul>
+          <div class="priceline hidden" data-price="phase1bPrice"><span class="price"></span><span class="unit">One time</span></div>
+        </article>
+      </div>
+
+      <div class="panel corners guarantee">
+        <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 56 13v18c0 15-10 25-24 29C18 56 8 46 8 31V13Z" fill="none" style="stroke:var(--steel)" stroke-width="1.5"/><path d="m22 32 7 7 14-15" fill="none" style="stroke:var(--signal)" stroke-width="2.5"/></svg>
+        <div>
+          <h3>One-Week Check-in, Included</h3>
+          <p>About a week after the Vision Session we meet briefly to see what held, what needs adjusting and what comes next. Between sessions I stay reachable if something comes up, so the work does not stop when the session ends.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="label">03 · Path</div>
+      <h2>Where this can go, if and when it makes sense.</h2>
+      <p class="lede">You decide after each phase whether the next one is worth it. Nothing is committed beyond Phase 1a.</p>
+      <div class="roadmap">
+        <div class="row now">
+          <div class="label"><span class="dot"></span>Now</div>
+          <div><h3>Phase 1a · Vision Session</h3><p>A shared 3 to 5 year picture with a small group, and your vision slide for the monthly review.</p></div>
+          <div class="cost">About 2 weeks</div>
+        </div>
+        <div class="row">
+          <div class="label">Next</div>
+          <div><h3>Phase 1b · Upward Communication Protocol</h3><p>A simple, repeatable way to share progress, priorities and decisions upward. Scoped together after Phase 1a.</p></div>
+          <div class="cost">After the review</div>
+        </div>
+        <div class="row">
+          <div class="label">Later</div>
+          <div><h3>Ongoing support</h3><p>Light-touch partnership to keep the rhythm steady and the team protected as the company grows. Only if it is useful to you.</p></div>
+          <div class="cost">If it fits</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="label">04 · Next steps</div>
+      <h2>Here is how we start.</h2>
+      <div class="steps3">
+        <div class="panel"><span class="label">Step 01</span><p>Reply to confirm Phase 1a, the Vision Session. Payment is arranged directly with Kennon at that point.</p></div>
+        <div class="panel"><span class="label">Step 02</span><p>We set the session date ahead of your next monthly review.</p></div>
+        <div class="panel"><span class="label">Step 03</span><p>One week after the session we hold the check-in.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap dossier">
+    <span data-bind="footerLine"></span>
+    <span>Confidential · Prepared for the named principal only</span>
+  </div>
+</footer>
+
+<script>window.OFFER_FORCE_KEY = "kevin";</script>
+<script src="/kennon/prospects.js"></script>
+<script src="/kennon/common.js"></script>
+<script>
+(function () {
+  OFFER.fill();
+  var p = OFFER.p;
+  // Prices: shown only when set in prospects.js
+  document.querySelectorAll("[data-price]").forEach(function (el) {
+    var v = p[el.dataset.price];
+    if (v) { el.querySelector(".price").textContent = v; el.classList.remove("hidden"); }
+  });
+})();
+</script>
+</body>
+</html>

@@ -62,6 +62,24 @@ window.OFFER_CONFIG = {
       sentOn: "",
       situation: [],           // TODO: fill after the call
       initiative: ""
+    },
+
+    // Kevin Ford, Co-operative Plating: /kennon/kevin (own page, kevin.html)
+    kevin: {
+      firstName: "Kevin",
+      fullName: "Kevin Ford",
+      title: "CEO",
+      company: "Co-operative Plating",
+      attendedRoundtable: false,
+      sentOn: "2026-11-02",
+      situation: [
+        "Top line and bottom line have been up every month for more than six months.",
+        "The support team has stabilized through key hires, and labor-hour billing discrepancies went from 19% to 0%.",
+        "Stability and team development come first. Your monthly review is where each team presents its own area."
+      ],
+      initiative: "",
+      phase1aPrice: "$2,500",   // Phase 1a Vision Session; Kennon can change it
+      phase1bPrice: ""         // TODO: optional
     }
   }
 };

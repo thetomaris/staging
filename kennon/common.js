@@ -8,7 +8,7 @@
   var at = segs.indexOf("kennon");
   var seg = at >= 0 ? segs[at + 1] : null;
   if (seg && /\.html$/.test(seg)) seg = null;
-  var key = (params.get("p") || seg || "default").toLowerCase();
+  var key = (window.OFFER_FORCE_KEY || params.get("p") || seg || "default").toLowerCase();
   var p = Object.assign({}, cfg.prospects.default || {}, cfg.prospects[key] || {});
 
   var fmt = function (d) { return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }); };
