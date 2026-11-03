@@ -132,7 +132,8 @@ h3 { margin: 0; }
 .brand-name { font: 800 1.6rem/1 var(--font); font-stretch: 75%; font-variation-settings: "wdth" 75; text-transform: uppercase; }
 
 .nav { display: flex; align-items: center; gap: 2rem; flex: 1; }
-.nav a:not(.btn) { position: relative; font-size: .9375rem; font-weight: 500; text-decoration: none; color: var(--black); }
+.nav a:not(.btn) { position: relative; font-size: .9375rem; font-weight: 500; text-decoration: none; color: var(--black); white-space: nowrap; }
+@media (min-width: 961px) and (max-width: 1200px) { .site-header .wrap { gap: 1.5rem; } .nav { gap: 1.25rem; } .nav a:not(.btn) { font-size: .875rem; } }
 .nav a:not(.btn)::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px; background: currentColor;
   transform: scaleX(0); transform-origin: right; transition: transform .45s var(--ease-out);
@@ -383,3 +384,9 @@ h3 { margin: 0; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   .js .rv, .js .rv-img, .js .rv-img img, .mega .ln > span { opacity: 1; transform: none; clip-path: none; }
 }
+
+/* Within Reach offer under the organizations list */
+.offer { margin-top: 2rem; padding: clamp(1.25rem, 1rem + 1vw, 1.75rem); border-radius: var(--radius); display: flex; flex-direction: column; gap: .6rem; }
+.offer p:not(.tag) { font-size: 1.0625rem; max-width: 34rem; }
+.split > .b.end { align-self: end; }
+.lede { font-size: var(--fs-h3); line-height: 1.35; letter-spacing: -.02em; font-weight: 500; color: var(--black); max-width: 34ch; }
