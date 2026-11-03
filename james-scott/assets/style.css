@@ -390,3 +390,33 @@ h3 { margin: 0; }
 .offer p:not(.tag) { font-size: 1.0625rem; max-width: 34rem; }
 .split > .b.end { align-self: end; }
 .lede { font-size: var(--fs-h3); line-height: 1.35; letter-spacing: -.02em; font-weight: 500; color: var(--black); max-width: 34ch; }
+
+/* Without JavaScript (e.g. Squarespace Basic): no menu toggle on small screens, just the booking button */
+@media (max-width: 960px) {
+  html:not(.js) .nav-toggle { display: none; }
+  html:not(.js) .nav { position: static; inset: auto; flex: 0 0 auto; flex-direction: row; margin-left: auto; padding: 0; background: none; opacity: 1; visibility: visible; transform: none; overflow: visible; }
+  html:not(.js) .nav a:not(.btn) { display: none; }
+  html:not(.js) .nav .btn { margin: 0; min-height: 40px; padding: 0 .9rem; gap: .6rem; font-size: .875rem; }
+}
+
+/* Privacy policy layer (CSS :target, no JavaScript needed) */
+.privacy {
+  position: fixed; inset: 0; z-index: 100; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  background: var(--white); padding: 0 0 calc(4rem + env(safe-area-inset-bottom));
+  opacity: 0; visibility: hidden; transform: translateY(12px);
+  transition: opacity .4s var(--ease-out), transform .5s var(--ease-out), visibility 0s .5s;
+}
+.privacy:target { opacity: 1; visibility: visible; transform: none; transition: opacity .4s var(--ease-out), transform .5s var(--ease-out); }
+html:has(.privacy:target) { overflow: hidden; }
+.privacy .bar { position: sticky; top: 0; z-index: 1; background: var(--white); padding-top: 1.5rem; color: var(--black); }
+.privacy h2 { margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem); }
+.privacy-body { max-width: 46rem; }
+.privacy-body h3 { margin: 2.5rem 0 .75rem; font-size: var(--fs-h3); font-weight: 700; letter-spacing: -.02em; line-height: 1.2; color: var(--black); }
+.privacy-body h3:first-child { margin-top: 0; }
+.privacy-body p, .privacy-body li { font-size: 1.0625rem; line-height: 1.65; }
+.privacy-body p + p, .privacy-body p + ul, .privacy-body ul + p { margin-top: .75rem; }
+.privacy-body ul { display: grid; gap: .35rem; }
+.privacy-body li { position: relative; padding-left: 1.25rem; }
+.privacy-body li::before { content: ""; position: absolute; left: 0; top: .7em; width: 6px; height: 6px; border-radius: 50%; background: var(--honey); }
+.privacy-body a { color: var(--black); text-underline-offset: 3px; }
+.privacy-close { margin-top: 3rem; }
