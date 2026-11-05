@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Kinetic Insights | Executive & Team Coaching</title>
+<meta name="description" content="Kinetic Insights matches Fortune 500 and mid-size organizations with ICF certified executive and team coaches. Based in Columbus, Ohio, coaching nationally.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#37939B; --teal-deep:#1F5E64; --teal-ink:#123B3F;
+  --orange:#CF7019; --orange-soft:#F6E7D8;
+  --ink:#1E2A2C; --body:#4C5658; --muted:#7A8587;
+  --paper:#FBF8F4; --white:#fff; --line:#E6E0D8;
+  --serif:"Fraunces", Georgia, serif; --sans:"Open Sans", Arial, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--body);background:var(--paper);line-height:1.65;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+h1,h2,h3{font-family:var(--serif);color:var(--ink);font-weight:500;line-height:1.15;letter-spacing:-.01em}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:2px;font-weight:600;font-size:15px;transition:.2s}
+.btn-primary{background:var(--orange);color:#fff}
+.btn-primary:hover{background:#B45F12}
+.btn-ghost{border:1px solid currentColor;color:var(--teal-deep)}
+.btn-ghost:hover{background:var(--teal-deep);color:#fff}
+.arrow::after{content:"→";transition:transform .2s}
+.arrow:hover::after{transform:translateX(4px)}
+
+/* Header */
+header{position:sticky;top:0;z-index:20;background:rgba(251,248,244,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:84px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{height:54px;width:auto}
+.brand span{font-family:var(--serif);font-size:21px;color:var(--ink)}
+.brand small{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.links{display:flex;gap:34px;align-items:center;font-size:15px;font-weight:500;color:var(--ink)}
+.links a:not(.btn):hover{color:var(--orange)}
+.links .btn{padding:11px 20px}
+.menu-toggle{display:none;background:none;border:0;font-size:26px;color:var(--ink);cursor:pointer}
+
+/* Hero */
+.hero{padding:110px 0 96px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;right:-180px;top:-120px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(55,147,155,.14),transparent 68%)}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:72px;align-items:end;position:relative}
+.hero h1{font-size:clamp(42px,5.6vw,76px);margin:22px 0 28px}
+.hero h1 em{font-style:italic;color:var(--teal)}
+.hero p.lead{font-size:20px;max-width:600px;color:var(--body)}
+.hero .ctas{display:flex;gap:16px;flex-wrap:wrap;margin-top:40px}
+.hero-card{background:var(--teal-ink);color:#DDEBEC;padding:38px 34px;border-radius:2px;position:relative}
+.hero-card::before{content:"";position:absolute;left:0;top:0;width:56px;height:4px;background:var(--orange)}
+.hero-card h3{color:#fff;font-size:23px;margin-bottom:16px}
+.hero-card ul{list-style:none;font-size:15px}
+.hero-card li{padding:12px 0;border-top:1px solid rgba(255,255,255,.12);display:flex;gap:12px}
+.hero-card li::before{content:"";flex:0 0 7px;height:7px;margin-top:9px;border-radius:50%;background:var(--orange)}
+
+/* Stats */
+.stats{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:44px 28px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:0;padding-left:0}
+.stat b{display:block;font-family:var(--serif);font-weight:500;font-size:50px;color:var(--teal-deep);line-height:1}
+.stat span{display:block;margin-top:10px;font-size:14px;color:var(--muted)}
+
+/* Sections */
+section{padding:120px 0}
+.section-head{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:64px}
+.section-head h2{font-size:clamp(34px,3.8vw,50px);margin-top:16px}
+.section-head p{font-size:18px}
+
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border:1px solid var(--line)}
+.service{background:var(--paper);padding:48px 38px 42px;display:flex;flex-direction:column;transition:background .25s}
+.service:hover{background:var(--white)}
+.service .num{font-family:var(--serif);font-size:15px;color:var(--orange);margin-bottom:46px}
+.service h3{font-size:28px;margin-bottom:16px}
+.service p{flex:1}
+.service a{margin-top:32px;font-weight:600;color:var(--teal-deep);display:inline-flex;gap:8px;font-size:15px}
+
+/* Approach */
+.approach{background:var(--teal-ink);color:#C9DCDD}
+.approach h2,.approach h3{color:#fff}
+.approach .section-head p{color:#C9DCDD}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;counter-reset:s}
+.step{border-top:1px solid rgba(255,255,255,.2);padding-top:28px}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:var(--serif);font-size:42px;color:var(--orange);display:block;margin-bottom:20px}
+.step h3{font-size:21px;margin-bottom:12px}
+.step p{font-size:15.5px}
+
+/* Coaches */
+.coaches-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start}
+.quote{font-family:var(--serif);font-size:clamp(26px,2.6vw,36px);line-height:1.3;color:var(--ink);font-weight:400}
+.quote::before{content:"“";display:block;font-size:90px;line-height:.6;color:var(--orange);margin-bottom:12px}
+.creds{display:flex;gap:22px;align-items:center;margin-top:44px;flex-wrap:wrap}
+.creds img{height:74px;width:auto;filter:grayscale(.2)}
+.roster{list-style:none;columns:2;column-gap:40px;margin-top:30px}
+.roster li{break-inside:avoid;padding:14px 0;border-bottom:1px solid var(--line);font-family:var(--serif);font-size:19px;color:var(--ink);display:flex;justify-content:space-between}
+.roster li small{font-family:var(--sans);font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;align-self:center}
+.coaches-grid .btn{margin-top:36px}
+
+/* ROI */
+.roi{background:var(--white)}
+.roi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.roi-card{padding:38px;border:1px solid var(--line);background:var(--paper)}
+.roi-card h3{font-size:23px;margin:18px 0 12px}
+.roi-card .tag{display:inline-block;width:42px;height:42px;border-radius:50%;background:var(--orange-soft);color:var(--orange);font-weight:700;display:grid;place-items:center}
+
+/* Insights */
+.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.post img{aspect-ratio:16/10;object-fit:cover;width:100%;margin-bottom:22px;background:var(--line)}
+.post .meta{font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.post h3{font-size:23px;margin-top:10px}
+.post:hover h3{color:var(--teal-deep)}
+
+/* Contact */
+.contact{background:linear-gradient(135deg,var(--teal-deep),var(--teal-ink));color:#D5E6E7}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact h2{color:#fff;font-size:clamp(36px,4vw,54px);margin:16px 0 22px}
+.contact .direct{margin-top:38px;display:grid;gap:12px;font-size:17px}
+.contact .direct a{color:#fff;border-bottom:1px solid rgba(255,255,255,.3);width:max-content}
+form{background:var(--paper);padding:42px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+form label{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:grid;gap:8px}
+form .full{grid-column:1/-1}
+input,textarea{font:inherit;font-size:16px;padding:13px 14px;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:2px;width:100%}
+input:focus,textarea:focus{outline:2px solid var(--teal);outline-offset:-1px}
+form .btn{border:0;cursor:pointer;justify-self:start}
+
+footer{background:#0D2A2D;color:#8FA9AB;padding:56px 0;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+footer a:hover{color:#fff}
+footer nav{display:flex;gap:26px;flex-wrap:wrap}
+
+.staging{position:fixed;bottom:16px;left:16px;z-index:50;background:var(--ink);color:#fff;font-size:12px;padding:8px 12px;border-radius:2px;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+
+@media (max-width:960px){
+  .hero-grid,.section-head,.coaches-grid,.contact-grid{grid-template-columns:1fr;gap:44px}
+  .services,.roi-grid,.posts{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .stats .wrap{grid-template-columns:1fr 1fr}
+  .stat{padding:30px 20px}.stat:nth-child(3){border-left:0;padding-left:0}
+  section{padding:84px 0}
+  .links{display:none}
+  .links.open{display:flex;flex-direction:column;position:absolute;top:84px;left:0;right:0;background:var(--paper);padding:24px;border-bottom:1px solid var(--line);align-items:flex-start}
+  .menu-toggle{display:block}
+}
+@media (max-width:600px){
+  .wrap{padding:0 16px}
+  .hero{padding:70px 0}
+  .steps{grid-template-columns:1fr}
+  .roster{columns:1}
+  form{grid-template-columns:1fr;padding:26px}
+  .stat b{font-size:40px}
+  .brand span{font-size:18px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand">
+      <img src="https://www.kineticinsights.com/wp-content/uploads/2016/02/ki-logo-1x-2.png" alt="Kinetic Insights logo">
+      <span>Kinetic Insights<small>Executive &amp; Team Coaching</small></span>
+    </a>
+    <nav class="links" id="links">
+      <a href="#services">What we do</a>
+      <a href="#approach">How we work</a>
+      <a href="#coaches">Our coaches</a>
+      <a href="#insights">Insights</a>
+      <a href="#contact" class="btn btn-primary">Start a conversation</a>
+    </nav>
+    <button class="menu-toggle" aria-label="Menu" onclick="document.getElementById('links').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Executive &amp; team coaching</span>
+      <h1>Leaders and teams who <em>exceed</em> what was expected of them.</h1>
+      <p class="lead">Kinetic Insights gives Fortune 500 and mid-size organizations one trusted source for ICF certified executive and team coaches. Most of them have held executive roles themselves.</p>
+      <div class="ctas">
+        <a href="#contact" class="btn btn-primary arrow">Start a conversation</a>
+        <a href="https://www.kineticinsights.com/wp-content/uploads/2022/04/KI_SalesBrochure.pdf" class="btn btn-ghost">Full service brochure</a>
+      </div>
+    </div>
+    <aside class="hero-card">
+      <h3>One call. The right coach.</h3>
+      <ul>
+        <li>At least two vetted coaches to interview for every engagement</li>
+        <li>Three-way kickoff with the leader, the coachee and HR</li>
+        <li>Quarterly reporting against agreed outcomes</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>15+</b><span>Years coaching leaders and teams</span></div>
+    <div class="stat"><b>13</b><span>ICF certified coaches</span></div>
+    <div class="stat"><b>353</b><span>Combined years of coaching experience</span></div>
+    <div class="stat"><b>350+</b><span>Successful client engagements</span></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="eyebrow">What we do</span><h2>Three levels of change, designed around your organization.</h2></div>
+      <p>Every engagement starts with a customized strategic coaching plan built for measurable results, whether we work with one leader, an intact team or the culture around them.</p>
+    </div>
+    <div class="services">
+      <article class="service">
+        <div class="num">01</div>
+        <h3>Leader Effectiveness</h3>
+        <p>We challenge new and veteran leaders to objectively assess their true potential, then coach them to build environments where shared direction, alignment and commitment thrive.</p>
+        <a href="https://www.kineticinsights.com/what-we-do/leader-effectiveness/" class="arrow">Explore leader coaching</a>
+      </article>
+      <article class="service">
+        <div class="num">02</div>
+        <h3>Team Effectiveness</h3>
+        <p>Our coaches guide teams and team leaders to use their collective wisdom, creativity and capability to take ownership of and solve today's biggest business challenges.</p>
+        <a href="https://www.kineticinsights.com/what-we-do/team-effectiveness/" class="arrow">Explore team coaching</a>
+      </article>
+      <article class="service">
+        <div class="num">03</div>
+        <h3>Culture Development</h3>
+        <p>Leaders and teams never operate in a vacuum. We help organizations accelerate the evolution of their culture so it carries the vision and strategy of its leadership.</p>
+        <a href="#contact" class="arrow">Discuss culture work</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="approach" class="approach">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="eyebrow">How we work</span><h2>The stakes are high. Our standards are higher.</h2></div>
+      <p>We understand the need for return and value on investment. Our success rates rest on practices that keep every party accountable from the first conversation to the final report.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Candid discovery</h3><p>A direct conversation with the supervising leader, the coachee and HR, so requirements and desired outcomes are clear from day one.</p></div>
+      <div class="step"><h3>Coach selection</h3><p>You interview no fewer than two coaches, each matched on leadership background, industry context and coaching style.</p></div>
+      <div class="step"><h3>Strategic coaching plan</h3><p>A customized plan with defined goals, so progress is measured, not assumed.</p></div>
+      <div class="step"><h3>Quarterly reporting</h3><p>Thorough reporting every quarter keeps sponsors informed and the engagement focused on results.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="coaches">
+  <div class="wrap coaches-grid">
+    <div>
+      <span class="eyebrow">Our coaches</span>
+      <p class="quote" style="margin-top:26px">We are experts who have effectively led teams in organizations just like yours.</p>
+      <p style="margin-top:26px">Most of our coaches have held executive positions in industry, academia or nonprofit. They bring deep expertise in executive visioning, leading leaders, performance management, academic leadership and team coaching.</p>
+      <div class="creds">
+        <img src="https://www.kineticinsights.com/wp-content/uploads/2019/08/ki-pcc-professional-certified-coach.png" alt="ICF Professional Certified Coach">
+        <img src="https://www.kineticinsights.com/wp-content/uploads/2019/08/ki-gpcctm-green.png" alt="Certification badge">
+        <img src="https://www.kineticinsights.com/wp-content/uploads/2025/10/ITCA-2.jpg" alt="ITCA accreditation">
+      </div>
+    </div>
+    <div>
+      <p>Based in Columbus, Ohio, with coaches working nationally from Los Angeles to Baltimore. Distance is no barrier to successful coaching.</p>
+      <ul class="roster">
+        <li>Gail Froelicher <small>Founder</small></li>
+        <li>Karen Semon</li>
+        <li>Andrew Powell</li>
+        <li>Ann Attayek Carr</li>
+        <li>Christy Mihina</li>
+        <li>Peter A. James</li>
+        <li>Shareefah Sabur</li>
+        <li>Lisa Withrow</li>
+        <li>Jackie Browning</li>
+        <li>Roderick Allen</li>
+      </ul>
+      <a href="https://www.kineticinsights.com/how-we-do-it/#teammembers" class="btn btn-ghost arrow">Meet the team</a>
+    </div>
+  </div>
+</section>
+
+<section class="roi">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="eyebrow">Why organizations choose us</span><h2>A century of combined coaching, held to account.</h2></div>
+      <p>Real leadership experience, contextual knowledge and long histories of successful coaching, delivered through one relationship instead of many vendors.</p>
+    </div>
+    <div class="roi-grid">
+      <div class="roi-card"><span class="tag">1</span><h3>One source, many needs</h3><p>A single phone call covers your current and future coaching needs across levels and locations.</p></div>
+      <div class="roi-card"><span class="tag">2</span><h3>Leaders coaching leaders</h3><p>Coaches who have carried executive responsibility understand the pressure your people are under.</p></div>
+      <div class="roi-card"><span class="tag">3</span><h3>Measurable outcomes</h3><p>Clear goals at the start and quarterly reporting throughout make the value of coaching visible.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="insights">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="eyebrow">Insights</span><h2>Thinking from our coaches.</h2></div>
+      <p><a href="https://www.kineticinsights.com/insights/" class="arrow" style="font-weight:600;color:var(--teal-deep)">All insights</a></p>
+    </div>
+    <div class="posts">
+      <a class="post" href="https://www.kineticinsights.com/insights/"><img src="https://www.kineticinsights.com/wp-content/uploads/2020/05/leading-virtual-teams-300x172.png" alt=""><span class="meta">Team leadership</span><h3>5 Keys to Success for Leading Virtual Teams</h3></a>
+      <a class="post" href="https://www.kineticinsights.com/insights/"><img src="https://www.kineticinsights.com/wp-content/uploads/2020/05/questions-enhance-collective-leadership-skills-300x172.png" alt=""><span class="meta">Collective leadership</span><h3>Refine Your Questions to Enhance Your Collective Leadership Skills</h3></a>
+      <a class="post" href="https://www.kineticinsights.com/insights/"><img src="https://www.kineticinsights.com/wp-content/uploads/2020/05/core-resilience-skills-1-300x172.png" alt=""><span class="meta">Resilience</span><h3>Becoming Resilient People in a Time of Fear</h3></a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="eyebrow" style="color:#F2B27A">Start with a conversation</span>
+      <h2>Tell us what your leaders and teams need next.</h2>
+      <p>We will listen first, then recommend the right coaches for your context. No obligation.</p>
+      <div class="direct">
+        <a href="tel:+16145629052">(614) 562-9052</a>
+        <a href="mailto:info@kineticinsights.com">info@kineticinsights.com</a>
+        <span>Columbus, Ohio · Coaching nationally</span>
+      </div>
+    </div>
+    <form onsubmit="event.preventDefault();this.innerHTML='<p style=&quot;grid-column:1/-1;color:var(--ink);font-family:var(--serif);font-size:24px&quot;>Thank you. We will be in touch shortly.</p>'">
+      <label>First name<input required></label>
+      <label>Last name<input required></label>
+      <label>Email<input type="email" required></label>
+      <label>Company<input></label>
+      <label class="full">How can we help?<textarea rows="4"></textarea></label>
+      <button class="btn btn-primary arrow" type="submit">Send message</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Kinetic Insights, LLC · Columbus, Ohio</span>
+    <nav>
+      <a href="#services">What we do</a>
+      <a href="#approach">How we work</a>
+      <a href="#coaches">Our coaches</a>
+      <a href="https://www.kineticinsights.com/resources/">Resources</a>
+      <a href="https://www.kineticinsights.com/wp-content/uploads/2022/08/KI-Team-Coaching.pdf">Team coaching details</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="staging">Draft preview</div>
+</body>
+</html>
