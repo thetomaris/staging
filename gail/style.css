@@ -71,17 +71,17 @@ section{padding:72px 0}
 /* proof strip */
 .proof{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper)}
 .proof .wrap{display:grid;grid-template-columns:1fr 1fr}
-.proof div{padding:28px 0;border-bottom:1px solid var(--line)}
-.proof div:nth-child(odd){padding-right:16px;border-right:1px solid var(--line)}
-.proof div:nth-child(even){padding-left:16px}
+.proof .wrap>div{padding:28px 0;border-bottom:1px solid var(--line)}
+.proof .wrap>div:nth-child(odd){padding-right:16px;border-right:1px solid var(--line)}
+.proof .wrap>div:nth-child(even){padding-left:16px}
 .proof b{display:block;font-family:var(--head);font-weight:500;font-size:clamp(30px,3.6vw,44px);color:var(--teal-dark);line-height:1}
 .proof span{display:block;margin-top:8px;font-family:var(--head);font-size:14px;color:var(--muted);line-height:1.35}
 .creds-line{grid-column:1/-1;border-right:0!important;padding:20px 0!important;font-family:var(--head);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);border-bottom:0!important}
 @media (min-width:900px){
   .proof .wrap{grid-template-columns:repeat(4,1fr)}
-  .proof div{border-bottom:0;padding:36px 24px!important;border-right:1px solid var(--line)}
-  .proof div:first-child{padding-left:0!important}
-  .proof div:nth-child(4){border-right:0}
+  .proof .wrap>div{border-bottom:0;padding:36px 24px!important;border-right:1px solid var(--line)}
+  .proof .wrap>div:first-child{padding-left:0!important}
+  .proof .wrap>div:nth-child(4){border-right:0}
   .creds-line{border-top:1px solid var(--line);padding:20px 0!important}
 }
 
