@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>A Leadership Rhythm for Premier Manufacturing</title>
+<link rel="stylesheet" href="/kennon/theme.css">
+<script src="/kennon/theme.js"></script>
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+  section { padding: 96px 0; border-top: 1px solid var(--line); }
+  h2 { font-size: clamp(34px, 4.4vw, 54px); margin: 18px 0 22px; max-width: 860px; }
+  .lede { font-size: 19px; color: var(--dim); max-width: 700px; }
+
+  .topbar { border-bottom: 1px solid var(--line); background: var(--bar); position: sticky; top: 0; z-index: 5; backdrop-filter: blur(8px); }
+  .topbar .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 16px; padding-bottom: 16px; }
+  .mark { display: flex; align-items: center; gap: 12px; font: 600 15px/1 var(--head); letter-spacing: .22em; text-transform: uppercase; }
+  .mark svg { flex: none; }
+
+  .hero { border-top: 0; padding: 88px 0 104px; }
+  .hero h1 { font-size: clamp(48px, 7.6vw, 104px); text-transform: uppercase; letter-spacing: .01em; margin: 28px 0 28px; max-width: 980px; }
+  .hero h1 span { color: var(--dim); }
+  .hero .lede { font-size: 21px; color: var(--steel); }
+  .file { margin-top: 56px; display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); background: rgba(15,23,40,.7); }
+  .file div { padding: 18px 20px; border-right: 1px solid var(--line); }
+  .file div:last-child { border-right: 0; }
+  .file .label { display: block; margin-bottom: 8px; font-size: 10.5px; color: var(--faint); }
+  .file strong { font-weight: 500; font-size: 15px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1.25fr; gap: 56px; align-items: start; }
+  .intel { list-style: none; padding: 0; margin: 0; counter-reset: i; }
+  .intel li { counter-increment: i; padding: 22px 24px 22px 76px; position: relative; border: 1px solid var(--line); background: var(--panel); margin-bottom: 10px; font-size: 19px; }
+  .intel li::before { content: "0" counter(i); position: absolute; left: 24px; top: 24px; font: 500 13px/1 var(--mono); color: var(--signal); letter-spacing: .1em; }
+
+  .phases2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 40px; }
+  .ph { padding: 36px 34px 38px; display: flex; flex-direction: column; }
+  .ph h3 { font-size: 40px; text-transform: uppercase; margin: 16px 0 12px; }
+  .ph .sub { color: var(--dim); font-size: 16px; margin: 0 0 24px; }
+  .ph .checks { margin-bottom: 24px; }
+  .ph.now .label { color: var(--signal); }
+  .ph .priceline { display: flex; align-items: baseline; gap: 14px; margin-top: auto; padding-top: 8px; }
+  .ph .price { font-size: 56px; }
+  .ph .unit { font: 500 12px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
+  .outcome { border-left: 2px solid var(--signal); padding: 4px 0 4px 18px; margin-bottom: 24px; color: var(--steel); font-size: 16px; }
+  .outcome .label { display: block; margin-bottom: 6px; }
+
+
+  .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; align-items: stretch; }
+  .tier { padding: 34px 30px 36px; display: flex; flex-direction: column; }
+  .tier h3 { font-size: 34px; text-transform: uppercase; margin: 16px 0 6px; }
+  .tier .term { color: var(--dim); font-size: 15px; margin: 0 0 22px; }
+  .tier .priceline { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+  .tier .price { font-size: 52px; }
+  .tier .unit { font: 500 11px/1.3 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
+  .tier .total { font: 500 12px/1.4 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--dim); margin: 0 0 24px; }
+  .tier .checks { margin-bottom: 20px; }
+  .tier .saves { margin-top: auto; padding-top: 10px; font-size: 14px; }
+  .tier.pick .label { color: var(--signal); }
+
+  .month { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 40px; }
+  .month > div { background: var(--bg-2); padding: 26px 26px 28px; }
+  .month .label { color: var(--signal); }
+  .month h4 { font: 600 21px/1.25 var(--head); margin: 12px 0 8px; text-transform: uppercase; }
+  .month p { margin: 0; color: var(--steel); font-size: 16px; }
+  .timebox { margin-top: 20px; padding: 26px 30px; }
+  .timebox p { margin: 0; color: var(--steel); font-size: 17px; }
+
+  .measures { list-style: none; padding: 0; margin: 40px 0 0; counter-reset: m; }
+  .measures li { counter-increment: m; padding: 24px 26px 24px 78px; position: relative; border: 1px solid var(--line); background: var(--panel); margin-bottom: 10px; }
+  .measures li::before { content: "0" counter(m); position: absolute; left: 26px; top: 26px; font: 500 13px/1 var(--mono); color: var(--signal); letter-spacing: .1em; }
+  .measures strong { display: block; font-weight: 500; font-size: 19px; margin-bottom: 6px; }
+  .measures span { color: var(--dim); font-size: 16px; }
+
+  .guarantee { margin-top: 20px; padding: 32px 36px; display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; }
+  .guarantee h3 { font-size: 30px; text-transform: uppercase; margin-bottom: 8px; }
+  .guarantee p { color: var(--dim); margin: 0; }
+
+  .roadmap { margin-top: 48px; border-top: 1px solid var(--line-strong); }
+  .row { display: grid; grid-template-columns: 190px 1fr 200px; gap: 32px; padding: 28px 0; border-bottom: 1px solid var(--line); align-items: start; }
+  .row h3 { font-size: 28px; text-transform: uppercase; margin-bottom: 8px; }
+  .row p { color: var(--dim); font-size: 15px; margin: 0; }
+  .row .cost { text-align: right; font: 500 12px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+  .row.now { background: linear-gradient(90deg, var(--signal-soft), transparent 60%); margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+  .row.now .label { color: var(--signal); }
+  .steps3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 36px 0 40px; }
+  .steps3 .panel { padding: 26px; }
+  .steps3 .label { color: var(--signal); }
+  .steps3 p { margin: 12px 0 0; color: var(--steel); }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  footer { border-top: 1px solid var(--line); padding: 36px 0 56px; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  @media (max-width: 880px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 16px; }
+    section { padding: 64px 0; }
+    .hero { padding: 56px 0 72px; }
+    .hero h1 { overflow-wrap: anywhere; }
+    .file { grid-template-columns: 1fr 1fr; }
+    .file div:nth-child(2) { border-right: 0; }
+    .file div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    .two-col { grid-template-columns: 1fr; gap: 28px; }
+    .phases2, .steps3 { grid-template-columns: minmax(0, 1fr); }
+    .ph { padding: 28px 22px; }
+    .ph h3 { font-size: 30px; overflow-wrap: anywhere; }
+    .row { grid-template-columns: 1fr; gap: 10px; }
+    .row .cost { text-align: left; }
+    .row.now { margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
+
+    .tiers { grid-template-columns: minmax(0, 1fr); }
+    .tier { padding: 28px 22px; }
+    .tier h3 { font-size: 28px; overflow-wrap: anywhere; }
+    .month { grid-template-columns: minmax(0, 1fr); }
+    .month > div { padding: 24px 22px; }
+    .timebox { padding: 24px 22px; }
+    .measures li { padding: 22px 22px 22px 70px; }
+    .guarantee { grid-template-columns: 1fr; padding: 26px 22px; }
+  }
+</style>
+</head>
+
+<body class="grid-bg soft">
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="mark">
+      <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="1" width="20" height="20" fill="none" style="stroke:var(--steel)" stroke-width="1.5"/><rect x="7" y="7" width="8" height="8" style="fill:var(--signal)"/></svg>
+      <span data-bind="firm">Quest Coaching</span>
+    </div>
+    <div class="bar-right">
+      <button class="theme-toggle" data-theme-toggle aria-label="Switch between dark and light design"><span class="t-dark">Dark</span><span class="t-light">Light</span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="label signal"><span class="dot"></span>Proposal &middot; Confidential</div>
+      <h1>A Leadership Rhythm <span>for Premier Manufacturing</span></h1>
+      <p class="lede">Pricing and structure for a monthly engagement, built into the leadership meeting you already hold. Three lengths, same monthly work, nothing to buy before we start.</p>
+      <div class="file">
+        <div><span class="label">Principal</span><strong data-bind="principal"></strong></div>
+        <div><span class="label">Role</span><strong data-bind="principalRole">CEO</strong></div>
+        <div><span class="label">Prepared by</span><strong data-bind="coachLine"></strong></div>
+        <div><span class="label">Date</span><strong data-bind="sentOn"></strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section data-if="situation">
+    <div class="wrap two-col">
+      <div>
+        <div class="label">01 &middot; What I heard</div>
+        <h2>Your words, not mine</h2>
+        <p class="lede" style="font-size:17px">Everything below is built to fit these four things, in this order.</p>
+      </div>
+      <div>
+        <ol class="intel" data-list="situation"></ol>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="label">02 &middot; How this starts</div>
+      <h2>There is no new phase in front of the work.</h2>
+      <p class="lede">The diagnostic is finished. Your Phase I and Phase II reports are in your hands, your team has been through the debrief, and Nicole has had her session. There is nothing left to assess and nothing to purchase before we begin.</p>
+      <div class="month">
+        <div>
+          <span class="label">Entry</span>
+          <h4>Month one is a working session</h4>
+          <p>Not an assessment, not an onboarding. We take one friction point from the reports you already have and turn it into a rule your leaders can use the next morning.</p>
+        </div>
+        <div>
+          <span class="label">Placement</span>
+          <h4>Inside the meeting you already hold</h4>
+          <p>Your leadership team keeps its existing monthly rhythm. I work inside it rather than asking you to run a second initiative alongside it.</p>
+        </div>
+        <div>
+          <span class="label">Payment</span>
+          <h4>Invoiced monthly</h4>
+          <p>Nothing up front, no deposit, no retainer to fund before the first session. The first invoice follows the first working session.</p>
+        </div>
+        <div>
+          <span class="label">Exit</span>
+          <h4>The first 30 days carry the risk</h4>
+          <p>If the first month does not earn its place, you stop and I refund it. The guarantee below says it plainly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="label">03 &middot; What a month looks like</div>
+      <h2>The same five things, every month.</h2>
+      <p class="lede">Predictable by design. Your team should be able to tell me what happens next without checking a schedule.</p>
+      <div class="month">
+        <div>
+          <span class="label">01</span>
+          <h4>90 minutes with the leadership team</h4>
+          <p>A facilitated working session inside your monthly meeting, on one specific friction point. Not a presentation.</p>
+        </div>
+        <div>
+          <span class="label">02</span>
+          <h4>Two 1:1 sessions</h4>
+          <p>45 minutes each with individual leaders, rotating through the team, the way Nicole's session worked.</p>
+        </div>
+        <div>
+          <span class="label">03</span>
+          <h4>One 30-minute call with you</h4>
+          <p>We set the focus for the coming month. This is the only new item on your own calendar.</p>
+        </div>
+        <div>
+          <span class="label">04</span>
+          <h4>One page for your playbook</h4>
+          <p>Each month adds one page of agreed working rules. The document is yours as it is written, not delivered at the end.</p>
+        </div>
+        <div>
+          <span class="label">05</span>
+          <h4>Reachable in between</h4>
+          <p>Phone, text or email when something comes up between sessions. There is no meter running.</p>
+        </div>
+        <div>
+          <span class="label">Scope</span>
+          <h4>What stays out</h4>
+          <p>No new reporting, no software, no separate workstream. If a month needs something unusual, we discuss it before it happens.</p>
+        </div>
+      </div>
+      <div class="panel corners timebox">
+        <p><b>Time this asks of your organization:</b> the meeting your team already holds, plus one 30-minute call from you each month. That is the whole footprint.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="label">04 &middot; Three lengths</div>
+      <h2>Same monthly work. The longer the commitment, the lower the rate.</h2>
+      <p class="lede">All three are invoiced monthly. The difference between them is how much is built on top of the monthly rhythm, and what each month costs.</p>
+      <div class="tiers">
+        <article class="panel corners tier">
+          <span class="label">Six months</span>
+          <h3>The Playbook</h3>
+          <p class="term">Six monthly cycles</p>
+          <div class="priceline"><span class="price">$8,500</span><span class="unit">per month</span></div>
+          <p class="total">$51,000 total</p>
+          <ul class="checks">
+            <li>The full monthly rhythm<small>Working session, two 1:1s, CEO call, one playbook page</small></li>
+            <li>The Accountability Matrix<small>Who owns which decisions, risks and handoffs</small></li>
+            <li>The Translation Protocol<small>How hard truths and cross-department updates get said</small></li>
+            <li>The Execution Blueprint<small>How work transfers between departments without dropping</small></li>
+          </ul>
+          <p class="saves" style="color:var(--dim)">Ends with the complete Rules of Engagement Playbook in your hands.</p>
+        </article>
+
+        <article class="panel signal corners tier pick">
+          <span class="label"><span class="dot"></span>Recommended</span>
+          <h3>Playbook &amp; Pressure</h3>
+          <p class="term">Twelve monthly cycles</p>
+          <div class="priceline"><span class="price">$7,500</span><span class="unit">per month</span></div>
+          <p class="total">$90,000 total</p>
+          <ul class="checks">
+            <li>Everything in the six-month track</li>
+            <li>One half-day stress test<small>A real impending operational challenge, run against your own playbook</small></li>
+            <li>Quarterly re-measurement<small>The autonomy and execution divides tracked, not assumed</small></li>
+            <li>New leaders brought in<small>As headcount grows, new managers are onboarded into the playbook</small></li>
+          </ul>
+          <p class="saves ok">$12,000 less than twelve months at the six-month rate.</p>
+        </article>
+
+        <article class="panel corners tier">
+          <span class="label">Twenty-four months</span>
+          <h3>Bench Strength</h3>
+          <p class="term">Twenty-four monthly cycles</p>
+          <div class="priceline"><span class="price">$7,000</span><span class="unit">per month</span></div>
+          <p class="total">$168,000 total</p>
+          <ul class="checks">
+            <li>Everything in the twelve-month track</li>
+            <li>Two stress tests a year<small>Run against the challenges actually in front of you</small></li>
+            <li>A leadership bench track<small>The layer below your executive team, developed deliberately</small></li>
+            <li>Annual re-assessment<small>The full management group, as the group itself changes</small></li>
+            <li>Role clarity as you scale<small>Who decides what as the plant moves toward lights-out</small></li>
+          </ul>
+          <p class="saves ok">$36,000 less than twenty-four months at the six-month rate.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="label">05 &middot; How we will know it is working</div>
+      <h2>Three numbers. All of them free to collect.</h2>
+      <p class="lede">You said practical results and measurable improvements are what matter most. These get a baseline in month one and a review every quarter, in your own meeting.</p>
+      <ol class="measures">
+        <li><strong>Decisions that get re-opened</strong><span>How often the team revisits something it had already settled. The clearest signal that ownership is unclear.</span></li>
+        <li><strong>Escalations that reach you</strong><span>How many cross-department handoffs need the CEO to step in before they move.</span></li>
+        <li><strong>The two divides from Phase I</strong><span>A short re-run on autonomy and on execution, so the gaps the diagnostic found are tracked over time instead of assumed to be closing.</span></li>
+      </ol>
+      <div class="panel corners guarantee">
+        <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 56 13v18c0 15-10 25-24 29C18 56 8 46 8 31V13Z" fill="none" style="stroke:var(--steel)" stroke-width="1.5"/><path d="m22 32 7 7 14-15" fill="none" style="stroke:var(--signal)" stroke-width="2.5"/></svg>
+        <div>
+          <h3>Zero-Risk Integrity Guarantee</h3>
+          <p>If after the first 30 days of working together you have not gained at least one new insight, addressed an operational challenge, reduced a risk, or identified a new opportunity for Premier Manufacturing, I refund that month in full and we stop. No questions asked. This applies whichever length you choose.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="label">06 &middot; Start here</div>
+      <h2>One decision: which length.</h2>
+      <div class="steps3">
+        <div class="panel"><span class="label">Step 01</span><p>Reply with six, twelve or twenty-four. That is the only decision in front of you.</p></div>
+        <div class="panel"><span class="label">Step 02</span><p>We place the first working session in your next monthly leadership meeting.</p></div>
+        <div class="panel"><span class="label">Step 03</span><p>The first invoice follows that session, and monthly from there.</p></div>
+      </div>
+      <p class="lede" style="font-size:17px">If none of the three fits, tell me which part is wrong and I will put a different shape in front of you. A clear "not now" is as useful to me as a yes.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap dossier">
+    <span data-bind="footerLine"></span>
+    <span>Confidential &middot; Prepared for the named principal only</span>
+  </div>
+</footer>
+
+<script>window.OFFER_FORCE_KEY = "britt";</script>
+<script src="/kennon/prospects.js"></script>
+<script src="/kennon/common.js"></script>
+<script>OFFER.fill();</script>
+</body>
+</html>

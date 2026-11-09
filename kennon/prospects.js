@@ -53,14 +53,20 @@ window.OFFER_CONFIG = {
       initiative: "Expansion into two new regions in 2027"
     },
 
+    // Britt La Chance, Premier Manufacturing: /kennon/britt (own page, britt.html)
     britt: {
       firstName: "Britt",
-      fullName: "Britt LaChance",
+      fullName: "Britt La Chance",
       title: "CEO",
-      company: "",             // TODO
+      company: "Premier Manufacturing",
       attendedRoundtable: true,
-      sentOn: "",
-      situation: [],           // TODO: fill after the call
+      sentOn: "2026-11-09",
+      situation: [
+        "It comes down to timing and priorities. You have quite a few things moving simultaneously.",
+        "You have already begun incorporating what we learned into your leadership development program.",
+        "A consistent monthly approach could fit well with what you are working toward.",
+        "What matters most is practical results and measurable improvements."
+      ],
       initiative: ""
     },
 

@@ -1,4 +1,5 @@
 # Kennon: personalisierte Angebotsseiten, z. B. /kennon/britt und /kennon/britt/present
+/kennon/britt  /kennon/britt.html  200
 /kennon/kevin  /kennon/kevin.html  200
 /kennon/:p/present  /kennon/present.html  200
 /kennon/*  /kennon/index.html  200
