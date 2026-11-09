@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ReRooted · Community Offer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #2b2b28;
+    --body: #55534d;
+    --muted: #8a8880;
+    --accent: #5c7d90;
+    --accent-soft: #7a99ac;
+    --deep: #46647d;
+    --warm: #c1553b;
+    --line: #e6e4df;
+    --card-line: #e4edf2;
+    --bg: #ffffff;
+    --tint: #eef3f6;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Mulish', sans-serif; -webkit-font-smoothing: antialiased; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 22px; }
+  .wide { max-width: 1040px; margin: 0 auto; padding: 0 22px; }
+  .eyebrow { font-size: 13px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-soft); text-align: center; margin: 0; }
+  h2 { font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(28px, 4vw, 40px); line-height: 1.12; text-align: center; margin: 14px 0 0; }
+  .lead { font-size: 17px; line-height: 1.7; color: var(--body); text-align: center; max-width: 620px; margin: 16px auto 0; }
+
+  .bar { background: var(--deep); color: #fff; text-align: center; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; padding: 11px 16px; }
+  .bar span { font-variant-numeric: tabular-nums; }
+
+  header { padding: 64px 0 36px; text-align: center; }
+  header h1 { font-family: 'Newsreader', serif; font-weight: 500; font-size: clamp(40px, 7vw, 72px); line-height: 1.02; letter-spacing: -0.02em; margin: 18px auto 0; }
+  header .tag { font-family: 'Newsreader', serif; font-style: italic; font-size: clamp(20px, 3vw, 26px); color: var(--accent); margin: 14px 0 0; }
+  header .sub { font-size: 18px; line-height: 1.7; color: var(--body); max-width: 600px; margin: 22px auto 0; }
+  .hero-img { max-width: 1040px; margin: 0 auto; padding: 0 14px; }
+  .hero-img img { width: 100%; height: clamp(200px, 32vw, 360px); object-fit: cover; object-position: center 32%; border-radius: 4px; }
+
+  .why { padding: 64px 0 8px; }
+  .why p { font-size: 18px; line-height: 1.75; color: var(--body); margin: 18px 0 0; text-align: center; }
+
+  .tiers { padding: 64px 0; }
+  .tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 40px; align-items: stretch; }
+  .tier { border: 1px solid var(--line); border-radius: 4px; padding: 30px 26px; display: flex; flex-direction: column; background: #fff; }
+  .tier.pick { border: 2px solid var(--deep); position: relative; box-shadow: 0 16px 40px -24px rgba(70,100,125,.6); }
+  .tier .flag { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--deep); color: #fff; font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; white-space: nowrap; }
+  .tier .name { font-size: 13px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-soft); }
+  .tier .price { font-family: 'Newsreader', serif; font-size: 50px; line-height: 1; margin: 14px 0 0; }
+  .tier p { font-size: 15px; line-height: 1.6; color: var(--body); margin: 14px 0 22px; flex-grow: 1; }
+  .btn { display: inline-block; text-align: center; background: var(--accent-soft); color: #fff; font-weight: 700; font-size: 15px; letter-spacing: 0.02em; padding: 15px 28px; border-radius: 999px; text-decoration: none; transition: background .2s ease; }
+  .btn:hover { background: var(--accent); }
+  .tier.pick .btn { background: var(--deep); }
+  .tier.pick .btn:hover { background: #3a5468; }
+  .regular { text-align: center; font-size: 15px; color: var(--muted); margin: 28px 0 0; }
+  .regular s { color: var(--muted); }
+  .flight { text-align: center; font-size: 15px; font-weight: 700; color: var(--warm); margin: 8px 0 0; }
+
+  .steps { background: var(--tint); padding: 64px 0; }
+  .step-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px; }
+  .step { background: #fff; border: 1px solid var(--card-line); border-radius: 4px; padding: 26px 24px; }
+  .step .n { font-family: 'Newsreader', serif; font-style: italic; font-size: 30px; color: var(--accent-soft); line-height: 1; }
+  .step h3 { font-family: 'Newsreader', serif; font-weight: 500; font-size: 22px; margin: 12px 0 0; }
+  .step p { font-size: 15px; line-height: 1.6; color: var(--body); margin: 10px 0 0; }
+
+  .what { padding: 64px 0; }
+  .boxes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px; }
+  .box { border: 1px solid var(--card-line); border-radius: 4px; overflow: hidden; }
+  .box img { width: 100%; height: 170px; object-fit: cover; }
+  .box div { padding: 22px 22px 26px; }
+  .box h3 { font-family: 'Newsreader', serif; font-weight: 500; font-size: 23px; line-height: 1.2; margin: 0; }
+  .box p { font-size: 15px; line-height: 1.6; color: var(--body); margin: 10px 0 0; }
+
+  .facts { border-top: 1px solid var(--line); margin-top: 36px; }
+  .fact { display: flex; justify-content: space-between; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 16px; }
+  .fact span:first-child { color: var(--muted); font-weight: 600; flex: none; }
+  .fact span:last-child { text-align: right; }
+  .once { font-family: 'Newsreader', serif; font-style: italic; font-size: 22px; line-height: 1.4; color: var(--accent); text-align: center; margin: 34px auto 0; max-width: 560px; }
+
+  .faq { padding: 8px 0 64px; }
+  .q { border-bottom: 1px solid var(--line); padding: 20px 0; }
+  .q h3 { font-family: 'Newsreader', serif; font-weight: 500; font-size: 21px; margin: 0; }
+  .q p { font-size: 16px; line-height: 1.65; color: var(--body); margin: 8px 0 0; }
+
+  .cta { background: var(--deep); color: #fff; text-align: center; padding: 64px 0 72px; }
+  .cta h2 { color: #fff; margin: 0 auto; max-width: 620px; }
+  .cta p { font-size: 17px; line-height: 1.7; color: #dbe6ec; max-width: 540px; margin: 18px auto 0; }
+  .cta .btn { background: #fff; color: #4a6576; margin-top: 30px; }
+  .cta .btn:hover { background: #eaf0f4; }
+  .more { display: block; margin-top: 22px; color: #dbe6ec; font-size: 14px; }
+  .more:hover { color: #fff; }
+
+  @media (max-width: 820px) {
+    header { padding: 48px 0 28px; }
+    .tier-grid, .step-list, .boxes { grid-template-columns: 1fr; max-width: 460px; margin-left: auto; margin-right: auto; }
+    .tier.pick { order: -1; margin-top: 10px; }
+    .fact { flex-direction: column; gap: 4px; }
+    .fact span:last-child { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">Community offer ends Monday, November 16 · <span id="countdown"></span></div>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">For the My Coach Path Community only</p>
+    <h1>ReRooted</h1>
+    <p class="tag">Dig it up. Reset it. Reroot stronger.</p>
+    <p class="sub">Six days in the cloud forest of Costa Rica, December 6 to 12. Until November 16, community members choose what they pay from three levels. You book your flight. Everything else is taken care of.</p>
+  </div>
+</header>
+
+<div class="hero-img">
+  <img src="img/group.png" alt="Women celebrating together at Verdesana, Costa Rica">
+</div>
+
+<section class="why">
+  <div class="wrap">
+    <p class="eyebrow">Why this offer</p>
+    <h2>A few places are still open. We'd rather fill them with you.</h2>
+    <p>ReRooted happens once. A few of the 14 places are still open, and we're not discounting it publicly. Instead, this community gets first access, on terms that make it easier to say yes.</p>
+  </div>
+</section>
+
+<section class="tiers">
+  <div class="wide">
+    <p class="eyebrow">Choose what you pay</p>
+    <h2>Three levels. Pick the one that's honest for you.</h2>
+    <div class="tier-grid">
+      <div class="tier">
+        <div class="name">Starting point</div>
+        <div class="price">$1,500</div>
+        <p>The lowest level of this offer. Choose it if money is the real barrier between you and these six days.</p>
+        <a class="btn" data-tier="start" href="#">Reserve at $1,500</a>
+      </div>
+      <div class="tier pick">
+        <span class="flag">Recommended</span>
+        <div class="name">Fair share</div>
+        <div class="price">$2,500</div>
+        <p>The fair middle. If you're unsure where you land, this is probably you.</p>
+        <a class="btn" data-tier="fair" href="#">Reserve at $2,500</a>
+      </div>
+      <div class="tier">
+        <div class="name">Supporter</div>
+        <div class="price">$3,500</div>
+        <p>If you can, this level helps make the circle possible for the women who choose the starting point.</p>
+        <a class="btn" data-tier="support" href="#">Reserve at $3,500</a>
+      </div>
+    </div>
+    <p class="regular">Regular price <s>from $5,150</s> · All levels include the full retreat.</p>
+    <p class="flight">Flights are not included. You book and pay your own flight to San José.</p>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="wide">
+    <p class="eyebrow">How it works</p>
+    <h2>Three steps, and you're in.</h2>
+    <div class="step-list">
+      <div class="step">
+        <div class="n">i</div>
+        <h3>Choose your level</h3>
+        <p>Pick the amount that's honest for you and reserve your place before November 16.</p>
+      </div>
+      <div class="step">
+        <div class="n">ii</div>
+        <h3>Book your flight</h3>
+        <p>Fly into Juan Santamaría International Airport in San José. Land by 11 AM on December 6, or arrive the day before.</p>
+      </div>
+      <div class="step">
+        <div class="n">iii</div>
+        <h3>Meet Monique before you go</h3>
+        <p>A private focus session and a group gathering before Costa Rica, so you arrive knowing what you want to work on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="what">
+  <div class="wide">
+    <p class="eyebrow">What you're saying yes to</p>
+    <h2>Work, rest, and something to take home.</h2>
+    <div class="boxes">
+      <div class="box">
+        <img src="img/food.jpg" alt="A shared meal at Verdesana">
+        <div>
+          <h3>Let yourself be cared for</h3>
+          <p>Forest cabins, three meals a day, movement, and quiet. For once, nobody needs anything from you.</p>
+        </div>
+      </div>
+      <div class="box">
+        <img src="img/lodge.jpg" alt="The lodge at Verdesana">
+        <div>
+          <h3>Give your ideas some room</h3>
+          <p>A working retreat: structured sessions and coaching to see what you've outgrown, with protected time each day to check in with your team.</p>
+        </div>
+      </div>
+      <div class="box">
+        <img src="img/river.jpg" alt="The river near Verdesana">
+        <div>
+          <h3>Bring possibility home</h3>
+          <p>Leave with clear next steps for your business and your life, and coaching before and after so they don't fade.</p>
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="facts">
+        <div class="fact"><span>Dates</span><span>December 6 to 12, 2026</span></div>
+        <div class="fact"><span>Place</span><span>Verdesana, cloud forest, Costa Rica</span></div>
+        <div class="fact"><span>Group</span><span>Capped at 14 women</span></div>
+        <div class="fact"><span>Included</span><span>Six nights, all meals, full programming, airport pickup, coaching before and after</span></div>
+        <div class="fact"><span>Not included</span><span>Flights, travel insurance, extra nights</span></div>
+      </div>
+      <p class="once">ReRooted happens once. Not again in this form, not in this place.</p>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="q">
+      <h3>Which room do I get?</h3>
+      <p>Rooms are assigned first come, first served. If you'd like a private room or cabin, talk to Monique before you reserve.</p>
+    </div>
+    <div class="q">
+      <h3>Can I pay in installments?</h3>
+      <p>Yes, payment plans are available. Book a call with Monique and she'll set it up with you.</p>
+    </div>
+    <div class="q">
+      <h3>What happens after November 16?</h3>
+      <p>The community offer closes. Any remaining places go back to the regular price.</p>
+    </div>
+    <div class="q">
+      <h3>Can I share this with a friend?</h3>
+      <p>This offer is for community members. If you know a woman who belongs in this circle, introduce her to Monique directly.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Not sure yet? Talk to Monique.</h2>
+    <p>Thirty minutes, just the two of you. Bring the practical questions and the personal ones. If it isn't right for you, she'll tell you.</p>
+    <a class="btn" href="https://www.thelifescapecoach.com/meetings/thelifescapecoach/business-discovery-session">Book a call with Monique</a>
+    <a class="more" href="https://retreat.thelifescapecoach.com/">See the full retreat page</a>
+  </div>
+</section>
+
+<script>
+  // Stripe payment links per level. Until they are filled in, the buttons go to the booking call.
+  var PAY_LINKS = { start: "", fair: "", support: "" };
+  var CALL = "https://www.thelifescapecoach.com/meetings/thelifescapecoach/business-discovery-session";
+  document.querySelectorAll('[data-tier]').forEach(function (a) {
+    a.href = PAY_LINKS[a.dataset.tier] || CALL;
+  });
+
+  // Countdown to Monday, November 16, 2026, 11:59 PM Eastern (UTC-5).
+  var end = Date.UTC(2026, 10, 17, 4, 59, 0);
+  var out = document.getElementById('countdown');
+  function tick() {
+    var ms = end - Date.now();
+    if (ms <= 0) { out.textContent = 'offer closed'; return; }
+    var d = Math.floor(ms / 86400000), h = Math.floor(ms / 3600000) % 24, m = Math.floor(ms / 60000) % 60;
+    out.textContent = d + 'd ' + h + 'h ' + m + 'm left';
+  }
+  tick();
+  setInterval(tick, 30000);
+</script>
+
+</body>
+</html>
