@@ -72,6 +72,16 @@
   .measures strong { display: block; font-weight: 500; font-size: 19px; margin-bottom: 6px; }
   .measures span { color: var(--dim); font-size: 16px; }
 
+  .entry { margin-top: 40px; padding: 42px 40px 44px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 44px; align-items: start; }
+  .entry h3 { font-size: 42px; text-transform: uppercase; margin: 16px 0 10px; }
+  .entry .sub { color: var(--dim); margin: 0 0 26px; font-size: 16px; }
+  .entry .priceline { display: flex; align-items: baseline; gap: 12px; }
+  .entry .price { font-size: 64px; }
+  .entry .unit { font: 500 11px/1.3 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
+  .entry .credit { margin: 16px 0 0; font-size: 15px; }
+  .entry .fine { margin: 10px 0 0; font-size: 14px; color: var(--faint); }
+  .entry .checks { margin: 0; }
+
   .guarantee { margin-top: 20px; padding: 32px 36px; display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; }
   .guarantee h3 { font-size: 30px; text-transform: uppercase; margin-bottom: 8px; }
   .guarantee p { color: var(--dim); margin: 0; }
@@ -116,6 +126,9 @@
     .month > div { padding: 24px 22px; }
     .timebox { padding: 24px 22px; }
     .measures li { padding: 22px 22px 22px 70px; }
+    .entry { grid-template-columns: minmax(0, 1fr); gap: 28px; padding: 28px 22px 30px; }
+    .entry h3 { font-size: 30px; overflow-wrap: anywhere; }
+    .entry .price { font-size: 48px; }
     .guarantee { grid-template-columns: 1fr; padding: 26px 22px; }
   }
 </style>
@@ -140,7 +153,7 @@
     <div class="wrap">
       <div class="label signal"><span class="dot"></span>Proposal &middot; Confidential</div>
       <h1>A Leadership Rhythm <span>for Premier Manufacturing</span></h1>
-      <p class="lede">Pricing and structure for a monthly engagement, built into the leadership meeting you already hold. Three lengths, same monthly work, nothing to buy before we start.</p>
+      <p class="lede">Pricing and structure for a monthly engagement, built into the leadership meeting you already hold. It starts with one session, and the monthly tracks are there for whenever that session has earned them.</p>
       <div class="file">
         <div><span class="label">Principal</span><strong data-bind="principal"></strong></div>
         <div><span class="label">Role</span><strong data-bind="principalRole">CEO</strong></div>
@@ -166,29 +179,30 @@
   <section>
     <div class="wrap">
       <div class="label">02 &middot; How this starts</div>
-      <h2>There is no new phase in front of the work.</h2>
-      <p class="lede">The diagnostic is finished. Your Phase I and Phase II reports are in your hands, your team has been through the debrief, and Nicole has had her session. There is nothing left to assess and nothing to purchase before we begin.</p>
-      <div class="month">
+      <h2>It starts with one session, not a contract.</h2>
+      <p class="lede">The diagnostic is finished. Your Phase I and Phase II reports are in your hands, your team has been through the debrief, and Nicole has had her session. There is nothing left to assess, so the first step is simply the first working session.</p>
+
+      <article class="panel signal corners entry">
         <div>
-          <span class="label">Entry</span>
-          <h4>Month one is a working session</h4>
-          <p>Not an assessment, not an onboarding. We take one friction point from the reports you already have and turn it into a rule your leaders can use the next morning.</p>
+          <span class="label signal"><span class="dot"></span>First step</span>
+          <h3>The First Working Session</h3>
+          <p class="sub">Ninety minutes inside your next monthly leadership meeting. One session, decided one session at a time.</p>
+          <ul class="checks">
+            <li>A 30-minute call with you beforehand<small>We pick the one friction point worth the ninety minutes</small></li>
+            <li>90 minutes with your leadership team<small>Facilitated working session on that friction point, not a presentation</small></li>
+            <li>The first page of your playbook<small>One agreed working rule your leaders can use the next morning</small></li>
+          </ul>
         </div>
         <div>
-          <span class="label">Placement</span>
-          <h4>Inside the meeting you already hold</h4>
-          <p>Your leadership team keeps its existing monthly rhythm. I work inside it rather than asking you to run a second initiative alongside it.</p>
+          <div class="priceline"><span class="price">$3,500</span><span class="unit">One time</span></div>
+          <p class="credit ok">Credited in full toward any of the monthly tracks below if you continue within 30 days.</p>
+          <p class="fine">Invoiced after the session. Nothing up front, no deposit, no retainer to fund.</p>
+          <p class="fine">Covered by the guarantee below.</p>
         </div>
-        <div>
-          <span class="label">Payment</span>
-          <h4>Invoiced monthly</h4>
-          <p>Nothing up front, no deposit, no retainer to fund before the first session. The first invoice follows the first working session.</p>
-        </div>
-        <div>
-          <span class="label">Exit</span>
-          <h4>The first 30 days carry the risk</h4>
-          <p>If the first month does not earn its place, you stop and I refund it. The guarantee below says it plainly.</p>
-        </div>
+      </article>
+
+      <div class="panel corners timebox">
+        <p><b>Nothing new goes on the calendar.</b> The session sits inside the leadership meeting your team already holds. There is no second initiative to run alongside it, and no decision about months or terms until you have seen the work.</p>
       </div>
     </div>
   </section>
@@ -232,15 +246,16 @@
       </div>
       <div class="panel corners timebox">
         <p><b>Time this asks of your organization:</b> the meeting your team already holds, plus one 30-minute call from you each month. That is the whole footprint.</p>
+        <p style="margin:12px 0 0"><b>Delivered virtually,</b> the way we have worked so far. On-site visits can be added when a session is worth being in the room for, quoted separately.</p>
       </div>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <div class="label">04 &middot; Three lengths</div>
+      <div class="label">04 &middot; If you continue</div>
       <h2>Same monthly work. The longer the commitment, the lower the rate.</h2>
-      <p class="lede">All three are invoiced monthly. The difference between them is how much is built on top of the monthly rhythm, and what each month costs.</p>
+      <p class="lede">These are the monthly tracks, for whenever the first session has earned them. All three are invoiced monthly, and your $3,500 is credited in full against the first one. The difference between them is how much is built on top of the monthly rhythm, and what each month costs.</p>
       <div class="tiers">
         <article class="panel corners tier">
           <span class="label">Six months</span>
@@ -299,13 +314,13 @@
       <ol class="measures">
         <li><strong>Decisions that get re-opened</strong><span>How often the team revisits something it had already settled. The clearest signal that ownership is unclear.</span></li>
         <li><strong>Escalations that reach you</strong><span>How many cross-department handoffs need the CEO to step in before they move.</span></li>
-        <li><strong>The two divides from Phase I</strong><span>A short re-run on autonomy and on execution, so the gaps the diagnostic found are tracked over time instead of assumed to be closing.</span></li>
+        <li><strong>The two divides from the diagnostic</strong><span>A short re-run on autonomy and on execution, so the gaps the reports found are tracked over time instead of assumed to be closing.</span></li>
       </ol>
       <div class="panel corners guarantee">
         <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 56 13v18c0 15-10 25-24 29C18 56 8 46 8 31V13Z" fill="none" style="stroke:var(--steel)" stroke-width="1.5"/><path d="m22 32 7 7 14-15" fill="none" style="stroke:var(--signal)" stroke-width="2.5"/></svg>
         <div>
           <h3>Zero-Risk Integrity Guarantee</h3>
-          <p>If after the first 30 days of working together you have not gained at least one new insight, addressed an operational challenge, reduced a risk, or identified a new opportunity for Premier Manufacturing, I refund that month in full and we stop. No questions asked. This applies whichever length you choose.</p>
+          <p>If after the first working session you have not gained at least one new insight, addressed an operational challenge, reduced a risk, or identified a new opportunity for Premier Manufacturing, I refund it in full and we stop. No questions asked. The same applies to the first 30 days of any monthly track.</p>
         </div>
       </div>
     </div>
@@ -314,13 +329,13 @@
   <section>
     <div class="wrap">
       <div class="label">06 &middot; Start here</div>
-      <h2>One decision: which length.</h2>
+      <h2>One decision, and it is a small one.</h2>
       <div class="steps3">
-        <div class="panel"><span class="label">Step 01</span><p>Reply with six, twelve or twenty-four. That is the only decision in front of you.</p></div>
-        <div class="panel"><span class="label">Step 02</span><p>We place the first working session in your next monthly leadership meeting.</p></div>
-        <div class="panel"><span class="label">Step 03</span><p>The first invoice follows that session, and monthly from there.</p></div>
+        <div class="panel"><span class="label">Step 01</span><p>Reply yes to the first working session. No length, no term, no commitment beyond that session.</p></div>
+        <div class="panel"><span class="label">Step 02</span><p>We take 30 minutes to pick the friction point, then run it in your next monthly leadership meeting.</p></div>
+        <div class="panel"><span class="label">Step 03</span><p>Afterwards you decide whether a monthly track is worth it. If yes, the $3,500 comes off the first month.</p></div>
       </div>
-      <p class="lede" style="font-size:17px">If none of the three fits, tell me which part is wrong and I will put a different shape in front of you. A clear "not now" is as useful to me as a yes.</p>
+      <p class="lede" style="font-size:17px">My recommendation is to start with the session, see the work in your own meeting, and decide on a track afterwards with the $3,500 credited. Say the word and I will hold the slot in your next leadership meeting.</p>
     </div>
   </section>
 </main>
