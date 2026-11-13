@@ -145,3 +145,9 @@ section{padding:72px 0}
 .foot-links{display:flex;flex-wrap:wrap;gap:14px 28px}
 .foot-small{font-size:13px;color:#899092;border-top:1px solid #343A3B;padding-top:24px}
 @media (min-width:900px){.site-foot .wrap{grid-template-columns:1fr auto;align-items:center}.foot-small{grid-column:1/-1}}
+
+/* headshot */
+.photo{padding:0;overflow:hidden;margin:0}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.photo .ph{position:absolute;left:14px;bottom:14px;background:rgba(251,249,245,.92);margin:0}
+@media (max-width:899px){.hero .photo{max-width:420px;aspect-ratio:4/4.6}}
