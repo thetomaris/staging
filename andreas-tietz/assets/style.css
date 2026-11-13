@@ -463,3 +463,10 @@ section.forest .soft { color: rgba(255, 255, 255, 0.38); }
   font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
   padding: 8px 12px; border-radius: 999px;
 }
+
+/* Impressum */
+.legal { padding-top: clamp(48px, 7vw, 100px); }
+.legal-title { font-size: clamp(2.6rem, 6vw, 4.5rem); margin: 0 0 clamp(32px, 4vw, 56px); }
+.legal h2 { font-size: clamp(1.15rem, 1.6vw, 1.35rem); margin: 2em 0 0.5em; }
+.legal h2:first-child { margin-top: 0; }
+.legal p { margin: 0 0 1em; }
