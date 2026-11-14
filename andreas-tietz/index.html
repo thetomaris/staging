@@ -32,24 +32,24 @@
 <main>
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="wrap">
-      <p class="eyebrow">Leadership Integrator · Generationswechsel</p>
-      <p class="hero-question reveal">„Übergebe ich? An wen? Und wie mache ich danach weiter?“</p>
-      <h1>
-        <span class="line"><span>Jeder Generations&shy;wechsel</span></span>
-        <span class="line"><span>ist ein <em class="mark">Anlauf.</em></span></span>
-      </h1>
-      <div class="hero-row">
-        <div class="reveal d2">
-          <p class="lede">25 Mal habe ich bei Volkswagen und Porsche Leipzig Fahrzeuge von der Entwicklung über die Produktion bis zum Kunden gebracht. 25 Übergaben unter Zeitdruck, mit vielen Beteiligten und voller Verantwortung. Genau so begleite ich heute Familienunternehmen in die nächste Generation.</p>
-          <div class="btn-row">
-            <a class="btn green" href="#termin" data-book data-umami-event="Termin buchen: Hero">Wo steht deine Übergabe?</a>
-            <a class="btn ghost" href="generationswechsel.html" data-umami-event="Generationswechsel: Hero">So begleite ich Übergaben</a>
-          </div>
-        </div>
-        <div class="hero-photo reveal d1">
-          <img src="assets/img/andreas-buehne.jpg" alt="Andreas Tietz bei einem Vortrag" width="1800" height="1200" fetchpriority="high">
+  <section class="hero hero-split">
+    <div class="wrap hero-grid">
+      <div class="hero-head">
+        <p class="eyebrow">Leadership Integrator · Generationswechsel</p>
+        <p class="hero-question reveal">„Übergebe ich? An wen? Und wie mache ich danach weiter?“</p>
+        <h1>
+          <span class="line"><span>Jeder Generations&shy;wechsel</span></span>
+          <span class="line"><span>ist ein <em class="mark">Anlauf.</em></span></span>
+        </h1>
+      </div>
+      <div class="hero-photo reveal d1">
+        <img src="assets/img/andreas-buehne.jpg" alt="Andreas Tietz bei einem Vortrag" width="1800" height="1200" fetchpriority="high">
+      </div>
+      <div class="hero-body reveal d2">
+        <p class="lede">25 Mal habe ich bei Volkswagen und Porsche Leipzig Fahrzeuge von der Entwicklung über die Produktion bis zum Kunden gebracht. 25 Übergaben unter Zeitdruck, mit vielen Beteiligten und voller Verantwortung. Genau so begleite ich heute Familienunternehmen in die nächste Generation.</p>
+        <div class="btn-row">
+          <a class="btn green" href="#termin" data-book data-umami-event="Termin buchen: Hero">Wo steht deine Übergabe?</a>
+          <a class="btn ghost" href="generationswechsel.html" data-umami-event="Generationswechsel: Hero">So begleite ich Übergaben</a>
         </div>
       </div>
     </div>
@@ -65,8 +65,8 @@
     </div>
   </div>
 
-  <!-- STORYLINE: Variante über data-variant (a, b, c, d), siehe storyboard-varianten.html -->
-  <section class="storyline" id="storyboard" data-variant="a" data-step="0">
+  <!-- STORYLINE: Markup aus tools/storyline.py, Animation in assets/storyline.js -->
+  <section class="storyline" id="storyboard">
     <div class="sl-sticky">
       <div class="wrap">
         <p class="eyebrow">Das Storyboard</p>
@@ -102,7 +102,7 @@
           <span class="sl-dot" style="--x:0.12">Übernehmen</span>
           <span class="sl-dot" style="--x:0.5">Hochfahren</span>
           <span class="sl-dot" style="--x:0.88">Übergeben</span>
-          <div class="sl-car"></div>
+          <div class="sl-carpos"></div>
         </div>
       </div>
     </div>
