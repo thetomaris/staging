@@ -131,6 +131,7 @@
       if(o){o.classList.toggle('show',r.value==='Something else');if(r.value==='Something else'){$('input',o).focus();return}}
       err.textContent='';setTimeout(function(){if(steps[i]===s&&i<steps.length-1)show(i+1,true)},motion?650:0);
     })});
+    form.addEventListener('input',function(){err.textContent=''});
     show(0,false);
   }
 

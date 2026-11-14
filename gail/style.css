@@ -360,7 +360,7 @@ button.btn{cursor:pointer;font:inherit;font-family:var(--head);font-weight:500;f
 
 /* 13 paper / linen texture */
 .opt-texture body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35  0 0 0 0 .3  0 0 0 0 .25  0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-.opt-texture .site-head,.opt-texture .hero2{background-color:transparent}
+.opt-texture .hero2{background-color:transparent}
 .opt-texture.motion .hero2{animation:none}
 
 /* 15 the K moves almost imperceptibly on load */
@@ -386,3 +386,9 @@ button.btn{cursor:pointer;font:inherit;font-family:var(--head);font-weight:500;f
   .hero2 h1{opacity:1 !important}
   .seats i{transition:none}
 }
+
+/* mobile: never let a long word widen the grid */
+.split{grid-template-columns:minmax(0,1fr)}
+.turn{overflow-wrap:break-word}
+.ph{white-space:normal;max-width:100%}
+.story-list li,.steps3 li,.next3 li{grid-template-columns:44px minmax(0,1fr)}
