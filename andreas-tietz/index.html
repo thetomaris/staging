@@ -263,8 +263,10 @@
         </div>
       </div>
       <p class="lede muted reveal" style="margin-top:28px">Ein ehrliches Gespräch, das Anlaufgespräch: 30 Minuten, kostenfrei. Was muss bleiben, wer übernimmt, was ist der nächste Schritt?</p>
-      <!-- OFFEN: Calendly wird von Tom eingerichtet und hier eingebettet (BOOKING_URL in main.js) -->
-      <div class="calendar-slot">Hier erscheint der Buchungskalender.<br>Calendly wird gerade eingerichtet.</div>
+      <!-- Calendly-Kalender, lädt beim Heranscrollen (CALENDLY_URL in main.js) -->
+      <div class="calendar-slot" data-calendly>
+        <a class="calendar-fallback" href="https://calendly.com/andreastietz/anlauf" target="_blank" rel="noopener" data-umami-event="Termin buchen: Calendly direkt">Kalender in neuem Fenster öffnen</a>
+      </div>
       <div class="btn-row">
         <a class="btn ghost" href="mailto:andreas@livingreboot.de" data-umami-event="E-Mail">andreas@livingreboot.de</a>
         <a class="btn ghost" href="tel:+491735107099" data-umami-event="Telefon">+49 173 510 7099</a>

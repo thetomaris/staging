@@ -1,7 +1,11 @@
 // Ein einziger Buchungslink für die ganze Seite.
-// Buchungstool ist noch offen: sobald es feststeht, hier die URL eintragen.
-// Leer = interner Terminbereich (#termin auf der Seite, sonst auf der Startseite).
+// Leer = interner Terminbereich (#termin auf der Seite, sonst auf der Startseite), dort sitzt der Calendly-Kalender.
 const BOOKING_URL = "";
+
+// Calendly-Kalender für das Anlaufgespräch, eingefärbt im Seitengrün.
+// Farben greifen nur, wenn Andreas' Calendly-Tarif das Anpassen erlaubt.
+const CALENDLY_URL = "https://calendly.com/andreastietz/anlauf";
+const CALENDLY_STYLE = "hide_gdpr_banner=1&hide_event_type_details=1&background_color=1e2f1a&text_color=ffffff&primary_color=75c44d";
 
 // LinkedIn-Profil: OFFEN, URL fehlt noch. Platzhalter bis Andreas sie schickt.
 const LINKEDIN_URL = "https://www.linkedin.com/";
@@ -202,3 +206,27 @@ document.querySelectorAll("form[data-signup]").forEach((form) => {
     }
   });
 });
+
+// Calendly erst laden, wenn der Terminbereich in die Nähe kommt
+const calSlots = [...document.querySelectorAll("[data-calendly]")];
+if (calSlots.length) {
+  const embed = (slot) => {
+    if (slot.dataset.loaded) return;
+    slot.dataset.loaded = "1";
+    const frame = document.createElement("iframe");
+    frame.src = `${CALENDLY_URL}?embed_type=Inline&embed_domain=${encodeURIComponent(location.hostname || "localhost")}&${CALENDLY_STYLE}`;
+    frame.title = "Anlaufgespräch mit Andreas Tietz buchen";
+    frame.loading = "lazy";
+    frame.addEventListener("load", () => slot.classList.add("ready"));
+    slot.classList.add("embed");
+    slot.prepend(frame);
+  };
+  const calIo = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { embed(e.target); calIo.unobserve(e.target); } });
+  }, { rootMargin: "800px 0px" });
+  calSlots.forEach((s) => calIo.observe(s));
+  // Gebuchter Termin als Umami-Ereignis
+  addEventListener("message", (e) => {
+    if (e.origin === "https://calendly.com" && e.data && e.data.event === "calendly.event_scheduled" && window.umami) window.umami.track("Anlaufgespräch gebucht");
+  });
+}
