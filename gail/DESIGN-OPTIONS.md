@@ -6,7 +6,7 @@ All options are **off by default**. Each one is a flag in `flags.js` and a CSS c
 - **Preview without changing code:** add `?opt=` to any URL, for example `/gail/?opt=cursor,texture`.
   - `?opt=all` turns everything on except the boardroom story.
   - `?opt=none` resets.
-- **Review switcher:** `?review` shows a small panel with checkboxes in the corner.
+- **Review switcher:** `?review` shows a small panel with checkboxes in the corner. Close it with the × or with `?review=0`.
 - Preview choices are remembered for the browser session.
 - Under `prefers-reduced-motion`, every motion option stays still.
 

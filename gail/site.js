@@ -82,7 +82,7 @@
   /* ---------- engagement story (pinned) ---------- */
   var a3=$('.arc3');
   if(a3){
-    var sh3=$('.shaft',a3),L3=sh3.getTotalLength(),dot=$('.dot',a3),cs3=$$('circle.ph',a3),it3=$$('.arc3-phase .item',a3),cur=-1;
+    var sh3=$('.shaft',a3),L3=sh3.getTotalLength(),dot=$('.dot',a3),cs3=$$('circle.phs',a3),it3=$$('.arc3-phase .item',a3),cur=-1;
     cs3.forEach(function(c){var pt=sh3.getPointAtLength(L3*(+c.dataset.f));c.setAttribute('cx',pt.x);c.setAttribute('cy',pt.y)});
     var onA3=function(){
       var r=a3.getBoundingClientRect(),vh=innerHeight-72,pr=motion?clamp((72-r.top)/Math.max(1,r.height-vh)):1;
@@ -163,10 +163,10 @@
   /* ---------- review switcher ---------- */
   var rv=null;try{rv=sessionStorage.getItem('ki-review')}catch(e){}
   if(rv&&window.KI_FLAGS){
-    var p=document.createElement('div');p.className='review';p.innerHTML='<b>Design options</b>';
+    var p=document.createElement('div');p.className='review';p.innerHTML='<b>Design options</b><button class="x" type="button" aria-label="Close">&times;</button>';p.querySelector('.x').onclick=function(){try{sessionStorage.removeItem('ki-review')}catch(e){}p.remove()};
     Object.keys(KI_FLAGS).forEach(function(k){
       var l=document.createElement('label'),cb=document.createElement('input');cb.type='checkbox';cb.checked=d.classList.contains(KI_CLASS[k]);
-      cb.onchange=function(){var on=$$('input',p).filter(function(x){return x.checked}).map(function(x){return x.dataset.k});try{sessionStorage.setItem('ki-opt',on.join(',')||'none')}catch(e){}location.reload()};
+      cb.onchange=function(){var on=$$('input[type=checkbox]',p).filter(function(x){return x.checked}).map(function(x){return x.dataset.k});try{sessionStorage.setItem('ki-opt',on.join(',')||'none')}catch(e){}location.reload()};
       cb.dataset.k=k;l.appendChild(cb);l.appendChild(document.createTextNode(' '+k));p.appendChild(l);
     });
     document.body.appendChild(p);

@@ -21,7 +21,7 @@ window.KI_CLASS = {heroWords:'opt-words',boardroomStory:'opt-boardroom',cursor:'
   var q=new URLSearchParams(location.search), o=q.get('opt');
   if(o!==null&&ss){try{ss.setItem('ki-opt',o)}catch(e){}}
   if(o===null&&ss){try{o=ss.getItem('ki-opt')}catch(e){}}
-  if(q.has('review')&&ss){try{ss.setItem('ki-review','1')}catch(e){}}
+  if(q.has('review')&&ss){try{if(q.get('review')==='0')ss.removeItem('ki-review');else ss.setItem('ki-review','1')}catch(e){}}
   if(o&&o!=='none'){o.split(',').forEach(function(k){k=k.trim();if(k==='all'){for(var f in F)if(f!=='boardroomStory')F[f]=true}else if(k in F)F[k]=true})}
   for(var f in F){if(F[f])d.classList.add(C[f])}
   if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))d.classList.add('motion');
