@@ -25,7 +25,7 @@
       var spans=$$('span',drift), n=spans.length, small=W<720;
       spans.forEach(function(s,i){
         if(small&&i%2){s.remove();return}
-        var x=Math.random()*(W*.86)+W*.04, y=Math.random()*(H*.84)+H*.06;
+        var x=small?Math.random()*(W*.8)+W*.05:Math.random()*(W*.36)+W*.58, y=Math.random()*(H*.84)+H*.06;
         var dx=(Math.random()-.5)*60, dy=(Math.random()-.5)*40;
         s.style.left=x+'px';s.style.top=y+'px';
         s.style.setProperty('--x1',dx+'px');s.style.setProperty('--y1',dy+'px');
@@ -33,7 +33,7 @@
       });
       drift.getBoundingClientRect();
       setTimeout(function(){drift.classList.add('on')},80);
-      setTimeout(function(){drift.classList.add('settle');hero.classList.add('settled')},2600);
+      setTimeout(function(){drift.classList.add('settle');hero.classList.add('settled')},2200);
       setTimeout(function(){drift.remove()},6000);
     } else { hero.classList.add('settled') }
   }
