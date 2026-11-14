@@ -82,14 +82,16 @@
   /* ---------- engagement story (pinned) ---------- */
   var a3=$('.arc3');
   if(a3){
-    var sh3=$('.shaft',a3),L3=sh3.getTotalLength(),dot=$('.dot',a3),cs3=$$('circle.phs',a3),it3=$$('.arc3-phase .item',a3),cur=-1;
-    cs3.forEach(function(c){var pt=sh3.getPointAtLength(L3*(+c.dataset.f));c.setAttribute('cx',pt.x);c.setAttribute('cy',pt.y)});
+    var sv3=$('svg',a3),sh3=$('.shaft',a3),L3=sh3.getTotalLength(),head=$('.head',a3),pts=$$('.pt',a3),it3=$$('.arc3-phase .item',a3),cur=-1;
+    pts.forEach(function(g){var pt=sh3.getPointAtLength(L3*(+g.dataset.f));g.setAttribute('transform','translate('+pt.x.toFixed(1)+' '+pt.y.toFixed(1)+')');$('.drop',g).setAttribute('y2',(250-pt.y).toFixed(1))});
     var onA3=function(){
       var r=a3.getBoundingClientRect(),vh=innerHeight-72,pr=motion?clamp((72-r.top)/Math.max(1,r.height-vh)):1;
       var lp=clamp(pr/.9),col=mix(lp);
-      sh3.style.strokeDashoffset=1-lp;sh3.style.stroke=col;
-      var pt=sh3.getPointAtLength(L3*lp);dot.setAttribute('cx',pt.x);dot.setAttribute('cy',pt.y);dot.style.fill=col;
-      var idx=0;cs3.forEach(function(c,k){var on=lp>=+c.dataset.f-.01;c.classList.toggle('on',on);c.style.stroke=col;c.style.fill=on?col:'';if(on)idx=k});
+      sv3.style.setProperty('--c',col);
+      sh3.style.strokeDashoffset=1-lp;
+      var pt=sh3.getPointAtLength(L3*lp);head.setAttribute('transform','translate('+pt.x.toFixed(1)+' '+pt.y.toFixed(1)+')');
+      var idx=0;pts.forEach(function(g,k){if(lp>=+g.dataset.f-.01)idx=k});
+      pts.forEach(function(g,k){var reached=lp>=+g.dataset.f-.01;g.classList.toggle('on',reached&&k===idx);g.classList.toggle('past',reached&&k<idx)});
       a3.classList.toggle('ghost-on',lp>.8);a3.classList.toggle('hold-on',lp>.97);
       if(motion&&idx!==cur){cur=idx;it3.forEach(function(x,k){x.classList.toggle('on',k===idx)})}
     };
