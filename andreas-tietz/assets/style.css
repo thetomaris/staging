@@ -492,3 +492,81 @@ section.forest .soft { color: rgba(255, 255, 255, 0.38); }
 .closing-quote { margin: clamp(56px, 7vw, 96px) 0 0; font-family: var(--font-display); font-weight: 500; letter-spacing: -0.02em; font-size: clamp(1.3rem, 2.4vw, 1.9rem); color: #fff; }
 .refs { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
 @media (max-width: 860px) { .booking-head { flex-direction: column; align-items: flex-start; } }
+
+/* Version 4: Scroll-Storyline mit Auto */
+.storyline { position: relative; height: 380vh; padding: 0; background: var(--forest); color: #fff; }
+.sl-sticky { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; overflow: hidden; }
+.sl-sticky > .wrap { width: 100%; }
+.storyline .eyebrow { color: rgba(255, 255, 255, 0.62); }
+.sl-texts { position: relative; min-height: clamp(280px, 38vh, 380px); margin-top: clamp(16px, 3vh, 32px); }
+.sl-step, .sl-final { position: absolute; inset: 0 0 auto 0; opacity: 0; transform: translateY(24px); transition: opacity .6s var(--ease), transform .6s var(--ease); pointer-events: none; }
+.sl-step.on, .storyline.final .sl-final { opacity: 1; transform: none; }
+.sl-step { display: grid; grid-template-columns: auto 1fr; column-gap: clamp(20px, 3vw, 40px); max-width: 980px; }
+.sl-step .sl-no { grid-row: span 4; font-family: var(--font-serif); font-style: italic; font-size: clamp(3.4rem, 8vw, 6.5rem); line-height: .9; color: var(--leaf); }
+.sl-step h3 { font-size: clamp(2.2rem, 5.4vw, 4.4rem); letter-spacing: -0.04em; line-height: 1; margin: 0 0 18px; }
+.sl-step .sl-werk { margin: 0 0 10px; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.55); }
+.sl-step p { margin: 0; max-width: 34em; color: rgba(255, 255, 255, 0.78); font-size: clamp(1rem, 1.4vw, 1.2rem); }
+.sl-step .q { margin-top: 16px; padding-left: 14px; border-left: 3px solid var(--leaf); color: #fff; font-weight: 500; }
+.sl-final .mega { max-width: 13ch; }
+.sl-final .mega em { color: var(--leaf); }
+.sl-track { position: relative; height: clamp(96px, 14vw, 150px); margin-top: clamp(24px, 5vh, 56px); }
+.sl-road, .sl-trail { position: absolute; left: 0; right: 0; bottom: 30px; height: 2px; }
+.sl-road { background: repeating-linear-gradient(90deg, rgba(255,255,255,.35) 0 14px, transparent 14px 26px); }
+.sl-trail { background: var(--leaf); transform-origin: left; transform: scaleX(0); }
+.sl-dot { position: absolute; left: calc(var(--x) * 100%); bottom: 0; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: rgba(255, 255, 255, 0.5); transition: color .4s; white-space: nowrap; }
+.sl-dot::before { content: ""; width: 14px; height: 14px; border-radius: 50%; margin-bottom: 2px; background: var(--forest); border: 2px solid rgba(255, 255, 255, 0.5); transition: all .4s var(--ease); position: relative; top: -16px; }
+.sl-dot { bottom: -14px; }
+.sl-dot.on { color: #fff; }
+.sl-dot.on::before { background: var(--leaf); border-color: var(--leaf); transform: scale(1.25); }
+.sl-car { position: absolute; left: 0; bottom: 31px; width: clamp(150px, 22vw, 290px); will-change: transform; }
+.sl-car svg { display: block; width: 100%; height: auto; overflow: visible; }
+.sl-car .car-fill { fill: var(--forest); transition: fill .6s; }
+.sl-car .car-line { fill: none; stroke: #fff; stroke-width: 2.2; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.sl-car .car-accent { fill: none; stroke: var(--leaf); stroke-width: 2.4; stroke-linecap: round; opacity: 0; transition: opacity .6s; vector-effect: non-scaling-stroke; }
+.sl-car .wheel { transform-box: fill-box; transform-origin: center; }
+.sl-car .wheel circle, .sl-car .wheel path { fill: var(--forest); stroke: #fff; stroke-width: 2.2; vector-effect: non-scaling-stroke; }
+.sl-car .wheel circle + circle { fill: none; }
+.sl-car .wheel .hub { fill: #fff; stroke: none; }
+.sl-car .speed { position: absolute; right: 100%; top: 30%; display: grid; gap: 9px; margin-right: 8px; opacity: var(--speed, 0); transition: opacity .2s; }
+.sl-car .speed i { display: block; height: 3px; border-radius: 2px; background: var(--leaf); width: 46px; justify-self: end; }
+.sl-car .speed i:nth-child(2) { width: 70px; }
+.sl-car .speed i:nth-child(3) { width: 34px; }
+/* Variante C: vom Entwurf zur Serie */
+.storyline[data-variant="c"] .car-line { stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--draw, 0)); }
+.storyline[data-variant="c"][data-step="0"] .car-line { stroke-dasharray: 0.012 0.008; stroke-dashoffset: 0; opacity: calc(.25 + var(--draw, 0) * .75); }
+.storyline[data-variant="c"][data-step="0"] .wheel { opacity: .35; }
+.storyline[data-variant="c"][data-step="2"] .car-fill, .storyline[data-variant="c"][data-step="3"] .car-fill { fill: #fff; }
+.storyline[data-variant="c"][data-step="2"] .car-glass, .storyline[data-variant="c"][data-step="3"] .car-glass { stroke: var(--forest); fill: var(--forest); }
+.storyline[data-variant="c"][data-step="2"] .car-accent, .storyline[data-variant="c"][data-step="3"] .car-accent { opacity: 1; }
+/* Variante D: gefüllte Silhouette, zieht die Spur */
+.storyline[data-variant="d"] .car-fill { fill: #fff; }
+.storyline[data-variant="d"] .car-glass { fill: var(--forest); stroke: var(--forest); }
+.storyline[data-variant="d"] .car-accent { opacity: 1; }
+.storyline[data-variant="d"] .sl-road { opacity: .35; }
+.storyline:not([data-variant="d"]) .sl-trail { display: none; }
+/* Variante B zeigt die Strecke bis zum Auto grün */
+@media (max-width: 860px) {
+  .storyline { height: 360vh; }
+  .sl-step { grid-template-columns: 1fr; }
+  .sl-step .sl-no { grid-row: auto; font-size: 3rem; margin-bottom: 6px; }
+  .sl-texts { min-height: 330px; }
+  .sl-dot { font-size: 10px; letter-spacing: .08em; }
+  .sl-car .speed i { width: 28px; } .sl-car .speed i:nth-child(2) { width: 42px; } .sl-car .speed i:nth-child(3) { width: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .storyline { height: auto; }
+  .sl-sticky { position: static; height: auto; padding: var(--section) 0; }
+  .sl-texts { min-height: 0; display: grid; gap: 48px; }
+  .sl-step, .sl-final { position: static; opacity: 1; transform: none; }
+}
+/* Variantenauswahl */
+.variant-label { background: var(--paper); padding: clamp(48px, 7vw, 96px) 0 clamp(32px, 4vw, 48px); }
+.variant-label h2 { font-size: clamp(2rem, 4.4vw, 3.4rem); }
+.variant-label p { color: var(--muted); max-width: 40em; margin: 12px 0 0; }
+.ph-note { display: inline-block; margin: 0 0 24px; padding: 6px 12px; font-size: 13px; background: #fff7d6; color: #6b5a12; border-radius: 2px; }
+.case { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.case-step { border-top: 2px solid var(--leaf); padding-top: 18px; }
+.case-step .k { display: block; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.case-step p { margin: 0; color: var(--muted); }
+@media (max-width: 860px) { .case { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .case { grid-template-columns: 1fr; } }

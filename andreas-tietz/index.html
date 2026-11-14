@@ -65,19 +65,45 @@
     </div>
   </div>
 
-  <!-- STORYBOARD -->
-  <section class="forest" id="storyboard">
-    <div class="wrap">
-      <p class="eyebrow">Das Storyboard</p>
-      <h2 class="reveal" style="max-width:17ch">Von der Entwicklung bis zum <em>Kunden.</em></h2>
-      <p class="lede muted reveal" style="margin-top:28px">Als Anlaufmanager habe ich ein Fahrzeug aus der Entwicklung übernommen, in die Produktion gebracht und an den Kunden übergeben. Eine Übergabe im Familienunternehmen folgt genau diesem Ablauf.</p>
-      <div class="path three">
-        <svg viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
-          <path pathLength="1" d="M10 110 C 160 106, 240 88, 340 78 S 560 52, 660 42 S 880 14, 990 6" />
-        </svg>
-        <div class="stage"><span class="n">01</span><span class="phase">Entwicklung</span><h3>Das Lebenswerk</h3><p>Wissen, Werte, Beziehungen. Ich mache sichtbar, was trägt.</p><p class="q">Was muss bleiben?</p></div>
-        <div class="stage"><span class="n">02</span><span class="phase">Anlauf</span><h3>Die Übergabe</h3><p>Rollen, Strukturen, neue Führung. Klare Schnittstellen, ein Takt, alle an Bord.</p><p class="q">Wer trägt was, ab wann?</p></div>
-        <div class="stage"><span class="n">03</span><span class="phase">Kunde</span><h3>Die Wirkung</h3><p>Das Unternehmen läuft stabil in neuer Hand. Team, Kunden und Familie spüren es.</p><p class="q">Woran merkt der Markt, dass es läuft?</p></div>
+  <!-- STORYLINE: Variante über data-variant (a, b, c, d), siehe storyboard-varianten.html -->
+  <section class="storyline" id="storyboard" data-variant="a" data-step="0">
+    <div class="sl-sticky">
+      <div class="wrap">
+        <p class="eyebrow">Das Storyboard</p>
+        <div class="sl-texts">
+          <article class="sl-step on">
+            <span class="sl-no">01</span>
+            <p class="sl-werk">Im Werk: Das neue Fahrzeug kommt aus der Entwicklung</p>
+            <h3>Übernehmen</h3>
+            <p>Im Familienunternehmen ist es das Lebenswerk. Wissen, Werte, Beziehungen. Ich mache sichtbar, was trägt.</p>
+            <p class="q">Was muss bleiben?</p>
+          </article>
+          <article class="sl-step">
+            <span class="sl-no">02</span>
+            <p class="sl-werk">Im Werk: Die Produktion fährt hoch, bis der Takt steht</p>
+            <h3>Hochfahren</h3>
+            <p>In der Übergabe sind es Rollen, Strukturen und eine neue Führung. Klare Schnittstellen, ein Takt, alle an Bord.</p>
+            <p class="q">Wer trägt was, ab wann?</p>
+          </article>
+          <article class="sl-step">
+            <span class="sl-no">03</span>
+            <p class="sl-werk">Im Werk: Das Fahrzeug geht an den Kunden</p>
+            <h3>Übergeben</h3>
+            <p>Das Unternehmen läuft stabil in neuer Hand. Team, Kunden und Familie spüren es.</p>
+            <p class="q">Woran merkt der Markt, dass es läuft?</p>
+          </article>
+          <div class="sl-final">
+            <p class="mega">Jeder Generations&shy;wechsel ist ein <em>Anlauf.</em></p>
+          </div>
+        </div>
+        <div class="sl-track" aria-hidden="true">
+          <div class="sl-road"></div>
+          <div class="sl-trail"></div>
+          <span class="sl-dot" style="--x:0.12">Übernehmen</span>
+          <span class="sl-dot" style="--x:0.5">Hochfahren</span>
+          <span class="sl-dot" style="--x:0.88">Übergeben</span>
+          <div class="sl-car"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -282,7 +308,8 @@
   </div>
 </footer>
 
-<div class="draft-badge">Entwurf V3 · 13.11.2026</div>
+<div class="draft-badge">Entwurf V4 · 14.11.2026</div>
 <script src="assets/main.js"></script>
+<script src="assets/storyline.js"></script>
 </body>
 </html>
