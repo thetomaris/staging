@@ -2,10 +2,8 @@
 // Leer = interner Terminbereich (#termin auf der Seite, sonst auf der Startseite), dort sitzt der Calendly-Kalender.
 const BOOKING_URL = "";
 
-// Calendly-Kalender für das Anlaufgespräch, eingefärbt im Seitengrün.
-// Farben greifen nur, wenn Andreas' Calendly-Tarif das Anpassen erlaubt.
-const CALENDLY_URL = "https://calendly.com/andreastietz/anlauf";
-const CALENDLY_STYLE = "hide_gdpr_banner=1&hide_event_type_details=1&background_color=1e2f1a&text_color=ffffff&primary_color=75c44d";
+// Calendly-Kalender für das Anlaufgespräch: Calendlys eigener Baustein, nur der Akzent im Seitengrün.
+const CALENDLY_URL = "https://calendly.com/andreastietz/anlauf?hide_gdpr_banner=1&primary_color=75c44d";
 
 // LinkedIn-Profil: OFFEN, URL fehlt noch. Platzhalter bis Andreas sie schickt.
 const LINKEDIN_URL = "https://www.linkedin.com/";
@@ -207,19 +205,25 @@ document.querySelectorAll("form[data-signup]").forEach((form) => {
   });
 });
 
-// Calendly erst laden, wenn der Terminbereich in die Nähe kommt
+// Calendly erst laden, wenn der Terminbereich in die Nähe kommt (offizielles widget.js)
 const calSlots = [...document.querySelectorAll("[data-calendly]")];
 if (calSlots.length) {
+  let script;
+  const loadScript = () => script || (script = new Promise((ok, fail) => {
+    const s = document.createElement("script");
+    s.src = "https://assets.calendly.com/assets/external/widget.js";
+    s.async = true; s.onload = ok; s.onerror = fail;
+    document.head.append(s);
+  }));
   const embed = (slot) => {
     if (slot.dataset.loaded) return;
     slot.dataset.loaded = "1";
-    const frame = document.createElement("iframe");
-    frame.src = `${CALENDLY_URL}?embed_type=Inline&embed_domain=${encodeURIComponent(location.hostname || "localhost")}&${CALENDLY_STYLE}`;
-    frame.title = "Anlaufgespräch mit Andreas Tietz buchen";
-    frame.loading = "lazy";
-    frame.addEventListener("load", () => slot.classList.add("ready"));
+    const box = document.createElement("div");
+    box.className = "calendly-box";
+    slot.prepend(box);
     slot.classList.add("embed");
-    slot.prepend(frame);
+    loadScript().then(() => window.Calendly.initInlineWidget({ url: CALENDLY_URL, parentElement: box, resize: true }))
+      .catch(() => { box.remove(); slot.classList.remove("embed"); });
   };
   const calIo = new IntersectionObserver((entries) => {
     entries.forEach((e) => { if (e.isIntersecting) { embed(e.target); calIo.unobserve(e.target); } });
