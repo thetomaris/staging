@@ -210,7 +210,7 @@ p+p{margin-top:1em}
 .motion .hero2 h1{animation:h1in 1.2s var(--ease) .1s both}
 @keyframes h1in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .drift{position:absolute;inset:0;z-index:1;pointer-events:none;display:none}
-.motion .drift{display:block}
+.motion.opt-words .drift{display:block}
 .drift span{position:absolute;left:0;top:0;font-family:var(--head);font-weight:500;font-size:clamp(11px,1vw,14px);letter-spacing:.26em;text-transform:uppercase;color:var(--muted);white-space:nowrap;opacity:0;
   transform:none;transition:transform 3.2s var(--ease),opacity 1.6s var(--ease)}
 .drift.on span{opacity:.32;transform:translate(var(--x1),var(--y1))}

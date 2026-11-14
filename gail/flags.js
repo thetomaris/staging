@@ -3,6 +3,7 @@
    or preview it with ?opt=cursor,texture (or ?opt=all, ?opt=none) in the URL.
    ?review adds a small switcher panel. Both are remembered for the browser session. */
 window.KI_FLAGS = {
+  heroWords:      false, // 17  faint words drift in the hero and settle toward the headline
   boardroomStory: false, // Fortune 50 boardroom story: keep false until Gail approves it
   cursor:         false, // 10  soft circle that follows the cursor with a slight lag
   sitBack:        false, // 11  text blocks lean forward slightly, then settle back
@@ -12,7 +13,7 @@ window.KI_FLAGS = {
   kMotion:        false, // 15  the K of the wordmark moves almost imperceptibly on load
   mobileSnap:     false  // 16  mobile: one idea per screen, scroll snapping, reading-time markers
 };
-window.KI_CLASS = {boardroomStory:'opt-boardroom',cursor:'opt-cursor',sitBack:'opt-sitback',network:'opt-network',texture:'opt-texture',heroObject:'opt-heroobject',kMotion:'opt-k',mobileSnap:'opt-snap'};
+window.KI_CLASS = {heroWords:'opt-words',boardroomStory:'opt-boardroom',cursor:'opt-cursor',sitBack:'opt-sitback',network:'opt-network',texture:'opt-texture',heroObject:'opt-heroobject',kMotion:'opt-k',mobileSnap:'opt-snap'};
 (function(){
   var d=document.documentElement, F=window.KI_FLAGS, C=window.KI_CLASS, ss=null;
   d.classList.remove('no-js'); d.classList.add('js');

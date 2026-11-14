@@ -21,6 +21,7 @@ All options are **off by default**. Each one is a flag in `flags.js` and a CSS c
 | 14 | One object photo in the hero instead of type only (placeholder image `img/object-placeholder.svg`) | `heroObject` | `opt-heroobject` | Home hero, desktop only |
 | 15 | The K of the wordmark moves almost imperceptibly on load | `kMotion` | `opt-k` | Header wordmark, all pages |
 | 16 | Mobile: one idea per screen with scroll snapping, plus reading-time markers ("90 seconds") | `mobileSnap` | `opt-snap` | All pages, below 900px |
+| 17 | Faint words ("Board meeting", "Forecast") drift in the hero and settle toward the headline. Moved from "always on" to an option after review | `heroWords` | `opt-words` | Home hero |
 
 ## Content flag
 
@@ -30,7 +31,7 @@ All options are **off by default**. Each one is a flag in `flags.js` and a CSS c
 
 ## Always on (part of the design)
 
-1. **Hero:** faint scattered words drift and settle into the headline ("the pattern under the noise"). The code is in `site.js`, section 1.
+1. **Hero:** the headline fades in on load. The drifting words are now option 17.
 2. **Breathing:** the hero background shifts almost invisibly at six breaths a minute. The CSS is `@keyframes breathe`.
 3. **Pulse to wave:** a thin teal line beats fast and slows into a calm wave on scroll. It appears on Home and How I work, in the Presence section.
 4. **The turn:** "What I need." changes to "What matters to you?". It appears in the Home case section and on the Case study page.

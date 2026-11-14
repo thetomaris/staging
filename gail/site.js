@@ -19,13 +19,13 @@
   var hero=$('.hero2');
   if(hero){
     var drift=$('.drift',hero),h1=$('h1',hero);
-    if(motion&&drift&&h1){
+    if(motion&&drift&&h1&&d.classList.contains('opt-words')){
       var W=hero.clientWidth,H=hero.clientHeight,hr=h1.getBoundingClientRect(),br=hero.getBoundingClientRect();
       var cx=hr.left-br.left+hr.width*.35, cy=hr.top-br.top+hr.height*.5;
       var spans=$$('span',drift), n=spans.length, small=W<720;
       spans.forEach(function(s,i){
         if(small&&i%2){s.remove();return}
-        var x=small?Math.random()*(W*.8)+W*.05:Math.random()*(W*.36)+W*.58, y=Math.random()*(H*.84)+H*.06;
+        var sw=s.offsetWidth||120, x=small?Math.random()*Math.max(0,W-sw-32)+16:W*.58+Math.random()*Math.max(0,W*.42-sw-32), y=Math.random()*(H*.84)+H*.06;
         var dx=(Math.random()-.5)*60, dy=(Math.random()-.5)*40;
         s.style.left=x+'px';s.style.top=y+'px';
         s.style.setProperty('--x1',dx+'px');s.style.setProperty('--y1',dy+'px');
@@ -35,7 +35,7 @@
       setTimeout(function(){drift.classList.add('on')},80);
       setTimeout(function(){drift.classList.add('settle');hero.classList.add('settled')},2200);
       setTimeout(function(){drift.remove()},6000);
-    } else { hero.classList.add('settled') }
+    } else { if(drift)drift.remove(); hero.classList.add('settled') }
   }
 
   /* ---------- 3 pulse to wave ---------- */
