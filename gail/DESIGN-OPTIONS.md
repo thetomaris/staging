@@ -33,9 +33,9 @@ All options are **off by default**. Each one is a flag in `flags.js` and a CSS c
 
 1. **Hero:** the headline fades in on load. The drifting words are now option 17.
 2. **Breathing:** the hero background shifts almost invisibly at six breaths a minute. The CSS is `@keyframes breathe`.
-3. **Pulse to wave:** a thin teal line beats fast and slows into a calm wave on scroll. It appears on Home and How I work, in the Presence section.
+3. **Notice. Pause. Choose.:** three words light up one after another on scroll, joined by hairlines. It appears on Home and How I work, in the Presence section. It replaces the earlier pulse line.
 4. **The turn:** "What I need." changes to "What matters to you?". It appears in the Home case section and on the Case study page.
-5. **Nine-month line:** drawn on scroll. It rises, dips in months 7 to 8, then holds. The color moves from teal to orange. It appears on Home and How I work.
+5. **Nine-month line:** on How I work the section is pinned while you scroll. The line draws month by month, a dot travels along it and one phase shows at a time. In months 7 to 8 a dashed line shows where old habits would pull, and the real line holds. On Home it is the shorter version. Teal to orange.
 6. **Seat dots:** they fill in one after another, and one stays hollow. They appear in the waitlist section on Home and How I work.
 7. **Application:** one question per screen with a thin progress line. It lives at `/gail/apply/`.
 8. **Editorial details:** Roman numerals, small caps, hairline rules, and margin notes with short quotes from Gail.
