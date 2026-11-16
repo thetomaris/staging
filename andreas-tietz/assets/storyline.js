@@ -16,7 +16,6 @@
     <path class="paint" d="${BODY}"/>
     <path class="glass" d="${GLASS}"/>
     <path class="paint" d="M135 17.3 L139 17.3 L135.5 40.4 L131.5 40.3 Z"/>
-    <ellipse class="detail" cx="271" cy="52.5" rx="7" ry="4.2" transform="rotate(-38 271 52.5)"/>
     <path class="detail" d="M195 45 C196.5 60 196 73 193 85"/>
     <path class="accent" d="M18 63 C80 57.5 200 56.5 290 63"/>
   </svg>

@@ -513,7 +513,7 @@ section.forest .soft { color: rgba(255, 255, 255, 0.38); }
 .sl-step .sl-werk { margin: 0 0 10px; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.55); }
 .sl-step p { margin: 0; max-width: 34em; color: rgba(255, 255, 255, 0.78); font-size: clamp(1rem, 1.4vw, 1.2rem); }
 .sl-step .q { margin-top: 16px; padding-left: 14px; border-left: 3px solid var(--leaf); color: #fff; font-weight: 500; }
-.sl-final .mega { max-width: 13ch; }
+.sl-final .mega { max-width: 22ch; font-size: clamp(2.1rem, 5.2vw, 4.8rem); line-height: 1.04; }
 .sl-final .mega em { color: var(--leaf); }
 
 .sl-track { position: relative; height: clamp(110px, 15vw, 160px); margin-top: clamp(24px, 5vh, 56px); }
@@ -608,3 +608,9 @@ section.forest .soft { color: rgba(255, 255, 255, 0.38); }
 .thanks-quote { margin: clamp(56px, 7vw, 96px) 0 0; font-family: var(--font-display); font-weight: 500; letter-spacing: -0.02em; font-size: clamp(1.3rem, 2.4vw, 1.9rem); }
 .thanks-quote span { display: block; margin-top: 10px; font-family: inherit; font-size: 15px; letter-spacing: 0; color: var(--muted); }
 @media (max-width: 760px) { .thanks-questions { grid-template-columns: 1fr; } }
+
+/* Feedback V4: Kernsatz im Hero, Angebote markiert */
+.hero-core { margin: clamp(18px, 2vw, 26px) 0 0; padding-left: 16px; border-left: 3px solid var(--leaf); font-family: var(--font-display); font-weight: 500; letter-spacing: -0.015em; line-height: 1.3; font-size: clamp(1.1rem, 1.6vw, 1.4rem); color: var(--ink); max-width: 30ch; }
+.offer .tag { display: inline-block; margin-top: 10px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; background: var(--leaf); color: var(--ink); padding: 4px 10px; border-radius: 2px; }
+.offer .tag.soft { background: transparent; box-shadow: inset 0 0 0 1px var(--leaf); }
+.offer.main h3 { font-size: clamp(2rem, 3.6vw, 3rem); }
