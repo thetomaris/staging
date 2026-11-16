@@ -503,3 +503,19 @@ button.btn{cursor:pointer;font:inherit;font-family:var(--head);font-weight:500;f
 .cal iframe{display:block;width:100%;height:700px;border:0}
 .cal noscript{display:block;padding:48px 24px}
 @media(max-width:899px){.cal,.cal iframe{min-height:0;height:1040px}}
+
+/* questionnaire: second screen holds three short questions */
+.subq{font-family:var(--serif);font-weight:300;font-size:clamp(24px,2.6vw,32px);line-height:1.2;color:var(--ink);margin:48px 0 20px}
+.step .field+.subq{margin-top:40px}
+
+/* statement as a soft process outline */
+.statement .process{list-style:none;max-width:1120px;margin:clamp(40px,5vw,72px) auto 0;display:grid;text-align:left}
+.statement .process li{border-top:1px solid var(--rule);padding:22px 0 26px;display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px 14px;align-content:start}
+.statement .process h3{font-family:var(--head);font-weight:500;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);align-self:center}
+.statement .process p{grid-column:2;font-family:var(--serif);font-style:normal;font-weight:400;font-size:17px;line-height:1.55;color:var(--text);max-width:none;margin:0}
+@media(min-width:900px){.statement .process{grid-template-columns:repeat(4,minmax(0,1fr));gap:0 32px}.statement .process li{grid-template-columns:1fr}.statement .process p{grid-column:1}}
+
+/* pause: the space before you react opens from the middle (draft) */
+.beats .space{display:block;height:12px;width:100%;border:1px solid var(--orange);border-top:0;transform-origin:center;transition:transform 1.8s var(--ease)}
+.motion .beats .space{transform:scaleX(.06)}
+.motion .beats .b.mid.on .space{transform:none}

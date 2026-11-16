@@ -139,7 +139,7 @@
       var s=steps[n],ok=true;
       $$('input[required]',s).forEach(function(inp){if(inp.type==='radio'){if(!$('input[name="'+inp.name+'"]:checked',s))ok=false}else if(!inp.value.trim()||(inp.type==='email'&&!/^\S+@\S+\.\S+$/.test(inp.value)))ok=false});
       var oth=$('input[value="Something else"]:checked',s);if(oth&&!$('.other input',s).value.trim())ok=false;
-      if(!ok)err.textContent=n===steps.length-1?'Please add your name and a valid email.':'Please choose one to continue.';
+      if(!ok)err.textContent=n===steps.length-1?'Please answer each question and add your name and a valid email.':'Please choose one to continue.';
       return ok;
     }
     function submit(){
