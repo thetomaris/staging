@@ -399,7 +399,7 @@ button.btn{cursor:pointer;font:inherit;font-family:var(--head);font-weight:500;f
 .beats .b{display:flex;flex-direction:column;gap:10px}
 .beats .w{font-family:var(--head);font-weight:500;text-transform:uppercase;letter-spacing:.01em;line-height:1;font-size:clamp(44px,6.4vw,104px);color:var(--ink);transition:color 1.4s var(--ease)}
 .beats .mid .w{font-family:var(--serif);font-style:italic;font-weight:400;text-transform:none;color:var(--orange)}
-.beats .c{font-family:var(--head);font-weight:500;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);transition:opacity 1.4s var(--ease)}
+.beats .c{font-family:var(--head);font-weight:500;font-size:clamp(13px,1.15vw,16px);letter-spacing:.2em;text-transform:uppercase;color:var(--text);transition:opacity 1.4s var(--ease)}
 .beats .hl{display:block;width:1px;height:36px;background:var(--ink);margin-left:6px;transform-origin:top;transition:transform 1.4s var(--ease)}
 @media(min-width:900px){.beats{flex-direction:row;align-items:flex-start;gap:clamp(20px,2.4vw,40px)}.beats .hl{flex:1;width:auto;height:1px;margin:clamp(22px,3.2vw,52px) 0 0;transform-origin:left}}
 .motion .beats .w{color:var(--line)}
@@ -497,3 +497,9 @@ button.btn{cursor:pointer;font:inherit;font-family:var(--head);font-weight:500;f
 }
 
 .motion .arc3.hold-on .head{opacity:0;transition:opacity .6s var(--ease)}
+
+/* Calendly on the thank-you page */
+.cal{min-height:700px;background:var(--paper);border:1px solid var(--rule)}
+.cal iframe{display:block;width:100%;height:700px;border:0}
+.cal noscript{display:block;padding:48px 24px}
+@media(max-width:899px){.cal,.cal iframe{min-height:0;height:1040px}}

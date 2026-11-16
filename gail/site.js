@@ -144,6 +144,7 @@
     }
     function submit(){
       var to=form.getAttribute('action');
+      try{var fd=new FormData(form),pick=function(k){var v=fd.get(k);return v?String(v).trim():''};sessionStorage.setItem('ki-lead',JSON.stringify({name:pick('name'),email:pick('email'),situation:pick('situation')==='Something else'?pick('situation-other'):pick('situation'),first:pick('first-conversation'),last360:pick('last-360')}))}catch(e){}
       if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)){location.href=to;return}
       next.disabled=true;
       fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()})
@@ -160,6 +161,19 @@
     })});
     form.addEventListener('input',function(){err.textContent=''});
     show(0,false);
+  }
+
+  /* ---------- Calendly, prefilled from the questionnaire ---------- */
+  var cal=$('.cal[data-url]');
+  if(cal){
+    var lead={};try{lead=JSON.parse(sessionStorage.getItem('ki-lead')||'{}')||{}}catch(e){}
+    var q=new URLSearchParams({embed_domain:location.host,embed_type:'Inline',hide_gdpr_banner:'1',background_color:'faf7f2',text_color:'1d2223',primary_color:'c2611a'});
+    if(lead.name){q.set('name',lead.name);var sp=lead.name.split(/\s+/);q.set('first_name',sp[0]);if(sp.length>1)q.set('last_name',sp.slice(1).join(' '))}
+    if(lead.email)q.set('email',lead.email);
+    var a=[];if(lead.situation)a.push('Situation: '+lead.situation);if(lead.first)a.push('First conversation: '+lead.first);if(lead.last360)a.push('Last 360: '+lead.last360);
+    if(a.length)q.set('a1',a.join(' | '));
+    var f=document.createElement('iframe');f.title='Book an Executive Introduction';f.loading='lazy';f.src=cal.dataset.url+'?'+q.toString();
+    cal.appendChild(f);
   }
 
   /* ---------- review switcher ---------- */
