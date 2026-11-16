@@ -46,6 +46,11 @@ All options are **off by default**. Each one is a flag in `flags.js` and a CSS c
 `/gail/apply/` submits to **Netlify Forms** (form name `waitlist`, honeypot `website`). It then redirects to `/gail/thank-you/`.
 
 - On localhost the form skips the submission and goes straight to the thank-you page.
-- Before launch:
-  - Check that form detection is on in Netlify.
-  - Set up the email notification to Gail.
+- Form detection is on in Netlify (project mcpstaging).
+- Before launch: set up the email notification to Gail (Forms, Form notifications, Email, form `waitlist`).
+
+## Booking link
+
+Gail's Calendly: https://calendly.com/kineticinsights/intro
+
+It is not on the site. Gail reads every application and sends the link in her reply when it looks like a fit. The thank-you page says so in step ii.
